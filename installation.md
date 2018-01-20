@@ -1,10 +1,10 @@
-# Installation {#installation}
+# 安装 {#installation}
 
 When we refer to "Python 3" in this book, we will be referring to any version of Python equal to or greater than version [Python {{ book.pythonVersion }}](https://www.python.org/downloads/).
 
 ## Installation on Windows
 
-Visit https://www.python.org/downloads/ and download the latest version. At the time of this writing, it was Python 3.5.1 
+Visit https://www.python.org/downloads/ and download the latest version. At the time of this writing, it was Python 3.5.1
 The installation is just like any other Windows-based software.
 
 Note that if your Windows version is pre-Vista, you should [download Python 3.4 only](https://www.python.org/downloads/windows/) as later versions require newer versions of Windows.
@@ -13,7 +13,7 @@ CAUTION: Make sure you check option `Add Python 3.5 to PATH`.
 
 To change install location, click on `Customize installation`, then `Next` and enter `C:\python35` (or another appropriate location) as the install location.
 
-If you didn�t check the `Add Python 3.5 PATH` option earlier, check `Add Python to environment variables`. This does the same thing as `Add Python 3.5 to PATH` on the first install screen.
+If you didn�t check the `Add Python 3.5 PATH` option earlier, check `Add Python to environment variables`. This does the same thing as `Add Python 3.5 to PATH` on the first install screen.
 
 You can choose to install Launcher for all users or not, it does not matter much. Launcher is used to switch between different versions of Python installed.
 

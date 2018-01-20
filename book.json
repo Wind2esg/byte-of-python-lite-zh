@@ -1,12 +1,11 @@
 {
     "variables": {
-        "authorUrl": "https://www.swaroopch.com/about/",
-        "buyBookUrl": "https://www.swaroopch.com/buybook/",
-        "contactUrl": "https://www.swaroopch.com/contact/",
-        "downloadUrl": "https://www.gitbook.com/book/swaroopch/byte-of-python/details",
-        "officialUrl": "https://python.swaroopch.com/",
         "pythonVersion": "3.6.0",
-        "sourceUrl": "https://github.com/swaroopch/byte-of-python",
-        "vimBookUrl": "https://vim.swaroopch.com/"
+        "authorGithubUrl": "https://gith.com/Wind2esg/byte-of-python-lite-zh",
+
+        "originalAuthorUrl": "https://www.swaroopch.com/about/",
+        "originalDownloadUrl": "https://www.gitbook.com/book/swaroopch/byte-of-python/details",
+        "originalOfficialUrl": "https://python.swaroopch.com/",
+        "originalsourceUrl": "https://github.com/swaroopch/byte-of-python",
     }
 }

@@ -1,9 +1,9 @@
-# Summary
+# 总览
 
-* [Dedication](dedication.md)
-* [Preface](preface.md)
-* [About Python](about_python.md)
-* [Installation](installation.md)
+* [献给](dedication.md)
+* [前言](preface.md)
+* [关于 Python](about_python.md)
+* [安装](installation.md)
 * [First Steps](first_steps.md)
 * [Basics](basics.md)
 * [Operators and Expressions](op_exp.md)

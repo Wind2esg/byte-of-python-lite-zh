@@ -1,92 +1,76 @@
-# About Python
+# 关于 Python
 
-Python is one of those rare languages which can claim to be both _simple_ and _powerful_.  You will find yourself pleasantly surprised to see how easy it is to concentrate on the solution to the problem rather than the syntax and structure of the language you are programming in.
+python 官网用以下特点描述它：
+> 易学，强劲。  
+> 具有高效率的高级数据结构和简单高效的面向对象编程手段。  
+> 语法优雅，动态输入。
 
-The official introduction to Python is:
+## 名称的由来
 
-> Python is an easy to learn, powerful programming language. It has efficient high-level data structures and a simple but effective approach to object-oriented programming. Python's elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas on most platforms.
+Guido van Rossum, python 语言的创造者, 以 BBC 的秀 "Monty Python's Flying Circus" 为其命名，他确实不怎么喜欢那些蛇！
 
-I will discuss most of these features in more detail in the next section.
+## Python的特点
 
-## Story behind the name
+### 简单，易学
 
-Guido van Rossum, the creator of the Python language, named the language after the BBC show "Monty
-Python's Flying Circus". He doesn't particularly like snakes that kill animals for food by winding
-their long bodies around them and crushing them.
+python 程序读起来就如同读英文，这种伪代码的本质是它最强力的特性之一。  
+基于此，它的语法简单，易于上手。
 
-## Features of Python
+### 免费，开源
 
-### Simple
+### 高级语言
 
-Python is a simple and minimalistic language. Reading a good Python program feels almost like reading English, although very strict English! This pseudo-code nature of Python is one of its greatest strengths. It allows you to concentrate on the solution to the problem rather than the language itself.
+如其他高级语言 java ，或者 C# ，你无须考虑底层相关。
 
-### Easy to Learn
+### 便携
 
-As you will see, Python is extremely easy to get started with. Python has an extraordinarily simple syntax, as already mentioned.
+Python 程序如果没有使用依赖于操作系统的特性，可直接跨平台运行。
 
-### Free and Open Source
+### 解释型语言
 
-Python is an example of a _FLOSS_ (Free/Libré and Open Source Software). In simple terms, you can freely distribute copies of this software, read its source code, make changes to it, and use pieces of it in new free programs. FLOSS is based on the concept of a community which shares knowledge. This is one of the reasons why Python is so good - it has been created and is constantly improved by a community who just want to see a better Python.
+编译型语言是使用编译器将你编写的程序转换成为计算机可识别的机械语言。
 
-### High-level Language
+解释型语言如 python 先将源代码转换为叫做字节代码的中间形式，再将其翻译为机械代码执行。所以你不需考虑编译，库链接载入等等问题，也使得 python 更加易用，便携性也使基于此。
 
-When you write programs in Python, you never need to bother about the low-level details such as managing the memory used by your program, etc.
+最初编译型或者解释型的区别定义在直观上看来是编译型是源代码先编译再运行，而解释型是直接运行源代码。
 
-### Portable
+在我看来，倒不必纠结与解释型与编译型的分类。本质上就是抽象一层，来屏蔽具体环境的差异。
 
-Due to its open-source nature, Python has been ported to (i.e. changed to make it work on) many platforms. All your Python programs can work on any of these platforms without requiring any changes at all if you are careful enough to avoid any system-dependent features.
+初时我需要与日本人交谈，自然聘一个日语翻译。后来又要与俄国人交流，再聘一个俄语翻译。这就是编译型。
 
-You can use Python on GNU/Linux, Windows, FreeBSD, Macintosh, Solaris, OS/2, Amiga, AROS, AS/400, BeOS, OS/390, z/OS, Palm OS, QNX, VMS, Psion, Acorn RISC OS, VxWorks, PlayStation, Sharp Zaurus, Windows CE and PocketPC!
+哦，不！以后可能还会有法国人，德国人其他各种人，一次又一次去聘请翻译，太僵了！于是，我请了一家翻译公司，它拥有很多翻译，他们会将我的话翻译给相应的人。一次搞定，高枕无忧。这就类似所谓的解释型。
 
-You can even use a platform like [Kivy](http://kivy.org) to create games for your computer _and_ for iPhone, iPad, and Android.
+翻译公司就是翻译们的抽象。相对来说，请公司价格会高，但为我们节省了时间精力。抽象自然会付出些许代价，但带来的灵活性的价值确实难以估量的。
 
-### Interpreted
+再者不必太过拘泥于编译型与解释型的概念在于发展至今，这个边际确实已然模糊。大家也都有各自的看法。
 
-This requires a bit of explanation.
+java 有编译过程，但此编译是将源代码转换为字节代码， java 跨平台的重点在于 java 虚拟机，即 JVM 。运行 java 程序的时候，运行于各平台之上的 JVM 会将这些字节代码翻译成相应的机械语言。
 
-A program written in a compiled language like C or C\++ is converted from the source language i.e. C or C++ into a language that is spoken by your computer (binary code i.e. 0s and 1s) using a compiler with various flags and options. When you run the program, the linker/loader software copies the program from hard disk to memory and starts running it.
+.net 能够在 .net 框架上跨语言，这更为有趣。类似 JVM ，它也是先将代码编译为一种中间语言， MSIL ，微软中间语言，然后在运行时由 JIT ，即实时编译器，来转换出最终的机械语言。有趣之处在于它制定了一个规范， CLS ，公共语言规范。任何编程语言中实现了 CLS 的语言的部分编译后的 MSIL 是共通的。这意味着你使用 c# 完成了一部分代码， 你的同事可能使用 vb.net 来完成其他部分的代码。你们的代码可以协同工作，而不需要什么额外的手段。 不知你有没有如我设想过一种大统一的机制，使得我们不必再纠结什么语言，什么平台，而更多聚焦于关注逻辑和功能。微软近年来一直在类似的路上探索，类似将 .net 框架实现跨平台， 你如果有更深入的兴趣，可以去了解Xamarin， 以及 .net core 。
 
-Python, on the other hand, does not need compilation to binary. You just _run_ the program directly from the source code. Internally, Python converts the source code into an intermediate form called bytecodes and then translates this into the native language of your computer and then runs it. All this, actually, makes using Python much easier since you don't have to worry about compiling the program, making sure that the proper libraries are linked and loaded, etc. This also makes your Python programs much more portable, since you can just copy your Python program onto another computer and it just works!
+深挖 python ，也可以看到虚拟机体系结构。甚至可以理解为 python 会将源代码先编译成虚拟机的机械语言。
 
-### Object Oriented
+V8 引擎已经可以将 javascript 编译成为机械语言。
 
-Python supports procedure-oriented programming as well as object-oriented programming. In _procedure-oriented_ languages, the program is built around procedures or functions which are nothing but reusable pieces of programs. In _object-oriented_ languages, the program is built around objects which combine data and functionality. Python has a very powerful but simplistic way of doing OOP, especially when compared to big languages like C++ or Java.
+就个人经历来说，我起于 IBM 大型机与 c 和 c++ , 初次接触 javascript 声明变量的语法 var 之时就想到了调试的难度。编译错误是友好的，运行错误是疯狂的。即使是经验丰富的老手，调试起指针遍布的程序也还会头大。
 
-### Extensible
+### 面向对象
 
-If you need a critical piece of code to run very fast or want to have some piece of algorithm not to be open, you can code that part of your program in C or C\++ and then use it from your Python program.
+python 同时支持面向过程编程与面向对象编程。Python 给你简单强劲的面向对象体验，与 c++ 或者 java 这些大型语言有很大差别。
 
-### Embeddable
+### 可扩展
 
-You can embed Python within your C/C\++ programs to give _scripting_ capabilities for your program's users.
+如果某段关键代码运行速度要求很严苛，或者某算法片段不被开源，你可以使用 c 或者 c++ 编写它们，然后在 python 中调用。
 
-### Extensive Libraries
+### 可嵌入
 
-The Python Standard Library is huge indeed. It can help you do various things involving regular expressions,documentation generation, unit testing, threading, databases, web browsers, CGI, FTP, email, XML, XML-RPC, HTML, WAV files, cryptography, GUI (graphical user interfaces), and other system-dependent stuff. Remember, all this is always available wherever Python is installed. This is called the _Batteries Included_ philosophy of Python.
+python 可以作为脚本嵌入到 c 或者 c++ 程序中。
 
-Besides the standard library, there are various other high-quality libraries which you can find at the [Python Package Index](http://pypi.python.org/pypi).
+### 扩展库
 
-### Summary
+python 众多的标准库能帮助你完成各种目标，并且它们随着 python 一同安装。 这称之为 python 的 _Batteries Included_ 哲学。  
+此外，你还可以在 [Python Package Index](http://pypi.python.org/pypi) 找到各种各样的高质量库。
 
-Python is indeed an exciting and powerful language. It has the right combination of performance and features that make writing programs in Python both fun and easy.
+## 总结
 
-## Python 3 versus 2
-
-You can ignore this section if you're not interested in the difference between "Python version 2" and "Python version 3". But please do be aware of which version you are using. This book is written for Python version 3.
-
-Remember that once you have properly understood and learn to use one version, you can easily learn the differences and use the other one. The hard part is learning programming and understanding the basics of Python language itself. That is our goal in this book, and once you have achieved that goal, you can easily use Python 2 or Python 3 depending on your situation.
-
-For details on differences between Python 2 and Python 3, see:
-
-- [The future of Python 2](http://lwn.net/Articles/547191/)
-- [Porting Python 2 Code to Python 3](https://docs.python.org/3/howto/pyporting.html)
-- [Writing code that runs under both Python2 and 3](https://wiki.python.org/moin/PortingToPy3k/BilingualQuickRef)
-- [Supporting Python 3: An in-depth guide](http://python3porting.com)
-
-## What Programmers Say
-
-You may find it interesting to read what great hackers like ESR have to say about Python:
-
-- _Eric S. Raymond_ is the author of "The Cathedral and the Bazaar" and is also the person who coined the term _Open Source_. He says that [Python has become his favorite programming language](http://www.python.org/about/success/esr/). This article was the real inspiration for my first brush with Python.
-- _Bruce Eckel_ is the author of the famous 'Thinking in Java' and 'Thinking in C++' books. He says that no language has made him more productive than Python. He says that Python is perhaps the only language that focuses on making things easier for the programmer. Read the [complete interview](http://www.artima.com/intv/aboutme.html) for more details.
-- _Peter Norvig_ is a well-known Lisp author and Director of Search Quality at Google (thanks to Guido van Rossum for pointing that out). He says that [writing Python is like writing in pseudocode](https://news.ycombinator.com/item?id=1803815). He says that Python has always been an integral part of Google. You can actually verify this statement by looking at the [Google Jobs](http://www.google.com/jobs/index.html) page which lists Python knowledge as a requirement for software engineers.
+总之， python 就是各种好，不然你现在在做什么！

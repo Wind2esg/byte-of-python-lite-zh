@@ -1,23 +1,17 @@
-# Preface
+# OMG ，编者 bla
 
-Python is probably one of the few programming languages which is both simple and powerful. This is good for beginners as well as for experts, and more importantly, is fun to program with. This book aims to help you learn this wonderful language and show how to get things done quickly and painlessly - in effect 'The Anti-venom to your programming problems'.
+作为热爱编程爱学习的你们中的一个，我也踏上了 python 之路。  
 
-## Who This Book Is For
+月有两面，万物如此。互联网让我们免受空间限制自由连接广阔世界，或许让我们面临比以往更中心化的禁锢。开源让我们乐此不疲于自由探索，奉献与相互促进，可能也给我们带来信息过滤的困扰。  
 
-This book serves as a guide or tutorial to the Python programming language. It is mainly targeted at newbies. It is useful for experienced programmers as well.
+一路学成全栈工程师，囧坑繁多，也让我深明“方向”大义，知晓在初期一个合适的指引是多么的宝贵。弱水半百，终取此一瓢。
 
-The aim is that if all you know about computers is how to save text files, then you can learn Python from this book. If you have previous programming experience, then you can also learn Python from this book.
+在原著的基础上，尽量保证不影响新人学习理解的同时精简并翻译，以期更加高效。适当的添加了一些我的粗浅认知，望能够帮助新人理解内容，以及与其他经验丰富的编程者们交流探讨，让我自身获得指正并学习进步。
 
-If you do have previous programming experience, you will be interested in the differences between Python and your favorite programming language - I have highlighted many such differences. A little warning though, Python is soon going to become your favorite programming language!
+衷心希望本书能够给奋斗着的你一段美妙的陪伴。
 
-## Official Website
+## 官方网址
 
-The official website of the book is {{ book.officialUrl }} where you can read the whole book online, download the latest versions of the book, [buy a printed hard copy]({{ book.buyBookUrl }}) and also send me feedback.
-
-## Something To Think About
-
-> There are two ways of constructing a software design: one way is to make it so simple that there are obviously no deficiencies; the other is to make it so complicated that there are no obvious deficiencies. -- C. A. R. Hoare
-
-<!-- -->
-
-> Success in life is a matter not so much of talent and opportunity as of concentration and perseverance. -- C. W. Wendte
+本书基于 markdown ，构建于 gitbook 。
+- 源代码 [{{book.authorGithubUrl}}]({{book.authorGithubUrl}})
+- 在线阅读
