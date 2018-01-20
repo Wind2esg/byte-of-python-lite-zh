@@ -1,9 +1,11 @@
 # A Byte of Python 中文精编版
 
 ## 版本
+
 python 3
 
 ## 许可
+
 本书是 [Swarcoop C H](https://www.swaroopch.com/about/) 所著的 [*Byte of Python*](https://python.swaroopch.com/) 翻译并改编而来。
 原著采用 [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0) 许可。原著的全部内容可以从其官方网站 [https://python.swaroopch.com/](https://python.swaroopch.com/) 上获取。
 
@@ -22,12 +24,14 @@ python 3
 - 原著提供的代码或者脚本默认采用 [BSD 3-clause License](http://www.opensource.org/licenses/bsd-license.php) 许可，除非另有说明。
 - 作者添加的代码或脚本采用 [MIT License](http://www.opensource.org/licenses/mit-license.php)
 
-## Hello World Python！
 ### 在线阅读
+
 - 原著 [https://python.swaroopch.com/](https://python.swaroopch.com/)
 - 本书
+
 ### 源代码
+
 - 原著 [https://github.com/swaroopch/byte-of-python](https://github.com/swaroopch/byte-of-python)
 - 本书 [https://gith.com/Wind2esg/byte-of-python-lite-zh](https://gith.com/Wind2esg/byte-of-python-lite-zh)
 
-使用Gitbook构建
+#### 如何构建本书
