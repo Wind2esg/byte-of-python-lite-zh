@@ -4,7 +4,7 @@
 * [前言](preface.md)
 * [关于 Python](about_python.md)
 * [安装](installation.md)
-* [First Steps](first_steps.md)
+* [工欲善其事](first_steps.md)
 * [Basics](basics.md)
 * [Operators and Expressions](op_exp.md)
 * [Control flow](control_flow.md)

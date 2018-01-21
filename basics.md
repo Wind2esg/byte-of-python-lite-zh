@@ -1,41 +1,36 @@
-# Basics
+# 基础
 
-Just printing `hello world` is not enough, is it? You want to do more than that - you want to take some input, manipulate it and get something out of it. We can achieve this in Python using constants and variables, and we'll learn some other concepts as well in this chapter.
+`hellow world` 肯定满足不了你。要编写更复杂有趣的程序，我们需要学习更多的知识。
 
-## Comments
+## 注释 comment
 
-_Comments_ are any text to the right of the `#` symbol and is mainly useful as notes for the reader of the program.
+_注释_ 是指某行内位于符号 `#` 之后的文本。
 
-For example:
+例如:
 
 ```python
 print('hello world') # Note that print is a function
 ```
 
-or:
+或者:
 
 ```python
 # Note that print is a function
 print('hello world')
 ```
 
-Use as many useful comments as you can in your program to:
+_注释_ 在程序运行时，会被解释器忽略掉。因此它主要用来：
 
-- explain assumptions
-- explain important decisions
-- explain important details
-- explain problems you're trying to solve
-- explain problems you're trying to overcome in your program, etc.
+- 为程序的阅读者提供更多信息。
+- 调试代码时迅速屏蔽代码。
 
-[*Code tells you how, comments should tell you why*](http://www.codinghorror.com/blog/2006/12/code-tells-you-how-comments-tell-you-why.html).
+如果你初次接触编程，你可以去看下原著作者提供的[*代码告诉你如何，注释告诉你为何*](http://www.codinghorror.com/blog/2006/12/code-tells-you-how-comments-tell-you-why.html)。良好的编程习惯，这绝对是重要的。写天书与读天书，你以后会懂的。
 
-This is useful for readers of your program so that they can easily understand what the program is doing. Remember, that person can be yourself after six months!
+## 字面常量 literal constant
 
-## Literal Constants
+数字如 `5` ，`1.23` ，或者字符串如 `'This is a string'` ，`"It's a string!"` 都是字面常量的例子。
 
-An example of a literal constant is a number like `5`, `1.23`, or a string like `'This is a string'` or `"It's a string!"`.
-
-It is called a literal because it is _literal_ - you use its value literally. The number `2` always represents itself and nothing else - it is a _constant_ because its value cannot be changed. Hence, all these are referred to as literal constants.
+“字面”指的是它的字面意思就是实际意义，`2` 永远就是数字 2 ，不会代表任何其他意义。“常量”，提起变量就比较容易理解，指的是值不会发生变化。
 
 ## Numbers
 
@@ -46,7 +41,7 @@ An example of an integer is `2` which is just a whole number.
 Examples of floating point numbers (or _floats_ for short) are `3.23` and `52.3E-4`. The `E` notation indicates powers of 10. In this case, `52.3E-4` means `52.3 * 10^-4^`.
 
 > **Note for Experienced Programmers**
-> 
+>
 > There is no separate `long` type. The `int` type can be an integer of any size.
 
 ## Strings
@@ -84,13 +79,13 @@ a bad thing, it really isn't. We will see why this is not a limitation in the va
 we see later on.
 
 > **Note for C/C++ Programmers**
-> 
+>
 > There is no separate `char` data type in Python. There is no real need for it and I am sure you won't miss it.
 
 <!-- -->
 
 > **Note for Perl/PHP Programmers**
-> 
+>
 > Remember that single-quoted strings and double-quoted strings are the same - they do not differ in any way.
 
 ### The format method
@@ -224,7 +219,7 @@ r"Newlines are indicated by \n"
 ```
 
 > **Note for Regular Expression Users**
-> 
+>
 > Always use raw strings when dealing with regular expressions. Otherwise, a lot of backwhacking may be required. For example, backreferences can be referred to as `'\\1'` or `r'\1'`.
 
 ## Variable
@@ -310,7 +305,7 @@ Then we add `1` to the value stored in `i` and store it back. We then print it a
 Similarly, we assign the literal string to the variable `s` and then print it.
 
 > **Note for static language programmers**
-> 
+>
 > Variables are used by just assigning them a value. No declaration or data type definition is needed/used.
 
 ## Logical And Physical Line
@@ -405,16 +400,15 @@ IndentationError: unexpected indent
 Notice that there is a single space at the beginning of the second line. The error indicated by Python tells us that the syntax of the program is invalid i.e. the program was not properly written. What this means to you is that _you cannot arbitrarily start new blocks of statements_ (except for the default main block which you have been using all along, of course). Cases where you can use new blocks will be detailed in later chapters such as the [control flow](./control_flow.md#control_flow).
 
 > **How to indent**
-> 
+>
 > Use four spaces for indentation. This is the official Python language recommendation. Good editors will automatically do this for you. Make sure you use a consistent number of spaces for indentation, otherwise your program will not run or will have unexpected behavior.
 
 <!-- -->
 
 > **Note to static language programmers**
-> 
+>
 > Python will always use indentation for blocks and will never use braces. Run `from __future__ import braces` to learn more.
 
 ## Summary
 
 Now that we have gone through many nitty-gritty details, we can move on to more interesting stuff such as control flow statements. Be sure to become comfortable with what you have read in this chapter.
-
