@@ -1,14 +1,17 @@
-# Operators and Expressions {#op-exp}
+# 运算符与表达式 Operators and Expressions {#op-exp}
 
-Most statements (logical lines) that you write will contain _expressions_. A simple example of an expression is `2 + 3`. An expression can be broken down into operators and operands.
+大多数你写的语句都含有 _表达式_ 。`2 + 3` 就是个简单的表达式。表达式可以拆分为运算符 (operators) 和操作数 (operands)。
+
 
 _Operators_ are functionality that do something and can be represented by symbols such as `+` or by special keywords. Operators require some data to operate on and such data is called _operands_. In this case, `2` and `3` are the operands.
 
-## Operators
+_运算符_ 是具有某些功能的，它的形式可以是符号如 `+` ，或者特殊关键词。运算符需要有数据去运算，这些数据称为 _操作数_。
 
-We will briefly take a look at the operators and their usage.
+## 运算符 Operators
 
-Note that you can evaluate the expressions given in the examples using the interpreter interactively. For example, to test the expression `2 + 3`, use the interactive Python interpreter prompt:
+我们可以先简单看看运算符和它们的使用方法。
+
+你看，你能使用互动解释器命令行来计算例子中给出的表达式。例如，试试  `2 + 3` ：
 
 ```python
 >>> 2 + 3
@@ -18,120 +21,99 @@ Note that you can evaluate the expressions given in the examples using the inter
 >>>
 ```
 
-Here is a quick overview of the available operators:
+运算符快速一览表：
 
-- `+` (plus)
-    - Adds two objects
-    - `3 + 5` gives `8`. `'a' + 'b'` gives `'ab'`.
+- `+` （加）
+    - `'a' + 'b'` 得到 `'ab'` ，。
+    > python 中当操作数是字符串式，`+` 可以省略，即 `'a''b'` 得到 `'ab'`
 
-- `-` (minus)
-    - Gives the subtraction of one number from the other; if the first operand is absent it is assumed to be zero.
-    - `-5.2` gives a negative number and `50 - 24` gives `26`.
+- `-` （减）
 
-- `*` (multiply)
-    - Gives the multiplication of the two numbers or returns the string repeated that many times.
-    - `2 * 3` gives `6`. `'la' * 3` gives `'lalala'`.
+- `*` （乘）
+    - `2 * 3` 得到 `6` 。 `'la' * 3` 得到 `'lalala'` 。
 
-- `**` (power)
-    - Returns x to the power of y
-    - `3 ** 4` gives `81` (i.e. `3 * 3 * 3 * 3`)
+- `**` （幂）
+    - 返回 x 的 y 次幂
+    - `3 ** 4` 得到 `81` （即 `3 * 3 * 3 * 3` ）。
 
-- `/` (divide)
-    - Divide x by y
-    - `13 / 3` gives `4.333333333333333`
+- `/` （除）
+    - `13 / 3` 得出 `4.333333333333333`
 
-- `//` (divide and floor)
-    - Divide x by y and round the answer _down_ to the nearest integer value. Note that if one of the values is a float, you'll get back a float.
-    - `13 // 3` gives `4`
-    - `-13 // 3` gives `-5`
-    - `9//1.81` gives `4.0`
+- `//` （除并且向下取整）
+    - x 被 y 除，并且取小于结果的最大整数作为答案。请注意，如果其中某个值是浮点数，那么你就会得到浮点数的结果。 
+    - `13 // 3` 得出 `4`
+    - `9//1.81` 得出 `4.0`
 
-- `%` (modulo)
-    - Returns the remainder of the division
-    - `13 % 3` gives `1`. `-25.5 % 2.25` gives `1.5`.
+- `%` （模）
+    - 返回除的余数
+    - `13 % 3` 得出 `1` 。 `-25.5 % 2.25` 得出 `1.5` 。
 
-- `<<` (left shift)
-    - Shifts the bits of the number to the left by the number of bits specified. (Each number is represented in memory by bits or binary digits i.e. 0 and 1)
-    - `2 << 2` gives `8`. `2` is represented by `10` in bits.
-    - Left shifting by 2 bits gives `1000` which represents the decimal `8`.
+- `<<` （左移位）
+    - 将数字的二进制位向左移动若干位（每一个数字在内存中都是使用二进制数 0 或 1 表示）。
+    - `2 << 2` 得出 `8` 。 `2` 的二进制数是 `10` 。左移位 2 位得出 `1000` 即 `8` 。
 
-- `>>` (right shift)
-    - Shifts the bits of the number to the right by the number of bits specified.
-    - `11 >> 1` gives `5`.
-    - `11` is represented in bits by `1011` which when right shifted by 1 bit gives `101`which is the decimal `5`.
+- `>>` （右移位）
 
-- `&` (bit-wise AND)
-    - Bit-wise AND of the numbers
+- `&` （按位与）
+    - 将数字的二进制数对应位想比较，同为 1 则那一位结果为 1 ，否则为 0 。
     - `5 & 3` gives `1`.
 
-- `|` (bit-wise OR)
-    - Bitwise OR of the numbers
+- `|` （按位或）
+    - 将数字的二进制数对应位想比较，同为 0 则那一位结果为 0 ，否则为 1 。
     - `5 | 3` gives `7`
 
-- `^` (bit-wise XOR)
-    - Bitwise XOR of the numbers
+- `^` （按位异或）
+    - 将数字的二进制数对应位想比较，这两位相同则那一位结果为 0 ，否则为 1 。
     - `5 ^ 3` gives `6`
 
-- `~` (bit-wise invert)
-    - The bit-wise inversion of x is -(x+1)
-    - `~5` gives `-6`. More details at http://stackoverflow.com/a/11810203
+- `~` （按位取反）
+    - x 的按位翻转得到的是 -(x+1) 。
+    - `~5` 得出 `-6` 。http://stackoverflow.com/a/11810203 能够给你详细的信息。
 
-- `<` (less than)
-    - Returns whether x is less than y. All comparison operators return `True` or `False`. Note the capitalization of these names.
-    - `5 < 3` gives `False` and `3 < 5` gives `True`.
-    - Comparisons can be chained arbitrarily: `3 < 5 < 7` gives `True`.
+- `<` （小于）
 
-- `>` (greater than)
-    - Returns whether x is greater than y
-    - `5 > 3` returns `True`. If both operands are numbers, they are first converted to a common type. Otherwise, it always returns `False`.
+- `>` （大于）
 
-- `<=` (less than or equal to)
-    - Returns whether x is less than or equal to y
-    - `x = 3; y = 6; x <= y` returns `True`
+- `<=` （小于等于）
 
-- `>=` (greater than or equal to)
-    - Returns whether x is greater than or equal to y
-    - `x = 4; y = 3; x >= 3` returns `True`
+- `>=` （大于等于）
 
-- `==` (equal to)
-    - Compares if the objects are equal
-    - `x = 2; y = 2; x == y` returns `True`
-    - `x = 'str'; y = 'stR'; x == y` returns `False`
-    - `x = 'str'; y = 'str'; x == y` returns `True`
+- `==` （等于）
 
-- `!=` (not equal to)
-    - Compares if the objects are not equal
-    - `x = 2; y = 3; x != y` returns `True`
+- `=` （赋值）
+    - 将又侧的值赋给左侧的变量。
+    > 注意它和 `==` 的区别。
 
-- `not` (boolean NOT)
-    - If x is `True`, it returns `False`. If x is `False`, it returns `True`.
-    - `x = True; not x` returns `False`.
+- `!=` （不等于）
 
-- `and` (boolean AND)
-    - `x and y` returns `False` if x is `False`, else it returns evaluation of y
-    - `x = False; y = True; x and y` returns `False` since x is False. In this case, Python will not evaluate y since it knows that the left hand side of the 'and' expression is `False` which implies that the whole expression will be `False` irrespective of the other values. This is called short-circuit evaluation.
+- `not` （布尔 非）
+    - 如果 x 是 `True` ，返回 `False` 。 如果 x is `False` ，返回 `True` 。
 
-- `or` (boolean OR)
-    - If x is `True`, it returns True, else it returns evaluation of y
-    - `x = True; y = False; x or y` returns `True`. Short-circuit evaluation applies here as well.
+- `and` （布尔 与）
+    - `x and y` x 和 y 都为 `True` 时，返回 `True` 否则为 `False` 。
+    - 如果 python 发现表达式左侧是 `False` ，那么它就不会看右侧。这叫做短路计算。
 
-## Shortcut for math operation and assignment
+- `or` (布尔 或）
+    - x 与 y 皆为 `False` 时，返回 `False` 否则为 `True` 。
+    - `x = True; y = False; x or y` 返回 `True` 。这也适用短路计算。
 
-It is common to run a math operation on a variable and then assign the result of the operation back to the variable, hence there is a shortcut for such expressions:
+## 数学运算符同赋值符的简写
+
+对某个变量使用数学运算符并且将运算结果再赋值给这个变量实在太常见了，因此对于此类表达式有了如下的简写：
 
 ```python
 a = 2
 a = a * 3
 ```
 
-can be written as:
+可写作：
 
 ```python
 a = 2
 a *= 3
 ```
 
-Notice that `var = var operation expression` becomes `var operation= expression`.
+请注意，`var = var operation expression` 变成了 `var operation= expression` 。
 
 ## Evaluation Order
 

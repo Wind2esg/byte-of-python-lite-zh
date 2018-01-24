@@ -32,37 +32,38 @@ _注释_ 在程序运行时，会被解释器忽略掉。因此它主要用来�
 
 “字面”指的是它的字面意思就是实际意义，`2` 永远就是数字 2 ，不会代表任何其他意义。“常量”，提起变量就比较容易理解，指的是值不会发生变化。
 
-## Numbers
+## 数字 number
 
-Numbers are mainly of two types - integers and floats.
+数字主要有两种--整数 (integers) 和浮点数 (floats)
 
-An example of an integer is `2` which is just a whole number.
+整数的例子是 `2` 。
 
-Examples of floating point numbers (or _floats_ for short) are `3.23` and `52.3E-4`. The `E` notation indicates powers of 10. In this case, `52.3E-4` means `52.3 * 10^-4^`.
+浮点数的例子是 `3.23` 和 `52.3E-4` 。标记 `E` 表示 10 的幂数。`52.3E-4` 就是 `52.3 * 10^-4^` 。
 
-> **Note for Experienced Programmers**
->
-> There is no separate `long` type. The `int` type can be an integer of any size.
+> python 仅有 `int` ，它可以是任意大小的整数。  
+> 没有 `short` ，`long` ，`unsign short` ，`unsign long` 诸如此类。
 
-## Strings
+## 字符串 string
 
-A string is a _sequence_ of _characters_. Strings are basically just a bunch of words.
+字符串是一串字符 (_characters_) 的序列 (_sequence_) 。
 
-You will be using strings in almost every Python program that you write, so pay attention to the following part.
+你在写 python 程序时基本都会用到字符串，所以下面的部分要多上心。
 
-### Single Quote
+### 单引号
 
-You can specify strings using single quotes such as `'Quote me on this'`.
+你可以使用单引号指定字符串如 `'Quote me on this'` 。
 
-All white space i.e. spaces and tabs, within the quotes, are preserved as-is.
+所有的在单引号中的空白诸如空格或者制表符都会保持原样。
 
-### Double Quotes
+### 双引号
 
-Strings in double quotes work exactly the same way as strings in single quotes. An example is `"What's your name?"`.
+与单引号完全相同
 
-### Triple Quotes {#triple-quotes}
+> 请注意，python 中，单引号双引号完全相同。
 
-You can specify multi-line strings using triple quotes - (`"""` or `'''`). You can use single quotes and double quotes freely within the triple quotes. An example is:
+### 三引号 {#triple-quotes}
+
+你可以使用三引号 `"""` 或 `'''` 来指定多行字符串。在其中你可以任意使用双引号和单引号。例如
 
 ```python
 '''This is a multi-line string. This is the first line.
@@ -72,27 +73,19 @@ He said "Bond, James Bond."
 '''
 ```
 
-### Strings Are Immutable
+### 字符串是只读的
 
-This means that once you have created a string, you cannot change it. Although this might seem like
-a bad thing, it really isn't. We will see why this is not a limitation in the various programs that
-we see later on.
+也就是说一旦你创建了字符串，你就不能更改它。尽管这看起来不太好，但实际上并不糟。我们之后会在各种各样的程序实例中搞清楚这不会使我们碍手碍脚的原因。
 
-> **Note for C/C++ Programmers**
->
-> There is no separate `char` data type in Python. There is no real need for it and I am sure you won't miss it.
+> 这也没有什么 `char`、 在 python 中我们确实不需要它，我非常肯定你不会想念它。
 
-<!-- -->
+> 也许你也会想到 python 的基本数据类型如此精简，那么当我们与其他实体互动时，如操作数据库会不会有很多麻烦？
 
-> **Note for Perl/PHP Programmers**
->
-> Remember that single-quoted strings and double-quoted strings are the same - they do not differ in any way.
+### format 方法
 
-### The format method
+有时，我们想使用其他信息来创建字符串，这正是 format() 一展身手之处。
 
-Sometimes we may want to construct strings from other information. This is where the `format()` method is useful.
-
-Save the following lines as a file `str_format.py`:
+将下面这些保存为 `str_format.py` ：
 
 ```python
 age = 20
@@ -102,7 +95,7 @@ print('{0} was {1} years old when he wrote this book'.format(name, age))
 print('Why is {0} playing with that python?'.format(name))
 ```
 
-Output:
+输出为：
 
 ```
 $ python str_format.py
@@ -110,21 +103,21 @@ Swaroop was 20 years old when he wrote this book
 Why is Swaroop playing with that python?
 ```
 
-**How It Works**
+**它是怎样做的**
 
-A string can use certain specifications and subsequently, the `format` method can be called to substitute those specifications with corresponding arguments to the `format` method.
+字符串可以使用特定的格式，接着，`format` 方法会使用它的相应的参数来替换那些特定格式。
 
-Observe the first usage where we use `{0}` and this corresponds to the variable `name` which is the first argument to the format method. Similarly, the second specification is `{1}` corresponding to `age` which is the second argument to the format method. Note that Python starts counting from 0 which means that first position is at index 0, second position is at index 1, and so on.
+看看我们初次使用 `{0}` 的地方，它对应着 format 方法的第一个参数，`name` 变量。类似的，下一个，`{1}` 对应着  `age` 。注意 python 从 0 开始计数，即第一个位置是在索引 0 处，第二个在索引 1 ，以此类推。
 
-Notice that we could have achieved the same using string concatenation:
+当然，我们也可以使用连接字符串来达到同样的效果。
 
 ```python
 name + ' is ' + str(age) + ' years old'
 ```
 
-but that is much uglier and error-prone. Second, the conversion to string would be done automatically by the `format` method instead of the explicit conversion to strings needed in this case. Third, when using the `format` method, we can change the message without having to deal with the variables used and vice-versa.
+但是这看起来并不友好，而且容易出错。再者，`format` 方法能自动完成成字符串，不需显式的指定转换至字符串。最后，当时用 `format` 方法时，我们能够更改消息而不需顾虑变量，反之亦然。
 
-Also note that the numbers are optional, so you could have also written as:
+`{}` 中数字是可选的，所以我们写成这样：
 
 ```python
 age = 20
@@ -134,9 +127,9 @@ print('{} was {} years old when he wrote this book'.format(name, age))
 print('Why is {} playing with that python?'.format(name))
 ```
 
-which will give the same exact output as the previous program.
+结果一模一样。
 
-What Python does in the `format` method is that it substitutes each argument value into the place of the specification. There can be more detailed specifications such as:
+`format` 方法的原理是用每一个参数的值去替换格式所在的位置。这其中还有更加详细的格式，比如：
 
 ```python
 # decimal (.) precision of 3 for float '0.333'
@@ -148,7 +141,7 @@ print('{0:_^11}'.format('hello'))
 print('{name} wrote {book}'.format(name='Swaroop', book='A Byte of Python'))
 ```
 
-Output:
+输出为:
 
 ```
 0.333
@@ -157,19 +150,20 @@ Swaroop wrote A Byte of Python
 ```
 
 Since we are discussing formatting, note that `print` always ends with an invisible "new line" character (`\n`) so that repeated calls to `print` will all print on a separate line each. To prevent this newline character from being printed, you can specify that it should `end` with a blank:
+由于我们正在讨论格式化相关问题，就要注意 `print` 总是以隐藏的换行符 `\n` 结尾，所以每次调用 `print` 都会新起一行。你可以指定以空白来 `end` 来避免这个换行符被打印。
 
 ```python
 print('a', end='')
 print('b', end='')
 ```
 
-Output is:
+输出为：
 
 ```
 ab
 ```
 
-Or you can `end` with a space:
+或者你可以用一个空格来 `end` ：
 
 ```python
 print('a', end=' ')
@@ -177,103 +171,82 @@ print('b', end=' ')
 print('c')
 ```
 
-Output is:
+输出为：
 
 ```
 a b c
 ```
 
-### Escape Sequences
+### 转义序列 Escape Sequences
 
-Suppose, you want to have a string which contains a single quote (`'`), how will you specify this string? For example, the string is `"What's your name?"`. You cannot specify `'What's your name?'` because Python will be confused as to where the string starts and ends. So, you will have to specify that this single quote does not indicate the end of the string. This can be done with the help of what is called an _escape sequence_. You specify the single quote as `\'` : notice the backslash. Now, you can specify the string as `'What\'s your name?'`.
+假设，你想要一个包含一个单引号 `'` 的字符串，你该如何来指定这个字符串？例如，这个字符串是 `"What's your name?"` 。你没法指定 `'What's your name?'` 因为 python 会困惑于字符串的起止位置。所以，你必须指定这个单引号并不表示字符串的结尾。转义序列 (_escape sequence_) 能够帮助我们。你可以指定单引号为 `\'` ：记好这个反斜杠 `\` 。现在，你可以这雅漾指定这个字符串 `'What\'s your name?'` 。
 
-Another way of specifying this specific string would be `"What's your name?"` i.e. using double quotes. Similarly, you have to use an escape sequence for using a double quote itself in a double quoted string. Also, you have to indicate the backslash itself using the escape sequence `\\`.
+还有一种指定这个字符串的方式 `"What's your name?"` ，如此例，使用双引号。类似的，你在双引号指定的字符串中必须使用转义序列来指定字符串中的双引号。你也可以使用转义序列指定反斜杠 `\\` 。
 
-What if you wanted to specify a two-line string? One way is to use a triple-quoted string as shown [previously](#triple-quotes) or you can use an escape sequence for the newline character - `\n` to indicate the start of a new line. An example is:
+如果你想要指定一个两行的字符串时，该怎么做？使用三引号 [previously](#triple-quotes) 或者使用换行符的转义序列 `\n` 来说明要新起一行。一个例子是：
 
 ```python
 'This is the first line\nThis is the second line'
 ```
+另一个很有用的转义序列是制表符 `\t` 。转义序列实在很多，在此我仅提到最常用的几个。
 
-Another useful escape sequence to know is the tab: `\t`. There are many more escape sequences but I have mentioned only the most useful ones here.
-
-One thing to note is that in a string, a single backslash at the end of the line indicates that the string is continued in the next line, but no newline is added. For example:
+有件事值得注意，在字符串中，行末尾的单独的反斜杠说明此行并未结束，下行接续，并没有新起一行。例如：
 
 ```python
 "This is the first sentence. \
 This is the second sentence."
 ```
 
-is equivalent to
+等同于：
 
 ```python
 "This is the first sentence. This is the second sentence."
 ```
 
-### Raw String
+### 原字符串 raw string
 
-If you need to specify some strings where no special processing such as escape sequences are handled, then what you need is to specify a _raw_ string by prefixing `r` or `R` to the string. An example is:
+如果你需要指定某些不需如转义序列等特殊处理的字符串，你需要使用 `r` 或 `R` 前缀来指定原 (_raw_) 字符串。例如：
 
 ```python
 r"Newlines are indicated by \n"
 ```
 
-> **Note for Regular Expression Users**
->
-> Always use raw strings when dealing with regular expressions. Otherwise, a lot of backwhacking may be required. For example, backreferences can be referred to as `'\\1'` or `r'\1'`.
+> 使用正则表达式的时候最好总使用原字符串。否则，你需要使用太多的反斜杠了。例如反向引用如 `'\\1'` 或 `r'\1'` 。
 
-## Variable
+## 变量 variable
 
-Using just literal constants can soon become boring - we need some way of storing any information and manipulate them as well. This is where _variables_ come into the picture. Variables are exactly what the name implies - their value can vary, i.e., you can store anything using a variable. Variables are just parts of your computer's memory where you store some information. Unlike literal constants, you need some method of accessing these variables and hence you give them names.
+仅使用字面常量很快就会感到无聊--我们需要一些能够存储信息并对它们做一些操作的手段。变量 (_variables_) 应运而生。变量名副其实--他们的值是可变的，如同例子中那样，你可以使用变量存储任何东西。变量是你电脑中为你储存信息的内存的一部分。不同于字面常量，你需要一些方法来访问这些变量，因此，你需要为他们命名。
 
-## Identifier Naming
+## 标识符命名 Identifier Naming
 
-Variables are examples of identifiers. _Identifiers_ are names given to identify _something_. There are some rules you have to follow for naming identifiers:
+变量是标识符 (identifiers) 的实例。_标识符_是用来标示_东西_的名称。这有一些你必须遵守的命名标识符的准则：
 
 - The first character of the identifier must be a letter of the alphabet (uppercase ASCII or lowercase ASCII or Unicode character) or an underscore (`_`).
 - The rest of the identifier name can consist of letters (uppercase ASCII or lowercase ASCII or Unicode character), underscores (`_`) or digits (0-9).
 - Identifier names are case-sensitive. For example, `myname` and `myName` are _not_ the same. Note the lowercase `n` in the former and the uppercase `N` in the latter.
 - Examples of _valid_ identifier names are `i`, `name_2_3`. Examples of _invalid_ identifier names are `2things`, `this is spaced out`, `my-name` and `>a1b2_c3`.
 
-## Data Types
+- 标识符的首字符必须是字母表中的字母（大小写 ASCII 字符或者 Unicode 字符）或者是下划线 `_` 。
+- 余下可以由字母，下划线或者数字 (0-9) 组成。
+- 标识符名称是大小写敏感的。例如，`myname` 和 `myName` 是**不同的** 。注意前面的是小写 `n` ，而后面的是大写 `N` 。
+- _正确的_ 标识符名称如 `i` ，`name_2_3` 。像 `2things` ，`this is spaced out` ，`my-name` 和 `>a1b2_c3` 都是 _不正确的_。
 
-Variables can hold values of different types called _data types_. The basic types are numbers and strings, which we have already discussed. In later chapters, we will see how to create our own types using [classes](./oop.md#classes).
+## 数据类型 Data Types
 
-## Object
+变量可保存不同类型的值，这些类型叫做 _数据类型_。基本的类型是我们之前讨论过的数字和字符串。在之后的章节里，我们能够看到如何使用 [类 (classes)](./oop.md#classes) 来创建我们自己的变量。
 
-Remember, Python refers to anything used in a program as an _object_.  This is meant in the generic sense. Instead of saying "the _something_"', we say "the _object_".
 
-> **Note for Object Oriented Programming users**:
->
-> Python is strongly object-oriented in the sense that everything is an object including numbers, strings and functions.
+## 对象 Object
 
-We will now see how to use variables along with literal constants. Save the following example and run the program.
+请记住，python 中一切皆为 _对象_。这是一般意义上的说法。我们会将“_某些东西_”称作“_对象_”。
 
-## How to write Python programs
+> python 中一切皆为对象，包括数字，字符串和函数。
 
-Henceforth, the standard procedure to save and run a Python program is as follows:
+我们将要看到变量与字面常量如何联动。保存并运行下面的这些示例程序。
 
-### For PyCharm
+### 例：使用变量与字面常量
 
-1. Open [PyCharm](./first_steps.md#pycharm).
-2. Create new file with the filename mentioned.
-3. Type the program code given in the example.
-4. Right-click and run the current file.
-
-NOTE: Whenever you have to provide [command line arguments](./modules.md#modules), click on `Run` -> `Edit Configurations` and type the arguments in the `Script parameters:` section and click the `OK` button:
-
-![PyCharm command line arguments](./img/pycharm_command_line_arguments.png)
-
-### For other editors
-
-1. Open your editor of choice.
-2. Type the program code given in the example.
-3. Save it as a file with the filename mentioned.
-4. Run the interpreter with the command `python program.py` to run the program.
-
-### Example: Using Variables And Literal Constants
-
-Type and run the following program:
+输入，运行以下程序：
 
 ```python
 # Filename : var.py
@@ -287,7 +260,7 @@ This is the second line.'''
 print(s)
 ```
 
-Output:
+输出为：
 
 ```
 5
@@ -296,55 +269,55 @@ This is a multi-line string.
 This is the second line.
 ```
 
-**How It Works**
+**它是怎样做的**
 
-Here's how this program works. First, we assign the literal constant value `5` to the variable `i` using the assignment operator (`=`). This line is called a statement because it states that something should be done and in this case, we connect the variable name `i` to the value `5`. Next, we print the value of `i` using the `print` statement which, unsurprisingly, just prints the value of the variable to the screen.
+在这说明这段程序如何工作的。首先，我们使用赋值运算符 `=` 将字面常量 `5` 赋值给变量 `i` 。这一行称作语句 (statement) 因为它声明某些事情将要完成，在本例中，我们将变量名 `i` 与值 `5` 相连接。 接着，我们使用 `print` 语句来打印 `i` 的值，毫无意外的，变量的值在屏幕上被打印出来。
 
-Then we add `1` to the value stored in `i` and store it back. We then print it and expectedly, we get the value `6`.
+然后，我们将 `i` 中储存的值加 `1` 再存回 `1` 。我们接着打印它，正如所料，我们得到了值 `6` 。
 
-Similarly, we assign the literal string to the variable `s` and then print it.
+类似的，我们赋值变量 `s` 然后打印它。
 
-> **Note for static language programmers**
->
-> Variables are used by just assigning them a value. No declaration or data type definition is needed/used.
+> python 中，变量的使用方式仅仅是赋值给他们。声明或者数据类型定义完全是不需要的。
 
-## Logical And Physical Line
+## 逻辑与物理行 Logical And Physical Line
 
-A physical line is what you _see_ when you write the program. A logical line is what _Python sees_ as a single statement. Python implicitly assumes that each _physical line_ corresponds to a _logical line_.
+物理行 (_physical line_) 是写程序时 _你看到的_。逻辑行 (_logical line_) 是 _python_ _看到的_ 单个语句。python 隐式的假定每行物理行对应一行逻辑行。
 
-An example of a logical line is a statement like `print 'hello world'` - if this was on a line by itself (as you see it in an editor), then this also corresponds to a physical line.
+像 `print 'hello world'` 的这样的一条语句就是逻辑行的例子--如果它本身就占一行（正如你在编辑器里看到的那样），它也对应一行物理行。
 
-Implicitly, Python encourages the use of a single statement per line which makes code more readable.
+隐式的，python 鼓励每行使用单独的一条语句，如此会使代码可读性更高。
 
-If you want to specify more than one logical line on a single physical line, then you have to explicitly specify this using a semicolon (`;`) which indicates the end of a logical line/statement. For example:
+如果你想要在一行物理行中指定多行逻辑行，你必须显示的使用分号 `;` 来指明语句的结束。例如：
 
 ```python
 i = 5
 print(i)
 ```
 
-is effectively same as
+等于
 
 ```python
 i = 5;
 print(i);
 ```
 
-which is also same as
+等同于
 
 ```python
 i = 5; print(i);
 ```
 
-and same as
+与之相等的还有
 
 ```python
 i = 5; print(i)
 ```
 
-However, I *strongly recommend* that you stick to *writing a maximum of a single logical line on each single physical line*. The idea is that you should never use the semicolon. In fact, I have _never_ used or even seen a semicolon in a Python program.
+但是，我 *强烈推荐* 你恪守 *每物理行仅有一逻辑行* 。也就是说，你永远也用不上分号。实际上，我 _从未_ 用过也未从 python 程序中见过分号。
 
-There is one kind of situation where this concept is really useful: if you have a long line of code, you can break it into multiple physical lines by using the backslash. This is referred to as _explicit line joining_:
+当你有一行很长的代码需要使用反斜杠将其分成若干物理行的时候，你会发现这个概念非常着实有用。
+
+这引出了 _显式行连接_ :
 
 ```python
 s = 'This is a string. \
@@ -352,34 +325,34 @@ This continues the string.'
 print(s)
 ```
 
-Output:
+输出为:
 
 ```
 This is a string. This continues the string.
 ```
 
-Similarly,
+相似的,
 
 ```python
 i = \
 5
 ```
 
-is the same as
+等同于
 
 ```python
 i = 5
 ```
 
-Sometimes, there is an implicit assumption where you don't need to use a backslash. This is the case where the logical line has a starting parentheses, starting square brackets or a starting curly braces but not an ending one. This is called *implicit line joining*. You can see this in action when we write programs using [list](./data_structures.md#lists) in later chapters.
+有时，也有一种隐式的假设，你不需要使用反斜杠。这种情况是逻辑行开头使用了左括号 `(` ，左中括号 `[` 或者左花括号 `{` 。这叫做*隐式行连接*。你能在后面章节中我们使用 [列表 (list)](./data_structures.md#lists) 写程序的时候看到这种行为。
 
-## Indentation
+## 缩进 Indentation
 
-Whitespace is important in Python. Actually, *whitespace at the beginning of the line is important*. This is called _indentation_. Leading whitespace (spaces and tabs) at the beginning of the logical line is used to determine the indentation level of the logical line, which in turn is used to determine the grouping of statements.
+python 中空白 (whitespace) 是很重要的。实际上，*在行开头的空白是很重要的*。这叫做 _缩进 (indentation)_ 。逻辑行开头的空白（空格或者制表符）有着决定逻辑行缩进层次的作用，而逻辑行的层次会决定语句的分组。
 
-This means that statements which go together _must_ have the same indentation. Each such set of statements is called a *block*. We will see examples of how blocks are important in later chapters.
+这意味着同组语句 _必须_ 有着相同的缩进。语句的集合称作*块*。我们再后面的章节的例子中可以看到块是多么的重要。
 
-One thing you should remember is that wrong indentation can give rise to errors. For example:
+你应该记住的一件事是错误的缩进会产生错误 (error) 。例如：
 
 ```python
 i = 5
@@ -388,27 +361,25 @@ i = 5
 print('I repeat, the value is', i)
 ```
 
-When you run this, you get the following error:
+当你运行它的时候，你会得到如下错误：
 
-```
+```python
   File "whitespace.py", line 3
     print('Value is', i)
     ^
 IndentationError: unexpected indent
 ```
 
-Notice that there is a single space at the beginning of the second line. The error indicated by Python tells us that the syntax of the program is invalid i.e. the program was not properly written. What this means to you is that _you cannot arbitrarily start new blocks of statements_ (except for the default main block which you have been using all along, of course). Cases where you can use new blocks will be detailed in later chapters such as the [control flow](./control_flow.md#control_flow).
+请注意，第二行开头有一个空格。python 指出这个错误来告诉我程序的语法有误。如前例，程序的编写不正确。于你而言，这意味着 _你无法随意创建新的语句块_ （当然，除了你一直使用的主语句块）。何种情形下你能使用新语句块在后续章节如 [控制流 (control flow)](./control_flow.md#control_flow) 中会有较详尽的描述。
 
-> **How to indent**
+> **如何缩进**
 >
-> Use four spaces for indentation. This is the official Python language recommendation. Good editors will automatically do this for you. Make sure you use a consistent number of spaces for indentation, otherwise your program will not run or will have unexpected behavior.
+> 使用4个空格缩进。这是 python 语言的官方推荐方式。一些较友好的编辑器会自动帮你完成它。请你确认使用了一致数量的空格来缩进，否则你的程序将无法运行或者得出意外的结果。
 
 <!-- -->
 
-> **Note to static language programmers**
->
-> Python will always use indentation for blocks and will never use braces. Run `from __future__ import braces` to learn more.
+> python 会一直使用缩进来指明块，并且永不使用花括号。有没有想到在[关于 Python](./about_python.md#about_python)中我的吐槽？如有兴趣可运行 `from __future__ import braces` 了解更多。
 
-## Summary
+## 总结
 
-Now that we have gone through many nitty-gritty details, we can move on to more interesting stuff such as control flow statements. Be sure to become comfortable with what you have read in this chapter.
+你已然掌握了诸多具体本质细节，我们可以接着学习更有趣的内容如控制流语句等。请确保你可以对本章节内容游刃有余。
