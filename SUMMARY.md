@@ -7,7 +7,7 @@
 * [工欲善其事](first_steps.md)
 * [基础](basics.md)
 * [运算符与表达式](op_exp.md)
-* [Control flow](control_flow.md)
+* [控制流](control_flow.md)
 * [Functions](functions.md)
 * [Modules](modules.md)
 * [Data Structures](data_structures.md)

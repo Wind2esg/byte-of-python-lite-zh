@@ -2,9 +2,6 @@
 
 大多数你写的语句都含有 _表达式_ 。`2 + 3` 就是个简单的表达式。表达式可以拆分为运算符 (operators) 和操作数 (operands)。
 
-
-_Operators_ are functionality that do something and can be represented by symbols such as `+` or by special keywords. Operators require some data to operate on and such data is called _operands_. In this case, `2` and `3` are the operands.
-
 _运算符_ 是具有某些功能的，它的形式可以是符号如 `+` ，或者特殊关键词。运算符需要有数据去运算，这些数据称为 _操作数_。
 
 ## 运算符 Operators
@@ -39,8 +36,8 @@ _运算符_ 是具有某些功能的，它的形式可以是符号如 `+` ，或
 - `/` （除）
     - `13 / 3` 得出 `4.333333333333333`
 
-- `//` （除并且向下取整）
-    - x 被 y 除，并且取小于结果的最大整数作为答案。请注意，如果其中某个值是浮点数，那么你就会得到浮点数的结果。 
+- `//` （除取整）
+    - x 被 y 除，并且取结果的整数部分作为答案。请注意，如果其中某个值是浮点数，那么你就会得到浮点数的结果。 
     - `13 // 3` 得出 `4`
     - `9//1.81` 得出 `4.0`
 
@@ -95,7 +92,7 @@ _运算符_ 是具有某些功能的，它的形式可以是符号如 `+` ，或
 
 - `or` (布尔 或）
     - x 与 y 皆为 `False` 时，返回 `False` 否则为 `True` 。
-    - `x = True; y = False; x or y` 返回 `True` 。这也适用短路计算。
+    - `x = True; y = False; x or y` 返回 `True` 。或同样运用了短路计算。
 
 ## 数学运算符同赋值符的简写
 
@@ -115,48 +112,48 @@ a *= 3
 
 请注意，`var = var operation expression` 变成了 `var operation= expression` 。
 
-## Evaluation Order
+## 计算顺序 Evaluation Order
 
-If you had an expression such as `2 + 3 * 4`, is the addition done first or the multiplication? Our high school maths tells us that the multiplication should be done first. This means that the multiplication operator has higher precedence than the addition operator.
+如 `2 + 3 * 4` 这类表达式，是先加还是先乘？高中数学告诉我们会先做乘。也就是说，乘运算符比加运算符拥有更高的优先级 (precedence) 。
 
-The following table gives the precedence table for Python, from the lowest precedence (least binding) to the highest precedence (most binding). This means that in a given expression, Python will first evaluate the operators and expressions lower in the table before the ones listed higher in the table.
+下表给出了 python 中的优先级表，优先级从低到高。在给定的表达式中，python 会优先计算表中位置更靠后的运算符和表达式。
 
-The following table, taken from the [Python reference manual](http://docs.python.org/3/reference/expressions.html#operator-precedence), is provided for the sake of completeness. It is far better to use parentheses to group operators and operands appropriately in order to explicitly specify the precedence. This makes the program more readable. See [Changing the Order of Evaluation](#changing-order-of-evaluation) below for details.
+下表取自 [python 参考手册 (Python reference manual)](http://docs.python.org/3/reference/expressions.html#operator-precedence) 。为了显式明确的指定优先级，你最好使用括号来明确运算符和操作数分组。这会增加程序的可读性。之后的[改变计算顺序](#changing-order-of-evaluation)章节会有更详细的描述
 
-- `lambda` : Lambda Expression
-- `if - else` : Conditional expression
-- `or` : Boolean OR
-- `and` : Boolean AND
-- `not x` : Boolean NOT
-- `in, not in, is, is not, <, <=, >, >=, !=, ==` : Comparisons, including membership tests and identity tests
-- `|` : Bitwise OR
-- `^` : Bitwise XOR
-- `&` : Bitwise AND
-- `<<, >>` : Shifts
-- `+, -` : Addition and subtraction
-- `*, /, //, %` : Multiplication, Division, Floor Division and Remainder
-- `+x, -x, ~x` : Positive, Negative, bitwise NOT
-- `**` : Exponentiation
-- `x[index], x[index:index], x(arguments...), x.attribute` : Subscription, slicing, call, attribute reference
-- `(expressions...), [expressions...], {key: value...}, {expressions...}` : Binding or tuple display, list display, dictionary display, set display
+- `lambda` : Lambda 表达式
+- `if - else` : 条件表达式
+- `or` : 布尔或
+- `and` : 布尔与
+- `not x` : 布尔非
+- `in, not in, is, is not, <, <=, >, >=, !=, ==` : 比较
+- `|` : 按位或
+- `^` : 按位异或
+- `&` : 按位与
+- `<<, >>` : 移位
+- `+, -` : 加，减
+- `*, /, //, %` : 乘，除，除取整，模
+- `+x, -x, ~x` : 正，负，按位取反
+- `**` : 幂
+- `x[index], x[index:index], x(arguments...), x.attribute` : 下标 (Subscription) ，切片 (slicing) ，调用，属性引用
+- `(expressions...), [expressions...], {key: value...}, {expressions...}` : 绑定或元组 (tuple) 显示，列表显示，字典显示，集合显示
 
-The operators which we have not already come across will be explained in later chapters.
+我们尚未讲解到的运算符会在之后的章节中解释。
 
-Operators with the _same precedence_ are listed in the same row in the above table. For example, `+` and `-` have the same precedence.
+_优先级相同_ 的运算符在上表中位列同一行规。例如 `+` 和 `-` 就有着相同的的优先级。
 
-## Changing the Order Of Evaluation {#changing-order-of-evaluation}
+## 改变计算顺序 {#changing-order-of-evaluation}
 
-To make the expressions more readable, we can use parentheses. For example, `2 + (3 * 4)` is definitely easier to understand than `2 + 3 * 4` which requires knowledge of the operator precedences. As with everything else, the parentheses should be used reasonably (do not overdo it) and should not be redundant, as in `(2 + (3 * 4))`.
+为了使表达式的可读性更好，我们使用括号。例如，`2 + (3 * 4)` 就很容易理解不像 `2 + 3 * 4` 那样需要运算符优先级的知识。如其他事物，括号应适度使用，不要像 `(2 + (3 * 4))` 这般冗余。
 
-There is an additional advantage to using parentheses - it helps us to change the order of evaluation. For example, if you want addition to be evaluated before multiplication in an expression, then you can write something like `(2 + 3) * 4`.
+括号还有另一种妙用--它能帮助我们改变计算的顺序。例如如果你想要先计算加，你可以这样写 `(2 + 3) * 4` 。
 
-## Associativity
+## 结合性 Associativity
 
-Operators are usually associated from left to right. This means that operators with the same precedence are evaluated in a left to right manner. For example, `2 + 3 + 4` is evaluated as `(2 + 3) + 4`.
+通常运算符从左至右结合。也就是说相同优先级的运算符会以从左至右的顺序来计算。例如，`2 + 3 + 4` 会被当做  `(2 + 3) + 4` 来计算。
 
-## Expressions
+## 表达式
 
-Example (save as `expression.py`):
+请看示例 `expression.py` :
 
 ```python
 length = 5
@@ -167,7 +164,7 @@ print('Area is', area)
 print('Perimeter is', 2 * (length + breadth))
 ```
 
-Output:
+输出为:
 
 ```
 $ python expression.py
@@ -175,12 +172,12 @@ Area is 10
 Perimeter is 14
 ```
 
-**How It Works**
+**它怎样做的**
 
-The length and breadth of the rectangle are stored in variables by the same name. We use these to calculate the area and perimeter of the rectangle with the help of expressions. We store the result of the expression `length * breadth` in the variable `area` and then print it using the `print` function. In the second case, we directly use the value of the expression `2 * (length + breadth)` in the print function.
+长方形的长和宽分别以 `length` 和 `breadth` 变量储存。我们通过表达式来使用他们，以计算该长方形的面积和周长。我们将结果使用表达式 `length * breadth` 储存正在变量 `area` 中，然后将他们使用 `print` 函数打印到屏幕。在第二个例子中，我们在 `print` 函数中直接使用表达式 `2 * (length + breadth)` 的值。
 
-Also, notice how Python _pretty-prints_ the output. Even though we have not specified a space between `'Area is'` and the variable `area`, Python puts it for us so that we get a clean nice output and the program is much more readable this way (since we don't need to worry about spacing in the strings we use for output). This is an example of how Python makes life easy for the programmer.
+另外，请注意 python 会 _美化_ 输出。尽管我们并未指定 `'Area is'` 和变量 `area` 之间的存在一个空格，python 会为我们放置它，以期我们能得到更干净整齐的输出同时程序的可读性也会更高（由于我们不需考虑用于输出的字符串中的空格。这仅仅是 python 使我们的编程生活变得更简单的例子中的一个。
 
-## Summary
+## 总结
 
-We have seen how to use operators, operands and expressions - these are the basic building blocks of any program. Next, we will see how to make use of these in our programs using statements.
+我们弄明白了怎样使用运算符，操作数和表达式--他们是程序的基本。接下来我们将看到它们如何在我们程序的语句之中充分发挥作用。

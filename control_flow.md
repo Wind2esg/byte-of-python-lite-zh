@@ -1,52 +1,49 @@
-# Control Flow {#control-flow}
+# 控制流 Control Flow {#control-flow}
 
-In the programs we have seen till now, there has always been a series of statements faithfully executed by Python in exact top-down order. What if you wanted to change the flow of how it works? For example, you want the program to take some decisions and do different things depending on different situations, such as printing 'Good Morning' or 'Good Evening' depending on the time of the day?
+迄今，我们所看到的程序中，基本都是一系列的语句，由 python 准确的按照从上至下的顺序执行。如果你想改变这个执行顺序，该怎么做？例如，你想要程序能够做出选择，根据不同的情况采取不同的行为，例如，根据当前时间打印“早上好”或“晚上好”？
 
-As you might have guessed, this is achieved using control flow statements. There are three control flow statements in Python - `if`, `for` and `while`.
+也行正如你猜想的那样，这可正是控制流语句的用武之地。python 中有三种控制流语句--`if` ，`for` 和 `while` 。
 
-## The `if` statement
+## `if` 
 
-The `if` statement is used to check a condition: *if* the condition is true, we run a block of statements (called the _if-block_), *else* we process another block of statements (called the _else-block_). The *else* clause is optional.
+`if` 语句用来检查某条件：*if* 这条件是真的，我们运行被称为 _if-block_ 的语句块，*else* 我们执行被称为 _else-block_ 的语句块。 *else* 语句是可选的。
 
-Example (save as `if.py`):
+请看示例 `if.py` ：
 
-<!-- Tags expansion does not happen inside code blocks https://github.com/GitbookIO/gitbook/issues/707 -->
+<!-- 在代码块中的标签并未展开 https://github.com/GitbookIO/gitbook/issues/707 -->
 <pre><code class="lang-python">{% include "./programs/if.py" %}</code></pre>
 
-Output:
+输出为:
 
 <pre><code>{% include "./programs/if.txt" %}</code></pre>
 
-**How It Works**
+**它怎样做的**
 
-In this program, we take guesses from the user and check if it is the number that we have. We set the variable `number` to any integer we want, say `23`. Then, we take the user's guess using the `input()` function. Functions are just reusable pieces of programs. We'll read more about them in the [next chapter](./functions.md#functions).
+本程序中，我们得到用户的猜测的数字并且检查是否是我们已选的数字。我们将变量 `number` 设为任意整数，如 `23` 。然后，我们使用 `input()` 函数得到用户输入的猜测数字。函数是可复用的程序段。我们将在[下一章](./functions.md#functions)中更多的了解它们。
 
-We supply a string to the built-in `input` function which prints it to the screen and waits for input from the user. Once we enter something and press kbd:[enter] key, the `input()` function returns what we entered, as a string. We then convert this string to an integer using `int` and then store it in the variable `guess`. Actually, the `int` is a class but all you need to know right now is that you can use it to convert a string to an integer (assuming the string contains a valid integer in the text).
+我们为内置的 `input` 函数提供一个字符串。`input` 会将这个字符串打印到屏幕上，并且等待用户的输入。当我们输入完，并且按下 `[enter]` 键，`input` 函数将返回保存我们输入的字符串。之后，我们使用 `int` 将此字符串转换为整数再将之储存在变量 `guess` 中。实际上，`int` 是一个类 (class) 但现在你所要知道的就是你可以用它将字符串转换为整数（前提是这个字符串是某个有效整数的文本形式)。
 
-Next, we compare the guess of the user with the number we have chosen. If they are equal, we print a success message. Notice that we use indentation levels to tell Python which statements belong to which block. This is why indentation is so important in Python. I hope you are sticking to the "consistent indentation" rule. Are you?
+下面，我们比较用户猜测的数字以及我们所选的数字。如果它们相等，就打印成功的信息。请注意，我们使用缩进层次来告知 python 哪个语句归属于哪个块。这也是为何缩进在 pyuthon 中如此重要。我希望你能坚持“一致缩进”的准则。你会的，对吧？
 
-Notice how the `if` statement contains a colon at the end - we are indicating to Python that a block of statements follows.
+然后，我们检查猜测的数字是否小于已选数字，如果是，我们通知用户他们必须往大点猜。这里的 `elif` 语句实际上是将 `if else if else` 合并成 `if elif else` 的简写。这使得程序更简化并且能适度减少所需要的缩进量。
 
-Then, we check if the guess is less than the number, and if so, we inform the user that they must guess a little higher than that. What we have used here is the `elif` clause which actually combines two related `if else-if else` statements into one combined `if-elif-else` statement. This makes the program easier and reduces the amount of indentation required.
+`elif` 和 `else` 语句必须在逻辑行的末尾使用分号，并在之后接相应的语句块（当然，要有正确的缩进）。
 
-The `elif` and `else` statements must also have a colon at the end of the logical line followed by their corresponding block of statements (with proper indentation, of course)
+你也可以在某个 `if` 的 if-block 中使用另一个 `if` 语句甚至依此循环--这叫做嵌套 `if` 语句。
 
-You can have another `if` statement inside the if-block of an `if` statement and so on - this is called a nested `if` statement.
-
-Remember that the `elif` and `else` parts are optional. A minimal valid `if` statement is:
+请记好， `elif` 和 `else` 都是可选的。`if` 语句的最简短形式类似这样的：
 
 ```python
 if True:
     print('Yes, it is true')
 ```
 
-After Python has finished executing the complete `if` statement along with the associated `elif` and `else` clauses, it moves on to the next statement in the block containing the `if` statement. In this case, it is the main block (where execution of the program starts), and the next statement is the `print('Done')` statement. After this, Python sees the ends of the program and simply finishes up.
+python 执行完 `if` 语句以及它相关联的 `elif` 和 `else` 语句之后，它会接着执行包含了 `if` 语句的块之后的语句。前例中，也就是主块（程序的起始之处），之后的语句是 `print('Done')` 语句。这之后，python 看到了程序的结尾，就结束了。
 
 Even though this is a very simple program, I have been pointing out a lot of things that you should notice. All these are pretty straightforward (and surprisingly simple for those of you from C/C++ backgrounds). You will need to become aware of all these things initially, but after some practice you will become comfortable with them, and it will all feel 'natural' to you.
+尽管这是个非常简单的程序，我还是要指出很多你需要注意的地方。所有这些都是很通俗易懂的（对那些有 c 或 c++ 背景的出奇的容易）。初期，你需要了解这许多东西，但经过一系列练习之后，你会熟悉它们，那是你会感觉很舒适，很自然。
 
-> **Note for C/C++ Programmers**
-> 
-> There is no `switch` statement in Python. You can use an `if..elif..else` statement to do the same thing (and in some cases, use a [dictionary](./data_structures.md#dictionary) to do it quickly)
+> python 中没有 `switch` 语句。你可以通过 `if` 和 `else` 语句的重复使用来完成同样的事情。（某些情形之下，使用 [字典 dictionary](./data_structures.md#dictionary) 会更快）
 
 ## The while Statement
 
