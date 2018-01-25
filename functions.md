@@ -1,72 +1,67 @@
-# Functions
+# 函数 Functions
 
-Functions are reusable pieces of programs. They allow you to give a name to a block of statements, allowing you to run that block using the specified name anywhere in your program and any number of times. This is known as *calling* the function. We have already used many built-in functions such as `len` and `range`.
+函数是可复用的代码段。它们允许你为代码块命名，并且允许你使用指定的名称在程序其他任何地方不限次数的使用。这就是函数的**调用**。我们已经使用了许多内置函数如 `len` 和 `range` 。
 
-The function concept is probably *the* most important building block of any non-trivial software (in any programming language), so we will explore various aspects of functions in this chapter.
+在任何语言编写的正规程序里，函数概念是**最重要**的基础块。
 
-Functions are defined using the `def` keyword. After this keyword comes an *identifier* name for the function, followed by a pair of parentheses which may enclose some names of variables, and by the final colon that ends the line. Next follows the block of statements that are part of this function. An example will show that this is actually very simple:
-
-Example (save as `function1.py`):
+函数使用关键字 `def` 定义。关键字之后就是这个函数的**标识符**名称，然后是包含变量的括号，最后行末尾就是分号。接下来的语句块也是函数的组成部分。下面这个例子会让你明白实际上这很简单 `function1.py` ：
 
 <pre><code class="lang-python">{% include "./programs/function1.py" %}</code></pre>
 
-Output:
+输出为:
 
 <pre><code>{% include "./programs/function1.txt" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-We define a function called `say_hello` using the syntax as explained above. This function takes no parameters and hence there are no variables declared in the parentheses. Parameters to functions are just input to the function so that we can pass in different values to it and get back corresponding results.
+按照之前讲的语法，我们定义了叫做 `say_hello` 的函数。这个函数没有参数，因此在括号内没有声明任何变量。函数的参数是函数接受的输入，我们可以在传递各种各样的值给它并能得到正确的相应的结果。
 
-Notice that we can call the same function twice which means we do not have to write the same code again.
+可以看到，我们两次调用了这个函数，而不需重复写代码。
 
-## Function Parameters
+## 参数 Parameters
 
-A function can take parameters, which are values you supply to the function so that the function
-can *do* something utilising those values. These parameters are just like variables except that the
-values of these variables are defined when we call the function and are already assigned values
-when the function runs.
+函数有参数，它们是我们提供给函数的各种值，通过参数，函数就能做各种各样的事情了。这些参数很像变量，但它们的值是在我们调用函数时定义的，当函数运行时它们已然被赋值了。
 
-Parameters are specified within the pair of parentheses in the function definition, separated by
-commas. When we call the function, we supply the values in the same way.  Note the terminology
-used - the names given in the function definition are called *parameters* whereas the values you
-supply in the function call are called *arguments*.
+参数在函数定义中的括号内指定，并且由逗号 `,` 分割。当我们调用函数时，我们以相同的方式为它们提供值。请注意这里的术语--函数定义里的参数叫做 *parameters* 。而调用函数时我们提供的那些参数称为 *arguments* 。
 
-Example (save as `function_param.py`):
+请看示例 `function_param.py` ：
 
 <pre><code class="lang-python">{% include "./programs/function_param.py" %}</code></pre>
 
-Output:
+输出为：
 
 <pre><code>{% include "./programs/function_param.txt" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-Here, we define a function called `print_max` that uses two parameters called `a` and `b`.  We find out the greater number using a simple `if..else` statement and then print the bigger number.
+在这，我们定义了 `print_max` 函数，并有两个参数 `a` 和 `b` 。我们通过一个简单的 `if..else` 找出较大的数并打印。 
 
-The first time we call the function `print_max`, we directly supply the numbers as arguments. In the second case, we call the function with variables as arguments. `print_max(x, y)` causes the value of argument `x` to be assigned to parameter `a` and the value of argument `y` to be assigned to parameter `b`. The `print_max` function works the same way in both cases.
+第一次调用 `print_max` ，我们直接提供了参数。第二例中，我们调用了将改变量作为参数的函数。`print_max(x, y)` 将参数 `x` 值赋给参数 `a` ，`y` 赋给 `b` 。`print_max` 函数在两个例子中作用相同。
 
-## Local Variables
+## 局部变量 Local Variables
 
 When you declare variables inside a function definition, they are not related in any way to other variables with the same names used outside the function - i.e. variable names are *local* to the function. This is called the *scope* of the variable. All variables have the scope of the block they are declared in starting from the point of definition of the name.
 
-Example (save as `function_local.py`):
+当你在函数定义内声明变量时，它们与函数外的同名变量是毫不相关的--即对函数来说，变量名是**局部的 (local)** 。这叫做变量的**作用域 (scope)** 。变量的作用域起于它们声明之处，止于包含他们块结尾。
+
+请看示例 `function_local.py` ：
 
 <pre><code class="lang-python">{% include "./programs/function_local.py" %}</code></pre>
 
-Output:
+输出为:
 
 <pre><code>{% include "./programs/function_local.txt" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-The first time that we print the *value* of the name *x* with the first line in the function's body, Python uses the value of the parameter declared in the main block, above the function definition.
+我们第一次打印 `X` 的值是在函数体的第一行，python 使用了主块内函数定义之前定义的参数的值。
 
-Next, we assign the value `2` to `x`. The name `x` is local to our function.  So, when we change the value of `x` in the function, the `x` defined in the main block remains unaffected.
+接着，我们把 `2` 赋给 `x` 。`X` 是我们函数的局部变量。因此，当我们在函数内改变 `x` 的值的时候，主块内定义的 `x` 不会发生改变。 
 
 With the last `print` statement, we display the value of `x` as defined in the main block, thereby confirming that it is actually unaffected by the local assignment within the previously called function.
+最后的 `print` 语句显示出主块内定义的 `x` 的值，因此，可以确认在调用的函数中的局部变量的赋值确实不会有任何影响。 
 
-## The `global` statement {#global-statement}
+## 全局 global {#global-statement}
 
 If you want to assign a value to a name defined at the top level of the program (i.e. not inside any kind of scope such as functions or classes), then you have to tell Python that the name is not local, but it is *global*. We do this using the `global` statement. It is impossible to assign a value to a variable defined outside a function without the `global` statement.
 

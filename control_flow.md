@@ -4,9 +4,9 @@
 
 也行正如你猜想的那样，这可正是控制流语句的用武之地。python 中有三种控制流语句--`if` ，`for` 和 `while` 。
 
-## `if` 
+## if else
 
-`if` 语句用来检查某条件：*if* 这条件是真的，我们运行被称为 _if-block_ 的语句块，*else* 我们执行被称为 _else-block_ 的语句块。 *else* 语句是可选的。
+`if` 语句能检查某条件：**如果**这条件是真的，我们运行被称为 _if-block_ 的语句块，`else` **否则**我们执行被称为 _else-block_ 的语句块。*else* 语句是可选的。
 
 请看示例 `if.py` ：
 
@@ -17,7 +17,7 @@
 
 <pre><code>{% include "./programs/if.txt" %}</code></pre>
 
-**它怎样做的**
+**它是怎样做的**
 
 本程序中，我们得到用户的猜测的数字并且检查是否是我们已选的数字。我们将变量 `number` 设为任意整数，如 `23` 。然后，我们使用 `input()` 函数得到用户输入的猜测数字。函数是可复用的程序段。我们将在[下一章](./functions.md#functions)中更多的了解它们。
 
@@ -40,96 +40,88 @@ if True:
 
 python 执行完 `if` 语句以及它相关联的 `elif` 和 `else` 语句之后，它会接着执行包含了 `if` 语句的块之后的语句。前例中，也就是主块（程序的起始之处），之后的语句是 `print('Done')` 语句。这之后，python 看到了程序的结尾，就结束了。
 
-Even though this is a very simple program, I have been pointing out a lot of things that you should notice. All these are pretty straightforward (and surprisingly simple for those of you from C/C++ backgrounds). You will need to become aware of all these things initially, but after some practice you will become comfortable with them, and it will all feel 'natural' to you.
-尽管这是个非常简单的程序，我还是要指出很多你需要注意的地方。所有这些都是很通俗易懂的（对那些有 c 或 c++ 背景的出奇的容易）。初期，你需要了解这许多东西，但经过一系列练习之后，你会熟悉它们，那是你会感觉很舒适，很自然。
+尽管这是个非常简单的程序，我还是要指出很多你需要注意的地方。所有这些都是很通俗易懂的（对那些有 c 或 c++ 背景的出奇的容易）。初期，你需要了解这许多东西，但经过一系列练习之后，你就会熟悉它们，那时你会感觉很舒适，很自然。
 
 > python 中没有 `switch` 语句。你可以通过 `if` 和 `else` 语句的重复使用来完成同样的事情。（某些情形之下，使用 [字典 dictionary](./data_structures.md#dictionary) 会更快）
 
-## The while Statement
+## while
 
-The `while` statement allows you to repeatedly execute a block of statements as long as a condition is true. A `while` statement is an example of what is called a *looping* statement. A `while` statement can have an optional `else` clause.
+`while` 语句，只要条件是真，那么你可以重复执行某语句块。`while` 是*循环 (looping)* 语句的实例之一。`while` 语句也可以有可选的 `else` 语句。
 
-Example (save as `while.py`):
+请看示例 `while.py`:
 
 <pre><code class="lang-python">{% include "./programs/while.py" %}</code></pre>
 
-Output:
+输出为:
 
 <pre><code>{% include "./programs/while.txt" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-In this program, we are still playing the guessing game, but the advantage is that the user is allowed to keep guessing until he guesses correctly - there is no need to repeatedly run the program for each guess, as we have done in the previous section. This aptly demonstrates the use of the `while` statement.
+在这个程序中，我们接着玩猜数字的游戏，但是我们将它稍稍改进了一些，用户可以保留猜过的数字直到他猜对--我们不必像上一节中那样每次猜数都重新运行程序。这巧妙的阐释了 `while` 语句的作用。
 
-We move the `input` and `if` statements to inside the `while` loop and set the variable `running` to `True` before the while loop. First, we check if the variable `running` is `True` and then proceed to execute the corresponding *while-block*. After this block is executed, the condition is again checked which in this case is the `running` variable. If it is true, we execute the while-block again, else we continue to execute the optional else-block and then continue to the next statement.
+我们将 `input` 和 `if` 语句放入 `while` 循环并在循环开始前将变量 `running` 设为 `True` 。我们先检测`running` 是否为 `True` ，然后执行相应的 *while-block* 。这个块执行之后，在此检测循环条件，本例中是 `running` 变量。如果它是真，那么我们再次执行 while-block ，不然我们接着执行可选的 else-block ，之后再顺次执行下面的语句。
 
-The `else` block is executed when the `while` loop condition becomes `False` - this may even be the first time that the condition is checked. If there is an `else` clause for a `while` loop, it is always executed unless you break out of the loop with a `break` statement.
+当 `while` 的循环条件变为 `False` 时，`else` 块将会被执行--甚至初次检测循环条件时也如此。如果 `while` 循环有 `else` 语句，那么如果你不用 `break` 跳出循环的话，它总能得到执行。
 
-The `True` and `False` are called Boolean types and you can consider them to be equivalent to the value `1` and `0` respectively.
+`True` 与 `False` 被称为布尔 (Boolean) 类型，你可以把它们想象成值 `1` 与 `0`。
 
-> **Note for C/C++ Programmers**
-> 
-> Remember that you can have an `else` clause for the `while` loop.
+> 请记住，你的 `while` 循环也有 `else`
+> Guido van Rossum 有点意思，他偏爱 `else`
 
-## The `for` loop
+## for
 
-The `for..in` statement is another looping statement which *iterates* over a sequence of objects i.e. go through each item in a sequence. We will see more about [sequences](./data_structures.md#sequence) in detail in later chapters. What you need to know right now is that a sequence is just an ordered collection of items.
+`for..in` 语句是另一种循环语句，它能在对象序列中进行*迭代 (iterate)*，即遍历序列中的每个项 (item) 。我们会从后面的章节 [序列 sequences](./data_structures.md#sequence) 做更多的了解。你现在仅需要知道序列是一些项的有序集合。
 
-Example (save as `for.py`):
+请看示例 `for.py`：
 
 <pre><code class="lang-python">{% include "./programs/for.py" %}</code></pre>
 
-Output:
+输出为:
 
 <pre><code>{% include "./programs/for.txt" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-In this program, we are printing a *sequence* of numbers. We generate this sequence of numbers using the built-in `range` function.
+本示例中，我们打印出一个**序列**数字。我们使用内置的 `range` 函数来生成这个数字序列。
 
-What we do here is supply it two numbers and `range` returns a sequence of numbers starting from the first number and up to the second number. For example, `range(1,5)` gives the sequence `[1, 2, 3, 4]`. By default, `range` takes a step count of 1. If we supply a third number to `range`, then that becomes the step count. For example, `range(1,5,2)` gives `[1,3]`. Remember that the range extends *up to* the second number i.e. it does *not* include the second number.
+我们提供两个数，`range` 就能返回一个始于第一个数止于第二个数的数字序列。例如，`range(1,5)` 会得到 `1` , `2` , `3` , `4` 。默认的，`range` 取 1 作为步长 (step) 。如果我们给了 `range` 第三个数，那它就会使补偿。例如，`range(1,5,2)` 得出 `1` ,`3` 。一定要记好，`range` 的这个范围**止于**第二个数，也就是说**不包含**第二个数。
 
-Note that `range()` generates only one number at a time, if you want the full list of numbers, call `list()` on the `range()`, for example, `list(range(5))` will result in `[0, 1, 2, 3, 4]`. Lists are explained in the [data structures chapter](./data_structures.md#data-structures).
+请注意 `range()` 每次只返回一个数，如果你想要所有数的列表，你可以在 `range()` 上调用 `list()` ，例如，`list(range(5))` 将会得到 `[0, 1, 2, 3, 4]` 。列表在 [数据结构 data structures](./data_structures.md#data-structures) 一章中会有更详细的解释。
+ 
+`for` 循环会迭代指定的范围--`for i in range(1，5)` 等同于 `for i in [1, 2, 3, 4]` ，这好像是依次将序列中的数或者对象赋值给 i ，每次都执行一次语句块。本例中，我们仅将语句块中的值打印出来。
 
-The `for` loop then iterates over this range - `for i in range(1,5)` is equivalent to `for i in [1, 2, 3, 4]` which is like assigning each number (or object) in the sequence to i, one at a time, and then executing the block of statements for each value of `i`.  In this case, we just print the value in the block of statements.
+请记住 `else` 是可选的。当它存在时，如果没有 [break](#break-statement) 语句，它始终都会执行一次。
 
-Remember that the `else` part is optional. When included, it is always executed once after the `for` loop is over unless a [break](#break-statement) statement is encountered.
+还有一点值得注意 `for..in` 循环能用于任何序列。在这里，我们是来生成数字列表，一般来说，我们可以使用各种对象的各样数列！这个观点我们会在之后章节里进行更多探索。
 
-Remember that the `for..in` loop works for any sequence. Here, we have a list of numbers generated by the built-in `range` function, but in general we can use any kind of sequence of any kind of objects! We will explore this idea in detail in later chapters.
+> python中 `for` 循环与 c 或 c++ 的 `for` 循环较大差异。c# 编程者会感到 与他们的 `foreach` 很相似。java 程序员也能发现其与 `for (int i : IntArray)` 的相似之处。
 
-> **Note for C/C++/Java/C# Programmers**
-> 
-> The Python `for` loop is radically different from the C/C++ `for` loop. C# programmers will note that the `for` loop in Python is similar to the `foreach` loop in C#. Java programmers will note that the same is similar to `for (int i : IntArray)` in Java 1.5.
-> 
-> In C/C++, if you want to write `for (int i = 0; i < 5; i++)`, then in Python you write just `for i in range(0,5)`. As you can see, the `for` loop is simpler, more expressive and less error prone in Python.
+> 在 c 或 c++ 你需要这样写 `for (int i = 0; i < 5; i++)` ，而在 python 中，你仅需要  `for i in range(0,5)` 。如你所见，python 中的 `for` 循环更简单，更易理解，更健壮。
 
-## The break Statement {#break-statement}
+## break {#break-statement}
 
-The `break` statement is used to *break* out of a loop statement i.e. stop the execution of a looping statement, even if the loop condition has not become `False` or the sequence of items has not been completely iterated over.
+`break` 语句是用来**打破**循环的，即停止循环语句的执行，就算循环条件为真或者序列未迭代完也会停止。
 
-An important note is that if you *break* out of a `for` or `while` loop, any corresponding loop `else` block is **not** executed.
+非常重要一点是如果你**打破**了 `for` 或 `while` ，任何相应的循环的 `else` 块都**不会**执行的。
 
-Example (save as `break.py`):
+请看示例 `break.py` ：
 
 <pre><code class="lang-python">{% include "./programs/break.py" %}</code></pre>
 
-Output:
+输出为：
 
 <pre><code>{% include "./programs/break.txt" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-In this program, we repeatedly take the user's input and print the length of each input each
-time. We are providing a special condition to stop the program by checking if the user input is
-`'quit'`. We stop the program by *breaking* out of the loop and reach the end of the program.
+此程序中，我们重复的获取用户的输入并且将其长度打印出来。我们提供了一个特定的条件来检测用户输入是否为 `'quit'` 来停止程序。我们**打破**循环，到达程序末尾来停止程序。
 
-The length of the input string can be found out using the built-in `len` function.
+输入字符串的长度能够通过内置的 `len` 函数获得。
 
-Remember that the `break` statement can be used with the `for` loop as well.
+是的，`break` 语句也能在 `for` 循环中使用。
 
-**Swaroop's Poetic Python**
-
-The input I have used here is a mini poem I have written:
+**Swaroop 的 Python 诗**
 
 ```
 Programming is fun
@@ -138,26 +130,26 @@ if you wanna make your work also fun:
     use Python!
 ```
 
-## The `continue` Statement {#continue-statement}
+## continue {#continue-statement}
 
-The `continue` statement is used to tell Python to skip the rest of the statements in the current loop block and to *continue* to the next iteration of the loop.
+`continue` 语句用来告诉 python 跳过当前循环中的余下语句并且**继续**下一次循环的迭代。
 
-Example (save as `continue.py`):
+请看示例 `continue.py` ：
 
 <pre><code class="lang-python">{% include "./programs/continue.py" %}</code></pre>
 
-Output:
+输出为:
 
 <pre><code>{% include "./programs/continue.txt" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-In this program, we accept input from the user, but we process the input string only if it is at least 3 characters long. So, we use the built-in `len` function to get the length and if the length is less than 3, we skip the rest of the statements in the block by using the `continue` statement. Otherwise, the rest of the statements in the loop are executed, doing any kind of processing we want to do here.
+本程序中，我们仅处理含有至少三个字符的用户输入字符串。所以，我们使用内置的 `len` 函数来获取长度，如果长度小于3， 我们使用 `continue` 略过余下语句，不然，循环中的余下语句就会执行。
 
-Note that the `continue` statement works with the `for` loop as well.
+当然，`continue` 语句也能在 `for` 循环中使用。
 
-## Summary
+## 总结
 
-We have seen how to use the three control flow statements - `if`, `while` and `for` along with their associated `break` and `continue` statements. These are some of the most commonly used parts of Python and hence, becoming comfortable with them is essential.
+我们已经看到如何使用 `if` ，`while` 与 `for` 三种控制流语句以及相关的 `break` 和 `continue` 语句。这些都是 python 中特别常用的。因此熟悉它们是必要的。
 
-Next, we will see how to create and use functions.
+下面，我们来看看怎样创建和使用函数。

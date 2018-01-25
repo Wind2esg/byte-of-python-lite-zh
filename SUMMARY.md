@@ -8,7 +8,7 @@
 * [基础](basics.md)
 * [运算符与表达式](op_exp.md)
 * [控制流](control_flow.md)
-* [Functions](functions.md)
+* [函数](functions.md)
 * [Modules](modules.md)
 * [Data Structures](data_structures.md)
 * [Problem Solving](problem_solving.md)
