@@ -110,10 +110,10 @@ print("Square root of 16 is", sqrt(16))
 from mymodule import *
 ```
 
-这会导入所有如 `say_hi` 这类公有名称，但不会导入 `__version__` 因为它由双下划线开头。
+这会导入所有如 `say_hi` 这种公有名称，但不会导入 `__version__` 因为它由双下划线开头。
 
 > 注意：请记好，你应该避免使用 `from...import *` 。
-
+> 我估计 python 中表私有是双下划线包裹，其他皆为公有。
 <!-- -->
 
 > **Python 奥义**
@@ -125,7 +125,8 @@ from mymodule import *
 内置的 `dir()` 函数返回某对象的定义的名称的列表。如果这对象是个模块，那么这个列表将包含其内定义的函数，类，变量。
 
 这个函数还能接受参数。如果参数是模块名称，那么函数就返回指定模块所含的定义的名称的列表。如果没有参数，函数就返回当前模块的名称的列表。
-Example:
+
+例如:
 
 ```python
 $ python
@@ -163,8 +164,6 @@ $ python
 接着，我们再次使用 `dir` 函数，不过这次没有给它传递参数。默认的，它返回了当前模块的属性的列表。注意看，被导入的模块的列表也是这个列表的一部分。
 
 为了在行为层面上观察 `dir` ，我们定义了一个新变量 `a` 并且给它赋了个值。然后 `dir` 来看看这列表中追加了同样名称的值。我们使用 `del` 语句从当前模块中移除这个变量或者属性之后，`dir` 函数的输出能再次反映出这个变化。
-
-A note on `del` - this statement is used to *delete* a variable/name and after the statement has run, in this case `del a`, you can no longer access the variable `a` - it is as if it never existed before at all.
 
 关于 `del` ——这个语句多用来**删除**变量或名称。在语句运行之后，本例中是 `del a` ，你将无法再访问变量 `a` ——就如同它从未存在过。
 

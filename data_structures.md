@@ -1,122 +1,121 @@
-# Data Structures {#data-structures}
+# 数据结构 Data Structures {#data-structures}
 
-Data structures are basically just that - they are *structures* which can hold some *data* together. In other words, they are used to store a collection of related data.
+数据结构 (data structure) 是能够储存**数据**的**结构**。换句话说，它们是储存相关数据的集合。
 
-There are four built-in data structures in Python - _list, tuple, dictionary and set_. We will see how to use each of them and how they make life easier for us.
+python 有四种数据结构——**列表 (list) ，元组 (tuple) ，字典 (dictionary) 和集合 (set)** 。我们将看到它们如何发挥作用。
 
-## List
+## 列表 List
 
-A `list` is a data structure that holds an ordered collection of items i.e. you can store a *sequence* of items in a list. This is easy to imagine if you can think of a shopping list where you have a list of items to buy, except that you probably have each item on a separate line in your shopping list whereas in Python you put commas in between them.
+`list` 这种数据结构是一种有序集合，即你可以将**序列**储存在列表里。这不难理解，如果你能想到购物清单。当然，这其中可能也存在差异，你的购物清单可能是每行一项，而 python 中，你使用逗号 `,` 来隔开那些项。
 
-The list of items should be enclosed in square brackets so that Python understands that you are specifying a list. Once you have created a list, you can add, remove or search for items in the list. Since we can add and remove items, we say that a list is a *mutable* data type i.e. this type can be altered.
+列表中的项应该包含在中括号内，python 就能明白你要指定一个列表。在列表中可以添加，移除和搜索项。由于我们能能够添加和移除项，我们称列表为**可变**数据类型，即这种类型是可以更改的。
 
-## Quick Introduction To Objects And Classes
+## 速览对象与类
 
-Although I've been generally delaying the discussion of objects and classes till now, a little explanation is needed right now so that you can understand lists better. We will explore this topic in detail in a [later chapter](./oop.md#oop).
+尽管到现在我们还要推迟对象和类的相关讨论，但你还是需要一些解释来帮助理解列表。我们会在[后面的章节](./oop.md#oop)里继续探索这个话题。
 
-A list is an example of usage of objects and classes. When we use a variable `i` and assign a value to it, say integer `5` to it, you can think of it as creating an *object* (i.e. instance) `i` of *class* (i.e. type) `int`. In fact, you can read `help(int)` to understand this better.
+列表是对象和类的用法的实例之一。当我们使用变量 `i` 并为它赋值，比如说赋值为整数 `5` 的时候，你可以把这想做创建一个**类**（即类型）`int` 的**对象**（即实例）`i`。实际上，阅读 `help(int)` 可以帮助你了解。
 
-A class can also have *methods* i.e. functions defined for use with respect to that class only. You can use these pieces of functionality only when you have an object of that class. For example, Python provides an `append` method for the `list` class which allows you to add an item to the end of the list. For example, `mylist.append('an item')` will add that string to the list `mylist`. Note the use of dotted notation for accessing methods of the objects.
+类还可以有**方法 (method)** 即专属该类的函数。只有该类的对象可以使用这些方法。例如，python 为 ` list` 提供的 `append` 方法，该方法是的你可以在列表的末尾追加项。注意访问对象的方法使用的是点标记法。
 
-A class can also have *fields* which are nothing but variables defined for use with respect to that class only. You can use these variables/names only when you have an object of that class. Fields are also accessed by the dotted notation, for example, `mylist.field`.
+一个类还能有**字段**，字段是专属该类的变量。只有该类的对象可以使用这些变量或名称。字段也使用点标记法访问，例如 `mylist.field` 。
 
-Example (save as `ds_using_list.py`):
+请看示例 `ds_using_list.py` ：
 
 <pre><code class="lang-python">{% include "./programs/ds_using_list.py" %}</code></pre>
 
-Output:
+输出为：
 
 <pre><code>{% include "./programs/ds_using_list.txt" %}</code></pre>
 
-**How It Works**
+**它是怎么做的**
 
-The variable `shoplist` is a shopping list for someone who is going to the market. In `shoplist`, we only store strings of the names of the items to buy but you can add _any kind of object_ to a list including numbers and even other lists.
+变量 `shoplist` 是某兄台去市场购物的清单。在 `shoplist` 中，我们仅储存那些我们要买的项的名称。但是你可以添加**任意对象**到这个列表里，可以是数字，甚至是其他列表。
 
-We have also used the `for..in` loop to iterate through the items of the list. By now, you must have realised that a list is also a sequence. The speciality of sequences will be discussed in a [later section](#sequence).
+我们还使用了 `for..in` 循环来迭代列表中项。到此，你一定意识到列表也是序列。序列的特殊之处在[下面的部分](#sequence)会作更多探讨。
 
-Notice the use of the `end` parameter in the call to `print` function to indicate that we want to end the output with a space instead of the usual line break.
+请注意，在 `print` 函数调用中的 `end` 参数说明我们用一个空格来做输出的结尾，而不是换行符。
 
-Next, we add an item to the list using the `append` method of the list object, as already discussed before. Then, we check that the item has been indeed added to the list by printing the contents of the list by simply passing the list to the `print` function which prints it neatly.
+接着，如我们前面所讲，我们使用列表对象的 `append` 方法向列表中添加项。然后，我们通过打印列表中的内容来检测这个项是否真的添加到了列表之中。要实现这个目的，我们只需将列表传递给 `print` 函数，它就能轻松的被打印出来。
 
-Then, we sort the list by using the `sort` method of the list. It is important to understand that this method affects the list itself and does not return a modified list - this is different from the way strings work. This is what we mean by saying that lists are _mutable_ and that strings are _immutable_.
+再之后，我们使用列表的 `sort` 方法来将列表排序。一定要理解这个方法影响这个列表本身，而不是另造一个列表——这与字符串是不同的。这也是为何我们说列表是**可变的**，而字符串是**不可变的**。
 
-Next, when we finish buying an item in the market, we want to remove it from the list. We achieve this by using the `del` statement. Here, we mention which item of the list we want to remove and the `del` statement removes it from the list for us.  We specify that we want to remove the first item from the list and hence we use `del shoplist[0]` (remember that Python starts counting from 0).
+最后，当我们在市场里购买完某项时，我们将之从列表中移除。使用 `del` 语句即可。在这里，我们要留意 `del` 语句会将为我们想要移除的那个项从列表中移除。我们指定想要移除的项是列表中的第一项，因此我们用 `del shoplist[0]`（请记住 python 从 0 开始计数）。
 
-If you want to know all the methods defined by the list object, see `help(list)` for details.
+如果你下那个知道列表对象所有的方法，看看 `help(list)` 。
 
-## Tuple
+## 元组 Tuple
 
-Tuples are used to hold together multiple objects. Think of them as similar to lists, but without the extensive functionality that the list class gives you. One major feature of tuples is that they are *immutable* like strings i.e. you cannot modify tuples.
+元组用以储存在一起的多个对象。它们和列表很像，只是没有列表类给你的那些伸缩方法。元组的一个主要特性就是**不可变**如同字符串那样。你不能修改元组。
 
-Tuples are defined by specifying items separated by commas within an optional pair of parentheses.
+元组的定义方法是在括号内指定项，这些项由逗号分隔。这里的括号是可选的。
 
-Tuples are usually used in cases where a statement or a user-defined function can safely assume that the collection of values (i.e. the tuple of values used) will not change.
+如果能确定某语句或者某用户定义的函数的值得集合不会发生改变，通常我们使用元组。
 
-Example (save as `ds_using_tuple.py`):
+请看示例 `ds_using_tuple.py` ：
 
 <pre><code class="lang-python">{% include "./programs/ds_using_tuple.py" %}</code></pre>
 
-Output:
+输出为：
 
 <pre><code>{% include "./programs/ds_using_tuple.txt" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-The variable `zoo` refers to a tuple of items. We see that the `len` function can be used to get the length of the tuple. This also indicates that a tuple is a [sequence](#sequence) as well.
+变量 `zoo` 指的是一些项的元组。我们见到 `len` 函数可以用来获取元组的长度。这也说明了元组也是[序列 sequence](#sequence) 。
 
-We are now shifting these animals to a new zoo since the old zoo is being closed. Therefore, the `new_zoo` tuple contains some animals which are already there along with the animals brought over from the old zoo. Back to reality, note that a tuple within a tuple does not lose its identity.
+现在，由于老动物园关闭，我们将这些动物转移到新动物园里。因此，`new_zoo` 元组中包含了原本就在那的动物以及从老动物园带过来的动物。回归现实，请注意在被元组内的元组仍是元组。
 
-We can access the items in the tuple by specifying the item's position within a pair of square brackets just like we did for lists. This is called the _indexing_ operator. We access the third item in `new_zoo` by specifying `new_zoo[2]` and we access the third item within the third item in the `new_zoo` tuple by specifying `new_zoo[2][2]`. This is pretty simple once you've understood the idiom.
+就像在列表中那样，我们可以通过在一对中括号内指定项的位置来访问元组中的项。这种使用形式被称作**索引 (indexing)** 运算符。我们使用 `new_zoo[2]` 指定 `new_zoo` 的第三项，用 `new_zoo[2][2]` 来指定 `new_zoo` 元组的第三项内的第三项。如果你明白这个用法，这还是很简单的。
 
-> **Tuple with 0 or 1 items**
+> **没有或者仅有一项的元组**
 > 
-> An empty tuple is constructed by an empty pair of parentheses such as `myempty = ()`. However, a tuple with a single item is not so simple. You have to specify it using a comma following the first (and only) item so that Python can differentiate between a tuple and a pair of parentheses surrounding the object in an expression i.e. you have to specify `singleton = (2 , )` if you mean you want a tuple containing the item `2`.
+> 空元组通过一对内中为空的括号构造，如 `myempty = ()` 。但是，当元组仅有一个项时，就没那么简单了。你不许使用一个逗号在这仅有的项之后，以求 python 能去分辨是一个元组还是某表达式中包围对象的一对括号，也就是说，如果你想要一个仅包含一个项 `2` 的元组，你必须像 `singleton = (2 , )` 这样来指定它。
+> 这是我首次见到这样的语法。
 
 <!-- -->
 
-> **Note for Perl programmers**
-> 
-> A list within a list does not lose its identity i.e. lists are not flattened as in Perl. The same applies to a tuple within a tuple, or a tuple within a list, or a list within a tuple, etc. As far as Python is concerned, they are just objects stored using another object, that's all.
+> 被包含在列表之内的列表不会失去它的身份指的是列表不会像在 Perl 中那样被摊平。这个道理同样适用于元祖中的元组，或列表中的元组，或元祖中的列表等。python 看来，它们只是储存在其他对象中的对象。仅此而已。
 
-## Dictionary
+## 字典 Dictionary
 
-A dictionary is like an address-book where you can find the address or contact details of a person by knowing only his/her name i.e. we associate *keys* (name) with *values* (details). Note that the key must be unique just like you cannot find out the correct information if you have two persons with the exact same name.
+字典有些像地址簿，你只需知道他或她的名称，就能找到这个人的地址或者详细联系方式，也就是说，我们将**键 (key)** 与**值**相联系。请记好，键必须是唯一的，就好像如果你的地址簿有重名的两个人，你就没法确认信息。
 
-Note that you can use only immutable objects (like strings) for the keys of a dictionary but you can use either immutable or mutable objects for the values of the dictionary.  This basically translates to say that you should use only simple objects for keys.
+还要注意对于字典的键只能使用不可变对象如字符串，对于值，可变不可变皆可。也就是说你仅能使用简单对象作为键。
 
-Pairs of keys and values are specified in a dictionary by using the notation `d = {key1 : value1, key2 : value2 }`. Notice that the key-value pairs are separated by a colon and the pairs are separated themselves by commas and all this is enclosed in a pair of curly braces.
+在字典中指定键值对 (pair) 使用的标记如 `d = {key1 : value1, key2 : value2 }` 。请注意，键和值使用冒号 `:` 隔开，本身是被逗号隔开，所有这些都包含在一对花括号内。
 
-Remember that key-value pairs in a dictionary are not ordered in any manner. If you want a particular order, then you will have to sort them yourself before using it.
+请记住，字典中的键值对是无序的。如果你想要其呈现出某种顺序，你必须在使用前对它们自行排序。
 
-The dictionaries that you will be using are instances/objects of the `dict` class.
+你使用的字典是 `dict` 类的对象或实例。
 
-Example (save as `ds_using_dict.py`):
+请看示例 `ds_using_dict.py` ：
 
 <pre><code class="lang-python">{% include "./programs/ds_using_dict.py" %}</code></pre>
 
-Output:
+输出为：
 
 <pre><code>{% include "./programs/ds_using_dict.txt" %}</code></pre>
 
-**How It Works**
+**它怎样做到的**
 
-We create the dictionary `ab` using the notation already discussed. We then access key-value pairs by specifying the key using the indexing operator as discussed in the context of lists and tuples. Observe the simple syntax.
+我们使用之前探讨过的标记方式创建了字典 `ab` 。接着我们再在通过列表和元组内容中讲过的索引操作符中指定键来访问其中的键值对。看看这语法多简单。
 
-We can delete key-value pairs using our old friend - the `del` statement. We simply specify the dictionary and the indexing operator for the key to be removed and pass it to the `del` statement. There is no need to know the value corresponding to the key for this operation.
+我们使用老朋友—— `del` 语句来删除键值对。我们简单的指定字典，在索引操作符中指定想要移除的那个键值对的键，将其传递给 `del` 语句。整个操作中，我们不需知晓与此键相对应的值是什么。
 
-Next, we access each key-value pair of the dictionary using the `items` method of the dictionary which returns a list of tuples where each tuple contains a pair of items - the key followed by the value. We retrieve this pair and assign it to the variables `name` and `address` correspondingly for each pair using the `for..in` loop and then print these values in the for-block.
+接着，我们使用字典中的 `item` 方法来遍历字典中的每一对键值对。`items` 方法返回一个元组的列表，内中每一个元组都包含一对项——键与紧随其后的值。通过 `for..in` 循环，我们获取到每一对键值对并将其相应的赋值给变量 `name` 和 `address`，最后在 for-block 中打印。
 
-We can add new key-value pairs by simply using the indexing operator to access a key and assign that value, as we have done for Guido in the above case.
+增加新的键值对只需要使用索引操作符访问键并复制就可以，如我们在上例中对 Guido 的操作。
 
-We can check if a key-value pair exists using the `in` operator.
+我们可以使用 `in` 操作符来检测某键值对是否存在。
 
-For the list of methods of the `dict` class, see `help(dict)`.
+`help(dict)` 可以给你 `dict` 类的方法列表。
 
-> **Keyword Arguments and Dictionaries**
+> **关键字参数和字典**
 > 
-> If you have used keyword arguments in your functions, you have already used dictionaries! Just think about it - the key-value pair is specified by you in the parameter list of the function definition and when you access variables within your function, it is just a key access of a dictionary (which is called the _symbol table_ in compiler design terminology).
+> 如果你再函数中使用了关键字参数，那么你已经使用过字典了。想想——你在函数定义的参数列表中指定了键值对，你在函数中访问那些变量，其实就是在访问字典的键（这在编译器设计术语中被称为**符号表 (symbol table)** ）
 
-## Sequence
+## 序列 Sequence
 
 Lists, tuples and strings are examples of sequences, but what are sequences and what is so special about them?
 

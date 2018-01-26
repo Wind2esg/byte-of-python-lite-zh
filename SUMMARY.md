@@ -11,7 +11,7 @@
 * [函数](functions.md)
 * [模块](modules.md)
 
-* [Data Structures](data_structures.md)
+* [数据结构](data_structures.md)
 * [Problem Solving](problem_solving.md)
 * [Object Oriented Programming](oop.md)
 * [Input and Output](io.md)
