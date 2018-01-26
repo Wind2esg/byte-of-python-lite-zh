@@ -2,18 +2,18 @@
 
 迄今，我们所看到的程序中，基本都是一系列的语句，由 python 准确的按照从上至下的顺序执行。如果你想改变这个执行顺序，该怎么做？例如，你想要程序能够做出选择，根据不同的情况采取不同的行为，例如，根据当前时间打印“早上好”或“晚上好”？
 
-也行正如你猜想的那样，这可正是控制流语句的用武之地。python 中有三种控制流语句--`if` ，`for` 和 `while` 。
+也行正如你猜想的那样，这可正是控制流语句的用武之地。python 中有三种控制流语句——if` ，`for` 和 `while` 。
 
 ## if else
 
-`if` 语句能检查某条件：**如果**这条件是真的，我们运行被称为 _if-block_ 的语句块，`else` **否则**我们执行被称为 _else-block_ 的语句块。*else* 语句是可选的。
+`if` 语句能检查某条件：**如果**这条件是真的，我们运行被称为 if-block 的语句块，`else` **否则**我们执行被称为 else-block 的语句块。*else* 语句是可选的。
 
 请看示例 `if.py` ：
 
 <!-- 在代码块中的标签并未展开 https://github.com/GitbookIO/gitbook/issues/707 -->
 <pre><code class="lang-python">{% include "./programs/if.py" %}</code></pre>
 
-输出为:
+输出为：
 
 <pre><code>{% include "./programs/if.txt" %}</code></pre>
 
@@ -29,7 +29,7 @@
 
 `elif` 和 `else` 语句必须在逻辑行的末尾使用分号，并在之后接相应的语句块（当然，要有正确的缩进）。
 
-你也可以在某个 `if` 的 if-block 中使用另一个 `if` 语句甚至依此循环--这叫做嵌套 `if` 语句。
+你也可以在某个 `if` 的 if-block 中使用另一个 `if` 语句甚至依此循环——这叫做嵌套 `if` 语句。
 
 请记好， `elif` 和 `else` 都是可选的。`if` 语句的最简短形式类似这样的：
 
@@ -48,21 +48,21 @@ python 执行完 `if` 语句以及它相关联的 `elif` 和 `else` 语句之后
 
 `while` 语句，只要条件是真，那么你可以重复执行某语句块。`while` 是*循环 (looping)* 语句的实例之一。`while` 语句也可以有可选的 `else` 语句。
 
-请看示例 `while.py`:
+请看示例 `while.py` ：
 
 <pre><code class="lang-python">{% include "./programs/while.py" %}</code></pre>
 
-输出为:
+输出为：
 
 <pre><code>{% include "./programs/while.txt" %}</code></pre>
 
 **它是怎样做的**
 
-在这个程序中，我们接着玩猜数字的游戏，但是我们将它稍稍改进了一些，用户可以保留猜过的数字直到他猜对--我们不必像上一节中那样每次猜数都重新运行程序。这巧妙的阐释了 `while` 语句的作用。
+在这个程序中，我们接着玩猜数字的游戏，但是我们将它稍稍改进了一些，用户可以保留猜过的数字直到他猜对——我们不必像上一节中那样每次猜数都重新运行程序。这巧妙的阐释了 `while` 语句的作用。
 
 我们将 `input` 和 `if` 语句放入 `while` 循环并在循环开始前将变量 `running` 设为 `True` 。我们先检测`running` 是否为 `True` ，然后执行相应的 *while-block* 。这个块执行之后，在此检测循环条件，本例中是 `running` 变量。如果它是真，那么我们再次执行 while-block ，不然我们接着执行可选的 else-block ，之后再顺次执行下面的语句。
 
-当 `while` 的循环条件变为 `False` 时，`else` 块将会被执行--甚至初次检测循环条件时也如此。如果 `while` 循环有 `else` 语句，那么如果你不用 `break` 跳出循环的话，它总能得到执行。
+当 `while` 的循环条件变为 `False` 时，`else` 块将会被执行——甚至初次检测循环条件时也如此。如果 `while` 循环有 `else` 语句，那么如果你不用 `break` 跳出循环的话，它总能得到执行。
 
 `True` 与 `False` 被称为布尔 (Boolean) 类型，你可以把它们想象成值 `1` 与 `0`。
 
@@ -77,7 +77,7 @@ python 执行完 `if` 语句以及它相关联的 `elif` 和 `else` 语句之后
 
 <pre><code class="lang-python">{% include "./programs/for.py" %}</code></pre>
 
-输出为:
+输出为：
 
 <pre><code>{% include "./programs/for.txt" %}</code></pre>
 
@@ -89,7 +89,7 @@ python 执行完 `if` 语句以及它相关联的 `elif` 和 `else` 语句之后
 
 请注意 `range()` 每次只返回一个数，如果你想要所有数的列表，你可以在 `range()` 上调用 `list()` ，例如，`list(range(5))` 将会得到 `[0, 1, 2, 3, 4]` 。列表在 [数据结构 data structures](./data_structures.md#data-structures) 一章中会有更详细的解释。
  
-`for` 循环会迭代指定的范围--`for i in range(1，5)` 等同于 `for i in [1, 2, 3, 4]` ，这好像是依次将序列中的数或者对象赋值给 i ，每次都执行一次语句块。本例中，我们仅将语句块中的值打印出来。
+`for` 循环会迭代指定的范围——`for i in range(1，5)` 等同于 `for i in [1, 2, 3, 4]` ，这好像是依次将序列中的数或者对象赋值给 i ，每次都执行一次语句块。本例中，我们仅将语句块中的值打印出来。
 
 请记住 `else` 是可选的。当它存在时，如果没有 [break](#break-statement) 语句，它始终都会执行一次。
 
@@ -138,7 +138,7 @@ if you wanna make your work also fun:
 
 <pre><code class="lang-python">{% include "./programs/continue.py" %}</code></pre>
 
-输出为:
+输出为：
 
 <pre><code>{% include "./programs/continue.txt" %}</code></pre>
 

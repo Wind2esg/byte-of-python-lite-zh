@@ -9,7 +9,8 @@
 * [运算符与表达式](op_exp.md)
 * [控制流](control_flow.md)
 * [函数](functions.md)
-* [Modules](modules.md)
+* [模块](modules.md)
+
 * [Data Structures](data_structures.md)
 * [Problem Solving](problem_solving.md)
 * [Object Oriented Programming](oop.md)
@@ -18,6 +19,7 @@
 * [Standard Library](stdlib.md)
 * [More](more.md)
 * [What Next](what_next.md)
+
 * [Appendix: FLOSS](floss.md)
 * [Appendix: About](about.md)
 * [Appendix: Revision History](revision_history.md)

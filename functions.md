@@ -1,4 +1,4 @@
-# 函数 Functions
+# 函数 Function
 
 函数是可复用的代码段。它们允许你为代码块命名，并且允许你使用指定的名称在程序其他任何地方不限次数的使用。这就是函数的**调用**。我们已经使用了许多内置函数如 `len` 和 `range` 。
 
@@ -8,7 +8,7 @@
 
 <pre><code class="lang-python">{% include "./programs/function1.py" %}</code></pre>
 
-输出为:
+输出为：
 
 <pre><code>{% include "./programs/function1.txt" %}</code></pre>
 
@@ -18,11 +18,11 @@
 
 可以看到，我们两次调用了这个函数，而不需重复写代码。
 
-## 参数 Parameters
+## 参数 Parameter
 
 函数有参数，它们是我们提供给函数的各种值，通过参数，函数就能做各种各样的事情了。这些参数很像变量，但它们的值是在我们调用函数时定义的，当函数运行时它们已然被赋值了。
 
-参数在函数定义中的括号内指定，并且由逗号 `,` 分割。当我们调用函数时，我们以相同的方式为它们提供值。请注意这里的术语--函数定义里的参数叫做 *parameters* 。而调用函数时我们提供的那些参数称为 *arguments* 。
+参数在函数定义中的括号内指定，并且由逗号 `,` 分割。当我们调用函数时，我们以相同的方式为它们提供值。请注意这里的术语——函数定义里的参数叫做 *parameters* 。而调用函数时我们提供的那些参数称为 *arguments* 。
 
 请看示例 `function_param.py` ：
 
@@ -38,17 +38,15 @@
 
 第一次调用 `print_max` ，我们直接提供了参数。第二例中，我们调用了将改变量作为参数的函数。`print_max(x, y)` 将参数 `x` 值赋给参数 `a` ，`y` 赋给 `b` 。`print_max` 函数在两个例子中作用相同。
 
-## 局部变量 Local Variables
+## 局部变量 Local Variable
 
-When you declare variables inside a function definition, they are not related in any way to other variables with the same names used outside the function - i.e. variable names are *local* to the function. This is called the *scope* of the variable. All variables have the scope of the block they are declared in starting from the point of definition of the name.
-
-当你在函数定义内声明变量时，它们与函数外的同名变量是毫不相关的--即对函数来说，变量名是**局部的 (local)** 。这叫做变量的**作用域 (scope)** 。变量的作用域起于它们声明之处，止于包含他们块结尾。
+当你在函数定义内声明变量时，它们与函数外的同名变量是毫不相关的——即对函数来说，变量名是**局部的 (local)** 。这叫做变量的**作用域 (scope)** 。变量的作用域起于它们声明之处，止于包含他们块结尾。
 
 请看示例 `function_local.py` ：
 
 <pre><code class="lang-python">{% include "./programs/function_local.py" %}</code></pre>
 
-输出为:
+输出为：
 
 <pre><code>{% include "./programs/function_local.txt" %}</code></pre>
 
@@ -58,155 +56,176 @@ When you declare variables inside a function definition, they are not related in
 
 接着，我们把 `2` 赋给 `x` 。`X` 是我们函数的局部变量。因此，当我们在函数内改变 `x` 的值的时候，主块内定义的 `x` 不会发生改变。 
 
-With the last `print` statement, we display the value of `x` as defined in the main block, thereby confirming that it is actually unaffected by the local assignment within the previously called function.
 最后的 `print` 语句显示出主块内定义的 `x` 的值，因此，可以确认在调用的函数中的局部变量的赋值确实不会有任何影响。 
 
 ## 全局 global {#global-statement}
 
-If you want to assign a value to a name defined at the top level of the program (i.e. not inside any kind of scope such as functions or classes), then you have to tell Python that the name is not local, but it is *global*. We do this using the `global` statement. It is impossible to assign a value to a variable defined outside a function without the `global` statement.
+当你处在某函数或者类的作用域中时，如果你想为在程序的最顶层（也就是不在任何函数或者类的作用域中）定义的变量赋值，你得告诉 python 这个变量名称不是局部的，它是**全局的 (global)** 。`global` 语句是做成这件事的唯一途径。
 
-You can use the values of such variables defined outside the function (assuming there is no variable with the same name within the function). However, this is not encouraged and should be avoided since it becomes unclear to the reader of the program as to where that variable's definition is. Using the `global` statement makes it amply clear that the variable is defined in an outermost block.
+我们可以直接使用那些定义在在函数之外的变量的值（假定函数内不存在与这些变量同名的局部变量）。但是通常我们不鼓励这么做并且你应该尽量避免这么做，因为它使得程序读起来不那么清晰明了，变量在何处定义会干扰程序代码的阅读。使用 `global` 语句能够清楚明白的告知变量定义在最外层。
 
-Example (save as `function_global.py`):
+请看示例 `function_global.py` ：
 
 <pre><code class="lang-python">{% include "./programs/function_global.py" %}</code></pre>
 
-Output:
+输出为：
 
 <pre><code>{% include "./programs/function_global.txt" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-The `global` statement is used to declare that `x` is a global variable - hence, when we assign a value to `x` inside the function, that change is reflected when we use the value of `x` in the main block.
+`global` 语句声明 `x` 是一个全局变量——因此，当我们在函数内为 `x` 赋值时，当我们在主块中使用 `x` 的值得时候，这个改变就反映出来。
 
-You can specify more than one global variable using the same `global` statement e.g. `global x, y, z`.
+一行 `global` 语句可以指定不止一个全局变量，例如 `global x, y, z` 。
 
-## Default Argument Values {#default-arguments}
+## 位置参数 Positional Argument
 
-For some functions, you may want to make some parameters *optional* and use default values in case the user does not want to provide values for them. This is done with the help of default argument values. You can specify default argument values for parameters by appending to the parameter name in the function definition the assignment operator (`=`) followed by the default value.
+函数调用时，我们提供一些值。例如:
 
-Note that the default argument value should be a constant. More precisely, the default argument value should be immutable - this is explained in detail in later chapters. For now, just remember this.
+```python
+def test(a,b)
+    print(a)
+    print(b)
 
-Example (save as `function_default.py`):
+test(1,2)
+```
+
+位置参数 (Positional Argument) 指的就是如同 `1` ，`2` 这样的参数，按照位置与声明函数时的参数对应。
+
+## 默认参数值 Default Argument Value {#default-arguments}
+
+对一些函数来说，你也许想要某些参数是**可选的**并且当用户不想为他们提供值时使用默认的值。默认参数值能够得到。在函数定义时，你可以用某些值为参数赋值，这些值就是默认参数值。
+
+有一点你必须记好，默认参数值必须是常量。更准确的说，默认参数值是不可改变的——在之后的章节会对此做更多的解释。现在，记住它就是。
+
+请看示例 `function_default.py` ：
 
 <pre><code class="lang-python">{% include "./programs/function_default.py" %}</code></pre>
 
-Output:
+输出为：
 
 <pre><code>{% include "./programs/function_default.txt" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-The function named `say` is used to print a string as many times as specified. If we don't supply a value, then by default, the string is printed just once. We achieve this by specifying a default argument value of `1` to the parameter `times`.
+`say` 函数打印某字符串指定次。如果我没没有提供这个值，默认的，这字符串只打印一次。我们通过指定参数 `times` 的默认参数值为 `1` 完成这些。 
 
-In the first usage of `say`, we supply only the string and it prints the string once. In the second usage of `say`, we supply both the string and an argument `5` stating that we want to *say* the string message 5 times.
+`say` 首次调用，我们仅仅提供了字符串，这个字符串打印了一次。我们再次调用时，我们提供了字符串的同时还提供了参数 `5` 声明我们要**说**这个字符串五次。
 
-> *CAUTION*
+> **请注意**
 > 
-> Only those parameters which are at the end of the parameter list can be given default argument
-> values i.e. you cannot have a parameter with a default argument value preceding a parameter without
-> a default argument value in the function's parameter list.
+> 在参数列表中，有默认参数值的参数不得位于无默认参数值的参数之前。例如 `def func(a,b=5)` 是可以的, 但是 `def func(a=5, b)` **不行**。
 > 
-> This is because the values are assigned to the parameters by position. For example,`def func(a,
-> b=5)` is valid, but `def func(a=5, b)` is *not valid*.
+> 原因在于**如果** `def func(a=5, b, c=7)` 是合法的，那么调用 `func(6,8)` 时，python 无法确定该如何去为 `a` ，`b` ，`c` 赋值。
 
-## Keyword Arguments
+## 关键字参数 Keyword Argument
 
-If you have some functions with many parameters and you want to specify only some of them, then you can give values for such parameters by naming them - this is called *keyword arguments* - we use the name (keyword) instead of the position (which we have been using all along) to specify the arguments to the function.
+如果你的函数带有很多参数，而你只想为其中的一些赋值，你可以命名他们来为这些参数指赋值——这叫做**关键字参数 (keyword arguments)** ——我们使用关键字而非位置来为函数指定参数。
 
-There are two advantages - one, using the function is easier since we do not need to worry about the order of the arguments. Two, we can give values to only those parameters to which we want to, provided that the other parameters have default argument values.
+这带来两个好处：一，我们不需顾虑参数顺序是的函数使用起来更加容易。二，我们可以仅为部分参数赋值，而其他的参数使用默认参数值。
 
-Example (save as `function_keyword.py`):
+请看示例 `function_keyword.py` ：
 
 <pre><code class="lang-python">{% include "./programs/function_keyword.py" %}</code></pre>
 
-Output:
+输出为：
 
 <pre><code>{% include "./programs/function_keyword.txt" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-The function named `func` has one parameter without a default argument value, followed by two parameters with default argument values.
+`func` 函数有一个没有默认参数值的参数，在它之后，有两个有默认参数值的参数。
 
-In the first usage, `func(3, 7)`, the parameter `a` gets the value `3`, the parameter `b` gets the value `7` and `c` gets the default value of `10`.
+首次调用 `func(3, 7)` ，参数 `a` 被赋值 `3` ，参数 `b` 被赋值 `7` ，`c` 被赋值默认值 `10` 。
 
-In the second usage `func(25, c=24)`, the variable `a` gets the value of 25 due to the position of the argument. Then, the parameter `c` gets the value of `24` due to naming i.e. keyword arguments. The variable `b` gets the default value of `5`.
+第二次调用 `func(25, c=24)` ，变量 `a` 被位置参数 `25` 赋值。之后，参数 `c` 被关键字参数 `c=24`  赋值。变量 `b` 被赋默认值参数值 `5` 。
 
-In the third usage `func(c=50, a=100)`, we use keyword arguments for all specified values. Notice that we are specifying the value for parameter `c` before that for `a` even though `a` is defined before `c` in the function definition.
+第三次 `func(c=50, a=100)` ，我们使用关键字参数来指定所有值。请注意，即使在函数定义中，`a` 在 `c` 之前定义，我们仍可以先为 `c` 赋值。
 
-## VarArgs parameters
+## 可变参数 VarArgs parameter
 
-Sometimes you might want to define a function that can take _any_ number of parameters, i.e. **var**iable number of **arg**uments, this can be achieved by using the stars (save as `function_varargs.py`):
+有时，你也许想要定义一个可以带**任意**参数的函数，即参数的数量是可变的。`*` 可以帮你实现。
+
+请看示例 `function_varargs.py` ：
 
 <pre><code class="lang-python">{% include "./programs/function_varargs.py" %}</code></pre>
 
-Output:
+输出为：
 
 <pre><code>{% include "./programs/function_varargs.txt" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-When we declare a starred parameter such as `*param`, then all the positional arguments from that point till the end are collected as a tuple called 'param'.
+当我们声明一个带星号的参数如 `*param` 的时候，从它到末尾的所有的由参数位置指定的参数都被收在名称为 `param` 的元组中。
 
-Similarly, when we declare a double-starred parameter such as `**param`, then all the keyword arguments from that point till the end are collected as a dictionary called 'param'.
+类似的，当我们声明一个带两个型号的参数如 `**param` 的时候，从它到末尾的所有关键字参数都被收在名称为 `param` 的字典里 (dictionary) 。
 
-We will explore tuples and dictionaries in a [later chapter](./data_structures.md#data-structures).
+我们[之后的章节](./data_structures.md#data-structures)更多的探索元组和字典。
 
-## The `return` statement {#return-statement}
+> 我想你已经想到了，位置参数要放在关键字参数之前。
+> 不妨据此例展开一些练习。想想：
+> `total(a=5,*numbers,**phonebook)` 何种情况下 `a` 的默认参数值能生效？
+> `total(*numbers, a=5, **phonebook)` 此种情况下如何为 `a` 传递参数？
 
-The `return` statement is used to *return* from a function i.e. break out of the function. We can optionally *return a value* from the function as well.
+## return {#return-statement}
 
-Example (save as `function_return.py`):
+`return` 语句的作用是从函数中**返回**即从函数体中跳出。我们也可以从函数中**返回值**。
+
+请看示例 `function_return.py` ：
 
 <pre><code class="lang-python">{% include "./programs/function_return.py" %}</code></pre>
 
-Output:
+输出为：
 
 <pre><code>{% include "./programs/function_return.txt" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-The `maximum` function returns the maximum of the parameters, in this case the numbers supplied to the function. It uses a simple `if..else` statement to find the greater value and then *returns* that value.
+`maximum` 函数返回参数中最大的那个。它使用一个简单的 `if..else` 语句来找到最大值，然后**返回**这个值。
 
-Note that a `return` statement without a value is equivalent to `return None`. `None` is a special type in Python that represents nothingness. For example, it is used to indicate that a variable has no value if it has a value of `None`.
+请注意，`return` 语句后没有值得话就等同于 `return None` 。空 (None) 是 python 中一种特殊类型，表示不存在。例如，一个变量如果值为 `None` 意思是它的值是空。
 
-Every function implicitly contains a `return None` statement at the end unless you have written your own `return` statement. You can see this by running `print(some_function())` where the function `some_function` does not use the `return` statement such as:
+> 这里要搞清楚空与未定义 (not defined) 的区别
+> 未定义是没有对变量赋值过，是不合法的。
+> 空是合法的，变量已被赋值，这不过这个值是不存在
+
+除非你写出你自己的 `return` 语句，每个函数都隐式的在末尾包含一个 `return None` 语句。如果 `some_function` 没有 `return` 语句，那么 `print(some_function())` 可就以让你看到这些：
 
 ```python
 def some_function():
     pass
 ```
 
-The `pass` statement is used in Python to indicate an empty block of statements.
+`pass` 语句在 python 中用来表示语句块。
 
-> TIP: There is a built-in function called `max` that already implements the 'find maximum' functionality, so use this built-in function whenever possible.
+> python 中已内置了 `max` 函数，实现了找最大值得功能，所以尽可能的使用内置函数吧。
 
-## DocStrings
+## 文档字符串 DocString
 
-Python has a nifty feature called *documentation strings*, usually referred to by its shorter name *docstrings*. DocStrings are an important tool that you should make use of since it helps to document the program better and makes it easier to understand. Amazingly, we can even get the docstring back from, say a function, when the program is actually running!
+python 有种灵巧的特性叫做**文档字符串 (documentation strings)** ，我们通常使用它的简写**docstring**。文档字符串是很重要的工具，它能帮助你为程序做标注，使之更易读。你应该充分利用它。非常棒的是，我们甚至能从当前运行中的程序里得到它。
 
-Example (save as `function_docstring.py`):
+请看示例 `function_docstring.py` ：
 
 <pre><code class="lang-python">{% include "./programs/function_docstring.py" %}</code></pre>
 
-Output:
+输出为：
 
 <pre><code>{% include "./programs/function_docstring.txt" %}</code></pre>
 
-**How It Works**
+**它是怎么做的**
 
-A string on the first logical line of a function is the *docstring* for that function. Note that DocStrings also apply to [modules](./modules.md#modules) and [classes](./oop.md#oop) which we will learn about in the respective chapters.
+函数的首个逻辑行的首个字符串就是这个函数的**文档字符串**。请注意稳当字符串也适用于[模块 modules](./modules.md#modules) 和[类 classes](./oop.md#oop) ，我们再后续章节中会作更多了解。
 
-The convention followed for a docstring is a multi-line string where the first line starts with a capital letter and ends with a dot. Then the second line is blank followed by any detailed explanation starting from the third line. You are *strongly advised* to follow this convention for all your docstrings for all your non-trivial functions.
+文档字符串的惯例格式是首字母大写，以点 `.` 结尾的多行字符串。然后，第二行留空，从第三行开始对函数的详细解释。在这，**强烈**推荐你写文档字符串的时候遵从这个格式。
 
-We can access the docstring of the `print_max` function using the `__doc__` (notice the *double underscores*) attribute (name belonging to) of the function. Just remember that Python treats *everything* as an object and this includes functions. We'll learn more about objects in the chapter on [classes](./oop.md#oop).
+我们使用函数的 `__doc__` (注意**双下划线 (double underscores)** )属性来获取 `print_max` 函数的文档字符串。记住，python 中一切皆为对象，函数也是对象。我们会在 [类 classes](./oop.md#oop) 章节中更多的了解对象。
 
-If you have used `help()` in Python, then you have already seen the usage of docstrings! What it does is just fetch the `__doc__` attribute of that function and displays it in a neat manner for you. You can try it out on the function above - just include `help(print_max)` in your program. Remember to press the `q` key to exit `help`.
+如果你在 python 中使用过 `help()` ，那么你已经见过文档字符串了！它既是获取函数的 `__doc__` 属性然后将之友好的展现给你。你可以在上面的函数上试试——将 `help(print_max)` 放入你的程序中。记得按 `q` 键来退出 `help` 互动命令行。
 
-Automated tools can retrieve the documentation from your program in this manner. Therefore, I *strongly recommend* that you use docstrings for any non-trivial function that you write. The `pydoc` command that comes with your Python distribution works similarly to `help()` using docstrings.
+既然我们有自动化工具能从你程序中获取文档。我**强烈推荐**你在正式函数中都要写文档字符串。`pydoc` 命令的作用类似于 `help()` 。
 
-## Summary
+## 总结
 
-We have seen so many aspects of functions but note that we still haven't covered all aspects of them. However, we have already covered most of what you'll use regarding Python functions on an everyday basis.
+尽管没有全部了解，但我们已经具备日常使用函数的基础。
 
-Next, we will see how to use as well as create Python modules.
+下面的章节，我们会看看如何创建 python 模块。
