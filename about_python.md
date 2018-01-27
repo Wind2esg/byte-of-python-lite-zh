@@ -61,7 +61,7 @@ python 可以作为脚本嵌入到 c 或者 c++ 程序中。
 ### 扩展库
 
 python 众多的标准库能帮助你完成各种目标，并且它们随着 python 一同安装。 这称之为 python 的 _Batteries Included_ 哲学。  
-此外，你还可以在 [Python Package Index](http://pypi.python.org/pypi) 找到各种各样的高质量库。
+此外，你还可以在 [python 包索引 (Python Package Index)](http://pypi.python.org/pypi) 中找到各种各样的高质量库。
 
 ## 总结
 

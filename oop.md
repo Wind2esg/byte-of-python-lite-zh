@@ -1,183 +1,174 @@
-# Object Oriented Programming {#oop}
+# 面向对象编程 object oriented programming {#oop}
 
-In all the programs we wrote till now, we have designed our program around functions i.e. blocks of statements which manipulate data. This is called the _procedure-oriented_ way of programming. There is another way of organizing your program which is to combine data and functionality and wrap it inside something called an object. This is called the _object oriented_ programming paradigm. Most of the time you can use procedural programming, but when writing large programs or have a problem that is better suited to this method, you can use object oriented programming techniques.
+至今为止，在我们写过的所有程序里面，我们都围绕这函数来设计程序，即修改数据的语句块。这叫做**面向过程 (procedure-oriented)** 编程。这还有另一种组织你程序的方式，就是将数据和功能一起封装到对象中。这被称为**面向对象**编程范式。大多数时间你可以使用过程化编程，但当你编写大型程序或者要解决一个更适合此种方法的问题时，你可以用面向对象技术。
 
-Classes and objects are the two main aspects of object oriented programming. A **class** creates a new _type_ where **objects** are **instances** of the class. An analogy is that you can have variables of type `int` which translates to saying that variables that store integers are variables which are instances (objects) of the `int` class.
+类和对象是面向对象编程的两个主要方面。一个**类**创建一种新**类型**，其中**对象**是类的**实例**。打个比方，你可以有多个 `int` 类型的变量，存储整数的那些变量就是 `int` 类的对象（实例）的变量。
 
-> **Note for Static Language Programmers**
-> 
-> Note that even integers are treated as objects (of the `int` class). This is unlike C++ and Java (before version 1.5) where integers are primitive native types.
-> 
-> See `help(int)` for more details on the class.
-> 
-> C# and Java 1.5 programmers will find this similar to the _boxing and unboxing_ concept.
+> python 中一切皆为对象。
 
-Objects can store data using ordinary variables that _belong_ to the object. Variables that belong to an object or class are referred to as **fields**. Objects can also have functionality by using functions that _belong_ to a class. Such functions are called **methods** of the class. This terminology is important because it helps us to differentiate between functions and variables which are independent and those which belong to a class or object. Collectively, the fields and methods can be referred to as the **attributes** of that class.
+对象可以使用**属于**它的普通变量来储存数据。属于对象或者类的变量被称作**字段 (field)** 。对象能使用**属于**它的函数来具有某功能。这些函数叫做类的**方法 (method)** 。这个术语是非常种农药的，因为它可以帮助分辨这些函数和变量是独立的还是属于对象或者类的。总的来说，字段和方法都是类的**属性**。
 
-Fields are of two types - they can belong to each instance/object of the class or they can belong to the class itself. They are called **instance variables** and **class variables** respectively.
+字段有两种类型——它们可以属于类的对象和实例，或者它们也属于类本身。它们分别被称为**实例变量**和**类变量**。
 
-A class is created using the `class` keyword. The fields and methods of the class are listed in an indented block.
+`class` 关键字能创建类。字段和方法在一个缩进的块中罗列。
 
-## The `self` {#self}
+## self {#self}
 
-Class methods have only one specific difference from ordinary functions - they must have an extra first name that has to be added to the beginning of the parameter list, but you **do not** give a value for this parameter when you call the method, Python will provide it. This particular variable refers to the object _itself_, and by convention, it is given the name `self`.
+类的方法与普通函数仅有一点区别——它们的参数列表开头必须额外添加一个参数，但是当你调用此方法时，你**不能**给它任何值，python 会提供给它。这个特定的值就是这个对象**本身**，我们习惯用 `self` 来命名它。
 
-Although, you can give any name for this parameter, it is _strongly recommended_ that you use the name `self` - any other name is definitely frowned upon. There are many advantages to using a standard name - any reader of your program will immediately recognize it and even specialized IDEs (Integrated Development Environments) can help you if you use `self`.
+尽管你随意命名这个参数，但这里还是强烈推荐你使用 `self` 。使用同一的名称有许多好处——任何读你程序的人都会立刻认识它，如果你是用 `self` 甚至某些 IDE 也会帮到你。  
+> 你在其他面向对象的语言中一定见过 `this` 。 python 中的 `self` 等同于它。
 
-> **Note for C++/Java/C# Programmers**
-> 
-> The `self` in Python is equivalent to the `this` pointer in C++ and the `this` reference in Java and C#.
+你一定好奇为何 python 会给 `self` 值而你不需要提供。举个列子来说明。假设你有一个类叫做 `MyClass` ，这个类的一个实例是 `myobject` 。当你像 `myobject.method(arg1, arg2)` 这样调用方法时，python自动将它转换为 `MyClass.method(myobject, arg1, arg2)`，这就是 `self` 的特殊所在。
 
-You must be wondering how Python gives the value for `self` and why you don't need to give a value for it. An example will make this clear. Say you have a class called `MyClass` and an instance of this class called `myobject`. When you call a method of this object as `myobject.method(arg1, arg2)`, this is automatically converted by Python into `MyClass.method(myobject, arg1, arg2)` - this is all the special `self` is about.
+这也意味着如果你有一个不带任何参数的方法，那它还是会有一个参数的——就是 `self` 。
 
-This also means that if you have a method which takes no arguments, then you still have to have one argument - the `self`.
+## class {#class}
 
-## Classes {#class}
-
-The simplest class possible is shown in the following example (save as `oop_simplestclass.py`).
+下例所示可能就是最简单的类了 `oop_simplestclass.py` ：
 
 <pre><code class="lang-python">{% include "./programs/oop_simplestclass.py" %}</code></pre>
 
-Output:
+输出为：
 
 <pre><code>{% include "./programs/oop_simplestclass.txt" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-We create a new class using the `class` statement and the name of the class. This is followed by an indented block of statements which form the body of the class. In this case, we have an empty block which is indicated using the `pass` statement.
+我们使用 `class` 语句以及命名来创建一个新类。随后的一个缩进的语句块构成了类的主体。在本例中，我们使用 `pass` 语句指明一个空块。
 
-Next, we create an object/instance of this class using the name of the class followed by a pair of parentheses. (We will learn [more about instantiation](#init) in the next section). For our verification, we confirm the type of the variable by simply printing it. It tells us that we have an instance of the `Person` class in the `__main__` module.
+接着，我们使用类与其后的括号创建这个类的一个对象或实例。（我们将在[后面的部分](#init)了解）。我们通过打印来确认变量的额类型。它告诉我们我们在 `__main__` 模块中有一个 `Person` 类的实例。
 
-Notice that the address of the computer memory where your object is stored is also printed. The address will have a different value on your computer since Python can store the object wherever it finds space.
+请注意，你对象所储存在的电脑内存的地址也同时被打印出来。由于 python 会将对象储存在任何它找到的空间中，在你的电脑上，这个地址会有不同的值。
 
-## Methods
+## 方法 method
 
-We have already discussed that classes/objects can have methods just like functions except that we have an extra `self` variable. We will now see an example (save as `oop_method.py`).
+我们已经讨论过类或者对象有方法，它们同函数，除了那个额外的 `self` 变量。我们现在来看看这个示例 `oop_method.py` ：
 
 <pre><code class="lang-python">{% include "./programs/oop_method.py" %}</code></pre>
 
-Output:
+输出为：
 
 <pre><code>{% include "./programs/oop_method.txt" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-Here we see the `self` in action. Notice that the `say_hi` method takes no parameters but still has the `self` in the function definition.
+在这里我们看到了 `self` 如何起作用的。请注意 `say_hi` 方法我们并没有给参数，但在函数定义中仍有 `self` 。
 
-## The `__init__` method {#init}
+## __init__ {#init}
 
-There are many method names which have special significance in Python classes. We will see the significance of the `__init__` method now.
+在 python 的类中有很多方法名称中有特殊意义。我们将会看到 `__init__` 方法的特殊意义。
 
-The `__init__` method is run as soon as an object of a class is instantiated (i.e. created). The method is useful to do any *initialization* (i.e. passing initial values to your object) you want to do with your object. Notice the double underscores both at the beginning and at the end of the name.
+`__init__` 方法在类的对象实例化 (instantiate) ，也就是创建，之时运行。这个方法是用来**实例化**的，也就是将初始值传递给你的对象。请注意，这个名称的开头和结尾都是双下划线。
 
-Example (save as `oop_init.py`):
+请看示例 `oop_init.py` ：
 
 <pre><code class="lang-python">{% include "./programs/oop_init.py" %}</code></pre>
 
-Output:
+输出为：
 
 <pre><code>{% include "./programs/oop_init.txt" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-Here, we define the `__init__` method as taking a parameter `name` (along with the usual `self`). Here, we just create a new field also called `name`. Notice these are two different variables even though they are both called 'name'. There is no problem because the dotted notation `self.name` means that there is something called "name" that is part of the object called "self" and the other `name` is a local variable. Since we explicitly indicate which name we are referring to, there is no confusion.
+这里，我们定义一个带一个参数 `name` 的 `__init__` 方法。在这，我们仅创建了一个字段 `name` 。请注意，尽管这两个变量都叫 `name` ，但它们是两个不同的变量。这没有任何问题，因为点标记法 `self.name` 意思是这有个叫 `name` 的东西，它是 `self` 这个对象的一部分，另一个 `name` 是局部变量。由于我们显式的指明了名称，这不会有冲突。
 
-When creating new instance `p`, of the class `Person`, we do so by using the class name, followed by the arguments in the parentheses: p = Person('Swaroop').
+当创建 `Person` 类的新示例 `p` 时，我们使用类名，随后是括号内的参数：p = Person('Swaroop') 。
 
-We do not explicitly call the `__init__` method.
-This is the special significance of this method.
+我们并不显式的调用 `__init__` 方法。
+这就是这个方法的特殊意义。
 
-Now, we are able to use the `self.name` field in our methods which is demonstrated in the `say_hi` method.
+现在，我们能像 `say_hi` 方法中表现的那样，在方法中使用 `self.name` 字段。
 
-## Class And Object Variables {#class-obj-vars}
+## 类与对象变量 {#class-obj-vars}
 
-We have already discussed the functionality part of classes and objects (i.e. methods), now let us learn about the data part. The data part, i.e. fields, are nothing but ordinary variables that are _bound_ to the **namespaces** of the classes and objects. This means that these names are valid within the context of these classes and objects only. That's why they are called _name spaces_.
+我们已经讨论了类和对象的功能部分，现在，我们来了解下数据部分。数据部分，即字段，只是**绑定**到类和对象的**命名空间 (namespace)** 的普通变量。这意味着这些名称只在类和对象的上下文中有效。这时为何我们称其为**命名空间**
 
-There are two types of _fields_ - class variables and object variables which are classified depending on whether the class or the object _owns_ the variables respectively.
+**字段**有两种，类变量和对象变量，根据**拥有**这些变量是类还是对象来分类。
 
-**Class variables** are shared - they can be accessed by all instances of that class. There is only one copy of the class variable and when any one object makes a change to a class variable, that change will be seen by all the other instances.
+**类变量**是共享的——它们能被类的所有实例访问。类变量仅有一个，当任意对象更改了类变量，所有的实例都能看到这个改变。
 
-**Object variables** are owned by each individual object/instance of the class. In this case, each object has its own copy of the field i.e. they are not shared and are not related in any way to the field by the same name in a different instance. An example will make this easy to understand (save as `oop_objvar.py`):
+**对象变量**是被类的独个对象或实例拥有。在本例中，每个对象都有它自己的字段，即它们不被共享，并且与其他的不同的实例中同名的字段没有关系。这个示例能使之更易理解 `oop_objvar.py` ：
 
 <pre><code class="lang-python">{% include "./programs/oop_objvar.py" %}</code></pre>
 
-Output:
+输出为：
 
 <pre><code>{% include "./programs/oop_objvar.txt" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-This is a long example but helps demonstrate the nature of class and object variables. Here, `population` belongs to the `Robot` class and hence is a class variable. The `name` variable belongs to the object (it is assigned using `self`) and hence is an object variable.
+这个例子有点长，但是能帮助我们阐明类和对象变量的本质。这里 `population` 属于 `Robot` 类，因此是一个类变量。`name` 变量属于对象（它被 `self` 赋值）。因此它是一个对象变量。
 
-Thus, we refer to the `population` class variable as `Robot.population` and not as `self.population`. We refer to the object variable `name` using `self.name` notation in the methods of that object. Remember this simple difference between class and object variables. Also note that an object variable with the same name as a class variable will hide the class variable!
+然后，我们使用 `Robot.population` 而不是 `self.population` 来引用类变量 `population` 。我们在对象的方法中使用 `self.name` 语法来引用对象变量 `name`。请记住类变量与对象变量的简单区别。也请注意到与类变量同名的对象变量将会隐藏类变量。
 
-Instead of `Robot.population`, we could have also used `self.__class__.population` because every object refers to its class via the `self.__class__` attribute.
+我们可以使用 `self.__class__.population` 来代替 `Robot.population` ，因为每个对象都可以通过 `self.__class__` 属性来引用它的类。
 
-The `how_many` is actually a method that belongs to the class and not to the object. This means we can define it as either a `classmethod` or a `staticmethod` depending on whether we need to know which class we are part of. Since we refer to a class variable, let's use `classmethod`.
+`how_many` 实际上是只属于类的方法。这意味着根据我们是否需要知道它们属于哪个类来将之定义为 `classmethod` 或者 `staticmethod` 。由于我们要引用了类变量，就用 `classmethod` 。
 
-We have marked the `how_many` method as a class method using a [decorator](./more.md#decorator).
+我们已经使用 [修饰符 decorator](./more.md#decorator) 将 `how_many` 方法标记为类方法。
 
-Decorators can be imagined to be a shortcut to calling a wrapper function (i.e. a function that "wraps" around another function so that it can do something before or after the inner function), so applying the `@classmethod` decorator is the same as calling:
+修饰符可以想象成是调用封装 (wrap) 函数的快捷方式。封装函数即“封装”了其他函数以期它们能在内部函数前后发生作用的函数。所以 `@classmethod` 修饰符和下述调用相同：
 
 ```python
 how_many = classmethod(how_many)
 ```
 
-Observe that the `__init__` method is used to initialize the `Robot` instance with a name. In this method, we increase the `population` count by 1 since we have one more robot being added. Also observe that the values of `self.name` is specific to each object which indicates the nature of object variables.
+仔细观察，`__init__` 方法使用某名称来实例化 `Robot` 实例。在这个方法中，我们将 `population` 的计数加 1 因为我们又添加了一个机器人。在观察 `self.name` 的值被指定给每一个对象，这也说明了对象变量的本质。
 
-Remember, that you must refer to the variables and methods of the same object using the `self` *only*. This is called an *attribute reference*.
+请记住，你必须用且**只能**用 `self` 来引用同一个实例的变量和方法。这叫做**属性引用 (attribute reference)** 。
 
-In this program, we also see the use of *docstrings* for classes as well as methods. We can access the class docstring at runtime using `Robot.__doc__` and the method docstring as `Robot.say_hi.__doc__`
+在本程序中，我们还看到了类与方法的**文档字符串**的使用。我们在运行时能够使用 `Robot.__doc__` 来访问类的文档字符串，以及用 `Robot.say_hi.__doc__` 来访问方法的文档字符串。
 
-In the `die` method, we simply decrease the `Robot.population` count by 1.
+在 `die` 方法中，我们简单的将 `Robot.population` 的计数减 1 。
 
-All class members are public. One exception: If you use data members with names using the _double underscore prefix_ such as `__privatevar`, Python uses name-mangling to effectively make it a private variable.
+所有的类成员都是公有的。只有一个例外：如果你使用带**双下划线前缀**的名称的数据成员，比如 `__privatevar` ，python 使用名称调整 (name-mangling) 来高效的将其转化为私有变量。
 
-Thus, the convention followed is that any variable that is to be used only within the class or object should begin with an underscore and all other names are public and can be used by other classes/objects. Remember that this is only a convention and is not enforced by Python (except for the double underscore prefix).
+然而，按照惯例，仅在类和对象内使用的变量应该以单下划线开头，所有其他的名称都是公有的，并且可以被其他的类或对象使用。请记住这就是个惯例，python 并不强制如此（除了双下划线前缀）。
 
-> **Note for C++/Java/C# Programmers**
-> 
-> All class members (including the data members) are _public_ and all the methods are _virtual_ in Python.
+> 按 c++，java，c# 的说法，python 中所有的类成员包括数据成员都是**公有的**，所有的方法都是**虚**的。
 
-## Inheritance
+## 继承 inheritance
 
-One of the major benefits of object oriented programming is **reuse** of code and one of the ways this is achieved is through the **inheritance** mechanism. Inheritance can be best imagined as implementing a **type and subtype** relationship between classes.
+面向对象编程的主要好处就是代码**重用**，**继承 (inheritance)** 机制是实现代码冲用的方式。继承可以想做是类之间**类型和子类型**的关系的实现。
 
-Suppose you want to write a program which has to keep track of the teachers and students in a college. They have some common characteristics such as name, age and address. They also have specific characteristics such as salary, courses and leaves for teachers and, marks and fees for students.
+假设，你想写这样一个车鞥徐，它必须能追踪一所高校中的教师和学生。它们有许多共同的特征如名字，年龄和地址。他们还有些独有的特征如教师的薪水和休假，学生的分数和费用。
 
-You can create two independent classes for each type and process them but adding a new common characteristic would mean adding to both of these independent classes. This quickly becomes unwieldy.
+你可以为每个类型分别创建独立的类。处理它们的时候，增加共同的特性的时候意味着两个独立的类都要添加。确实有些不明智。
 
-A better way would be to create a common class called `SchoolMember` and then have the teacher and student classes _inherit_ from this class, i.e. they will become sub-types of this type (class) and then we can add specific characteristics to these sub-types.
+有一种更好些的方法是创建具有这些共同特征的类，叫作中 `SchoolMember` 然后令教师和学生类继承这个类，也就是说他们会变为这个类型的子类型，接着我们就可以为这些子类型添加它们独有的特征。
 
-There are many advantages to this approach. If we add/change any functionality in `SchoolMember`, this is automatically reflected in the subtypes as well. For example, you can add a new ID card field for both teachers and students by simply adding it to the SchoolMember class. However, changes in the subtypes do not affect other subtypes. Another advantage is that you can refer to a teacher or student object as a `SchoolMember` object which could be useful in some situations such as counting of the number of school members. This is called **polymorphism** where a sub-type can be substituted in any situation where a parent type is expected, i.e. the object can be treated as an instance of the parent class.
+这种方法带来的好处实在太多了。如果我们添加或者改变了 `SchoolMember` 的功能，这些变化会自动反映到子类型。例如，想要为教师和学生添加一个新的 ID 卡的字段，我们将它添加到 `SchoolMember` 类就能轻松实现。但是，在子类型中的改变不会影响到其他子类型。另一个好处就是你可以使用 `SchoolMember` 对象来引用教师或者学生对象，这在某些情况如统计学校成员数量的时候是非常高有用的。这叫做**多态 (polymorphism)** ，在任何需要父 (parent) 类型的地方，我们都可以使用它的子类代替它，也就是说这个对象可以看做是它父类的实例。
 
-Also observe that we reuse the code of the parent class and we do not need to repeat it in the different classes as we would have had to in case we had used independent classes.
+再观察下，我们重用了父类的代码，并且我们不需要像我们使用独立的类的示例中那样在不同的类中重复。
 
-The `SchoolMember` class in this situation is known as the **base class** or the **superclass**. The `Teacher` and `Student` classes are called the **derived classes** or **subclasses**.
+`SchoolMember` 类在这种情况下也称为**基类 (base class)** 或者 **超类 (super class)** 。`Teacher` 与 `Student` 类被称作**衍生类 (derived class)** 或 **子类 (subclass)** 。
 
-We will now see this example as a program (save as `oop_subclass.py`):
+现在我们来看看这个示例程序 `oop_subclass.py` ：
 
 <pre><code class="lang-python">{% include "./programs/oop_subclass.py" %}</code></pre>
 
-Output:
+输出为：
 
 <pre><code>{% include "./programs/oop_subclass.txt" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-To use inheritance, we specify the base class names in a tuple following the class name in the class definition (for example, `class Teacher(SchoolMember)`).   Next, we observe that the `__init__` method of the base class is explicitly called using the  `self`  variable so that we can initialize the base class part of an instance in the subclass. This is very important to remember- Since we are defining a  `__init__`  method in `Teacher`  and  `Student`  subclasses, Python does not automatically call the constructor of the base class  `SchoolMember`, you have to explicitly call it yourself.
+为了使用继承，我们在类的定义中类名后使用元组来指定基类。例如 `class Teacher(SchoolMember)` 。接着，我们观察到基类的 `__init__` 方法被 `self` 变量显式的调用了，所以我们能够实例化子类实例中基类的部分。牢记这点事非常重要的，由于我们在 `Teacher` 和 `Student` 类中都定义了 `__init__` 方法，python 无法自动调用基类 `SchoolMember` 的构造函器 (constructor) ，你必须显示的调用它。
 
-In contrast, if we have not defined an  `__init__`  method in a subclass, Python will call the constructor of the base class automatically.
+反过来说，如果我们没有在子类中定义 `__init__` 方法，python 会自动调用基类的构造器。
 
-While we could treat instances of `Teacher` or `Student` as we would an instance of `SchoolMember` and access the `tell` method of `SchoolMember` by simply typing `Teacher.tell` or `Student.tell`, we instead define another `tell` method in each subclass (using the `tell` method of `SchoolMember` for part of it) to tailor it for that subclass.  Because we have done this, when we write `Teacher.tell` Python uses the `tell` method for that subclass vs the superclass.  However, if we did not have a `tell` method in the subclass, Python would use the `tell` method in the superclass.  Python always starts looking for methods in the actual subclass type first, and if it doesnt find anything, it starts looking at the methods in the subclasss base classes, one by one in the order they are specified in the tuple (here we only have 1 base class, but you can have multiple base classes) in the class definition.
+我们能将 `Teacher` 或 `Student` 的实例当做 `SchoolMember` 的实例，并且通过 `Teacher.tell` 或 `Student.tell` 访问 `SchoolMember` 的 `tell` 方法，与其我们再每一个子类中都定义 `tell` 方法，不如将它定制给子类。因为我们已经完成这事了，当我们写下 `Teacher.tell` 时，python 会优先使用与此子类的 `tell` 方法。但是，如果在子类中没有 `tell` 方法，python 将会使用基类中的 `tell` 方法。python 总是先在子类中查找方法，如果找不到，它会在子类的基类中以元组中指定的顺序一个接一个的查找。（在这里我们仅有一个基类，但是你可以有多个基类）。
 
-A note on terminology - if more than one class is listed in the inheritance tuple, then it is called **multiple inheritance**.
+请注意这个术语，如果在继承元组中有不止一个类，这个叫做**多继承 (multiple inheritance)** 。
 
-The `end` parameter is used in the `print` function in the superclass's `tell()` method to print a line and allow the next print to continue on the same line. This is a trick to make `print` not print a `\n` (newline) symbol at the end of the printing.
+> python 是允许多继承的！而在 c++ ，c# 或 java 中，类是不可多继承。但可以多继承接口。
+
+`end` 参数使用在基类的 `tell()` 方法中的 `print` 函数中。打印一行后，允许下一次打印接续在同一行。这是个小技巧使得 `print` 函数在打印的结尾不打印换行符。
+
+## 总结
+
+我们已经探索了类和对象的多个方面以及相关术语。我们还见识到了面向对象编程的好处以及误区。python 是高度面向对象的，仔细弄清楚这些概念会在漫长未来中给你巨大帮助。
 
 
-## Summary
-
-We have now explored the various aspects of classes and objects as well as the various terminologies associated with it. We have also seen the benefits and pitfalls of object-oriented programming. Python is highly object-oriented and understanding these concepts carefully will help you a lot in the long run.
-
-Next, we will learn how to deal with input/output and how to access files in Python.
+接下来，我们来处理输入输出相关的问题以及怎样在 python 中访问文件。

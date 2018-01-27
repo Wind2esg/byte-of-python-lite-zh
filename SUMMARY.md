@@ -10,10 +10,9 @@
 * [控制流](control_flow.md)
 * [函数](functions.md)
 * [模块](modules.md)
-
 * [数据结构](data_structures.md)
-* [Problem Solving](problem_solving.md)
-* [Object Oriented Programming](oop.md)
+* [解决问题](problem_solving.md)
+* [面向对象编程](oop.md)
 * [Input and Output](io.md)
 * [Exceptions](exceptions.md)
 * [Standard Library](stdlib.md)
