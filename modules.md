@@ -1,4 +1,4 @@
-# 模块 Module
+# 模块 module
 
 定义函数一次就可以在你程序中重用那部分代码。那么当你想在程序中重用大量函数时怎么办？也许你已经猜到了，答案就是模块 (module) 。
 
@@ -39,11 +39,11 @@
 
 ## .pyc 文件 {#pyc}
 
-导入模块有一定的消耗，所以 python 使用一些妙招来让优化。一个方法是创建拓展名为 `.pyc` 的**字节编译的 (Byte-compiled)** 文件，这是 python 将程序转化的那种字节代码（你一定会想起我们在[关于 Python](./about_python.md#interpreted) 中关于编译型和解释型的那些探讨）。当你下次在其他程序中导入这个模块时，这个 `.pyc` 文件就发挥作用了——它的速度会更快一些，由于导入模块所需的处理的一部分已然完成。 这些 `.pyc` 文件同样是平台不依赖 (platform-independent) 的。
+导入模块有一定的消耗，所以 python 使用一些妙招来让优化。一个方法是创建拓展名为 `.pyc` 的**字节编译的 (Byte-compiled)** 文件，这是 python 将程序转化的那种字节代码（你一定会想起我们在[关于 python](./about_python.md#interpreted) 中关于编译型和解释型的那些探讨）。当你下次在其他程序中导入这个模块时，这个 `.pyc` 文件就发挥作用了——它的速度会更快一些，由于导入模块所需的处理的一部分已然完成。 这些 `.pyc` 文件同样是平台不依赖 (platform-independent) 的。
 
 注意：这些 `.pyc` 文件通常创建在其相应的 `.py` 文件所在的目录中。如果 python 对那些目录和文件没有相应权限，那么 `.pyc` 文件就**不会**被创建。
 
-## from..import {#from-import-statement}
+## from...import {#from-import-statement}
 
 如果你将 `argv` 直接导入你的程序（而不是每次都输入 `sys.` ），你可以用 `from sys import argv` 语句。
 
@@ -96,7 +96,7 @@ print("Square root of 16 is", sqrt(16))
 
 请看好，我们使用了相同的点标记来访问模块的成员。python 能很充分的利用相同的标记带给我们独特的 'pythonic' 感，我们不需不停地学习新的行事方式。
 
-这是 `from..import` 语法的一个例子 `mymodule_demo2.py` ：
+这是 `from...import` 语法的一个例子 `mymodule_demo2.py` ：
 
 <pre><code class="lang-python">{% include "./programs/mymodule_demo2.py" %}</code></pre>
 
@@ -116,7 +116,7 @@ from mymodule import *
 > 我估计 python 中表私有是双下划线包裹，其他皆为公有。
 <!-- -->
 
-> **Python 奥义**
+> **python 奥义**
 > 
 > python 的一条指导原则是“显式优于隐式”。在 python 中运行 `import this` 能了解更多。
 
@@ -171,7 +171,7 @@ $ python
 
 这还有个 [`vars()`](http://docs.python.org/3/library/functions.html#vars)  函数，它也许能给你属性以及相应的值，但它并不对所有类都起作用。
 
-## 包 Packages
+## 包 package
 
 迄今，你肯定已经开始观察你程序的组织加够了。变量通常在函数之内，函数和全局变量一般都在模块内。怎么组织模块呢？包 (package) 闪亮登场。
 
@@ -197,7 +197,7 @@ $ python
                 - bar.py
 ```
 
-包就是模块组织架构的一种便捷方式。在[标准库 standard library](./stdlib.md#stdlib) 中，你会看到更多的实例。
+包就是模块组织架构的一种便捷方式。在[标准库 standard library](./stdlib.md#stdlib) 中，你会看到更多的范例。
 
 ## 总结
 

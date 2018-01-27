@@ -1,10 +1,10 @@
-# 运算符与表达式 Operators and Expressions {#op-exp}
+# 运算符与表达式 operators and expressions {#op-exp}
 
 大多数你写的语句都含有 _表达式_ 。`2 + 3` 就是个简单的表达式。表达式可以拆分为运算符 (operators) 和操作数 (operands)。
 
 _运算符_ 是具有某些功能的，它的形式可以是符号如 `+` ，或者特殊关键词。运算符需要有数据去运算，这些数据称为 _操作数_。
 
-## 运算符 Operators
+## 运算符 operators
 
 我们可以先简单看看运算符和它们的使用方法。
 
@@ -112,7 +112,7 @@ a *= 3
 
 请注意，`var = var operation expression` 变成了 `var operation= expression` 。
 
-## 计算顺序 Evaluation Order
+## 计算顺序 evaluation order
 
 如 `2 + 3 * 4` 这类表达式，是先加还是先乘？高中数学告诉我们会先做乘。也就是说，乘运算符比加运算符拥有更高的优先级 (precedence) 。
 
@@ -147,7 +147,7 @@ _优先级相同_ 的运算符在上表中位列同一行规。例如 `+` 和 `-
 
 括号还有另一种妙用--它能帮助我们改变计算的顺序。例如如果你想要先计算加，你可以这样写 `(2 + 3) * 4` 。
 
-## 结合性 Associativity
+## 结合性 associativity
 
 通常运算符从左至右结合。也就是说相同优先级的运算符会以从左至右的顺序来计算。例如，`2 + 3 + 4` 会被当做  `(2 + 3) + 4` 来计算。
 

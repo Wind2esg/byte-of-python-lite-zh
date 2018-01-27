@@ -1,4 +1,4 @@
-# 关于 Python {#about_python}
+# 关于 python {#about_python}
 
 python 官网用以下特点描述它：
 > 易学，强劲。  
@@ -11,7 +11,7 @@ Guido van Rossum, python 语言的创造者, 以 BBC 的秀 "Monty Python's Flyi
 
 > 在我看来，他可能更讨厌 `;` 与 `{}` 。
 
-## Python的特点
+## python 的特点
 
 ### 简单，易学
 
@@ -26,7 +26,7 @@ python 程序读起来就如同读英文，这种伪代码的本质是它最强�
 
 ### 便携
 
-Python 程序如果没有使用依赖于操作系统的特性，可直接跨平台运行。
+python 程序如果没有使用依赖于操作系统的特性，可直接跨平台运行。
 
 ### 解释型语言
 

@@ -1,4 +1,4 @@
-# 控制流 Control Flow {#control-flow}
+# 控制流 control flow {#control-flow}
 
 迄今，我们所看到的程序中，基本都是一系列的语句，由 python 准确的按照从上至下的顺序执行。如果你想改变这个执行顺序，该怎么做？例如，你想要程序能够做出选择，根据不同的情况采取不同的行为，例如，根据当前时间打印“早上好”或“晚上好”？
 
@@ -46,7 +46,7 @@ python 执行完 `if` 语句以及它相关联的 `elif` 和 `else` 语句之后
 
 ## while
 
-`while` 语句，只要条件是真，那么你可以重复执行某语句块。`while` 是*循环 (looping)* 语句的实例之一。`while` 语句也可以有可选的 `else` 语句。
+`while` 语句，只要条件是真，那么你可以重复执行某语句块。`while` 是**循环 (looping)** 语句中的一种。`while` 语句也可以有可选的 `else` 语句。
 
 请看示例 `while.py` ：
 
@@ -121,7 +121,7 @@ python 执行完 `if` 语句以及它相关联的 `elif` 和 `else` 语句之后
 
 是的，`break` 语句也能在 `for` 循环中使用。
 
-**Swaroop 的 Python 诗**
+**Swaroop 的 python 诗**
 
 ```
 Programming is fun

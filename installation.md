@@ -2,7 +2,7 @@
 
 本书中提到 python 3 一般是指高于 [python {{ book.pythonVersion }}](https://www.python.org/downloads/) 的版本
 
-## windows 安装
+## Windows 安装
 
 到官网 [https://www.python.org/](https://www.python.org/downloads/) 下载合适的版本安装包。将 python 目录添加到环境变量 PATH 中。之后就直接在命令行环境中直接使用 python 命令运行 python 解释器。
 

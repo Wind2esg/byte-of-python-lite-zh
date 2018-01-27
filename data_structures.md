@@ -4,7 +4,7 @@
 
 python 有四种数据结构——**列表 (list) ，元组 (tuple) ，字典 (dictionary) 和集合 (set)** 。我们将看到它们如何发挥作用。
 
-## 列表 List
+## 列表 list
 
 `list` 这种数据结构是一种有序集合，即你可以将**序列**储存在列表里。这不难理解，如果你能想到购物清单。当然，这其中可能也存在差异，你的购物清单可能是每行一项，而 python 中，你使用逗号 `,` 来隔开那些项。
 
@@ -14,7 +14,7 @@ python 有四种数据结构——**列表 (list) ，元组 (tuple) ，字典 (d
 
 尽管到现在我们还要推迟对象和类的相关讨论，但你还是需要一些解释来帮助理解列表。我们会在[后面的章节](./oop.md#oop)里继续探索这个话题。
 
-列表是对象和类的用法的实例之一。当我们使用变量 `i` 并为它赋值，比如说赋值为整数 `5` 的时候，你可以把这想做创建一个**类**（即类型）`int` 的**对象**（即实例）`i`。实际上，阅读 `help(int)` 可以帮助你了解。
+列表是对象和类的应用之一。当我们使用变量 `i` 并为它赋值，比如说赋值为整数 `5` 的时候，你可以把这想做创建一个**类**（即类型）`int` 的**对象**（即实例）`i`。实际上，阅读 `help(int)` 可以帮助你了解。
 
 类还可以有**方法 (method)** 即专属该类的函数。只有该类的对象可以使用这些方法。例如，python 为 ` list` 提供的 `append` 方法，该方法是的你可以在列表的末尾追加项。注意访问对象的方法使用的是点标记法。
 
@@ -44,7 +44,9 @@ python 有四种数据结构——**列表 (list) ，元组 (tuple) ，字典 (d
 
 如果你下那个知道列表对象所有的方法，看看 `help(list)` 。
 
-## 元组 Tuple
+> `sort` 排序算法算是一个基本的算法和编程语言相关的联系。我在学习 python 的过程中，在编书的同时也写了一些排序算法，来巩固学习。它们在 [https://github.com/Wind2esg/python3sort](https://github.com/Wind2esg/python3sort) 。如果有兴趣，你可以去看一看。
+
+## 元组 tuple
 
 元组用以储存在一起的多个对象。它们和列表很像，只是没有列表类给你的那些伸缩方法。元组的一个主要特性就是**不可变**如同字符串那样。你不能修改元组。
 
@@ -77,7 +79,7 @@ python 有四种数据结构——**列表 (list) ，元组 (tuple) ，字典 (d
 
 > 被包含在列表之内的列表不会失去它的身份指的是列表不会像在 Perl 中那样被摊平。这个道理同样适用于元祖中的元组，或列表中的元组，或元祖中的列表等。python 看来，它们只是储存在其他对象中的对象。仅此而已。
 
-## 字典 Dictionary
+## 字典 dictionary
 
 字典有些像地址簿，你只需知道他或她的名称，就能找到这个人的地址或者详细联系方式，也就是说，我们将**键 (key)** 与**值**相联系。请记好，键必须是唯一的，就好像如果你的地址簿有重名的两个人，你就没法确认信息。
 
@@ -113,39 +115,47 @@ python 有四种数据结构——**列表 (list) ，元组 (tuple) ，字典 (d
 
 > **关键字参数和字典**
 > 
-> 如果你再函数中使用了关键字参数，那么你已经使用过字典了。想想——你在函数定义的参数列表中指定了键值对，你在函数中访问那些变量，其实就是在访问字典的键（这在编译器设计术语中被称为**符号表 (symbol table)** ）
+> 如果你再函数中使用了关键字参数，那么你已经使用过字典了。想想——你在函数定义的参数列表中指定了键值对，你在函数中访问那些变量，其实就是在访问字典的键（这在编译器设计术语中被称为**符号表 (symbol table)** ）。
 
-## 序列 Sequence
+## 序列 sequence
 
-Lists, tuples and strings are examples of sequences, but what are sequences and what is so special about them?
+列表，元素和字符串都是序列，但是序列究竟是什么，又有何特殊之处？
 
-The major features are *membership tests*, (i.e. the `in` and `not in` expressions) and *indexing operations*, which allow us to fetch a particular item in the sequence directly.
+它最主要的特性是**成员关系测试 (membership test)** ，即 `in` 和 `not in` 表达式，和允许我们从序列中获取特定项的**索引操作 (indexing operation)** 。
 
-The three types of sequences mentioned above - lists, tuples and strings, also have a *slicing* operation which allows us to retrieve a slice of the sequence i.e. a part of the sequence.
+之前提到的三种序列——列表，元组和字符串，都还有一种**切片**操作，这个操作使得我们能从序列中获取一段切片，即序列的某一部分。
 
-Example (save as `ds_seq.py`):
+请看示例 `ds_seq.py` ：
 
 <pre><code class="lang-python">{% include "./programs/ds_seq.py" %}</code></pre>
 
-Output:
+输出为：
 
 <pre><code>{% include "./programs/ds_seq.txt" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-First, we see how to use indexes to get individual items of a sequence. This is also referred to as the _subscription operation_. Whenever you specify a number to a sequence within square brackets as shown above, Python will fetch you the item corresponding to that position in the sequence. Remember that Python starts counting numbers from 0. Hence, `shoplist[0]` fetches the first item and `shoplist[3]` fetches the fourth item in the `shoplist`sequence.
+首先，我们看到怎样使用索引来单独获取序列中的项。这也被称作**下标操作 (subscription operation)** 。无论何时，只要我们像上面那样在中括号内指定一个数字，python 将会获取到序列中与该位置相对应的项。请记住，python 从 0 开始计数。因此在`shoplist` 序列中， `shoplist[0]` 会获取第一项，而 `shoplist[3]` 会获取第四项。
 
-The index can also be a negative number, in which case, the position is calculated from the end of the sequence. Therefore, `shoplist[-1]` refers to the last item in the sequence and `shoplist[-2]` fetches the second last item in the sequence.
+索引也可以是一个负数，上例中，位置从序列末尾开始计算。因此，`shoplist[-1]` 指的是最后一项，`shoplist[-2]` 获取的是倒数第二项。
 
-The slicing operation is used by specifying the name of the sequence followed by an optional pair of numbers separated by a colon within square brackets. Note that this is very similar to the indexing operation you have been using till now. Remember the numbers are optional but the colon isn't.
+切片操作使用方式是指定序列名称，中括号紧随其后，中括号内是一对使用冒号隔开的数字。请注意，这与目前使用的索引操作很相似。请记好，数字是可选的，但冒号是必须有的。
 
-The first number (before the colon) in the slicing operation refers to the position from where the slice starts and the second number (after the colon) indicates where the slice will stop at. If the first number is not specified, Python will start at the beginning of the sequence. If the second number is left out, Python will stop at the end of the sequence. Note that the slice returned _starts_ at the start position and will end just before the _end_ position i.e. the start position is included but the end position is excluded from the sequence slice.
+第一个数，即冒号前的数，在切片操作中指示切片的起点，第二个数，也就是冒号之后的数，代表切片终点。如果第一个数没有被指明，那么 python 会认为切片的起点是序列的开头。如果第二个数字留空，python 将序列的末尾当做切片的重点。值得注意的是切片**始于**起点，但**止于**终点前，也就是说，起点位置是被包含在内的，但终点位置不被包含。
 
-Thus, `shoplist[1:3]` returns a slice of the sequence starting at position 1, includes position 2 but stops at position 3 and therefore a *slice* of two items is returned.  Similarly, `shoplist[:]` returns a copy of the whole sequence.
+依此，`shoplist[1:3]` 返回序列的一个切片，这个切片起点在 1 ，包括位置 2 但停在了位置 3 。所以结果返回的是一个含有两项的**切片**。类似的 `shoplist[:]` 将返回整个序列的一个副本。
 
-You can also do slicing with negative positions. Negative numbers are used for positions from the end of the sequence. For example, `shoplist[:-1]` will return a slice of the sequence which excludes the last item of the sequence but contains everything else.
+你还可以使用负的位置来做切片。负数是指从序列末尾开始计算。例如 `shoplist[:-1]` 将会返回一个包含除序列最后一项之外的所有项的切片。
 
-You can also provide a third argument for the slice, which is the _step_ for the slicing (by default, the step size is 1):
+> 切片的用法还是很有意思的。
+>
+> 它让我想起了高中化学课本中德国化学家凯库勒 FriedrichA·Kekule 长期探究苯环结构，终有一晚，他梦见一条咬住自己尾巴的蛇，由此揭开了苯环结构之谜，我们都知道的凯库勒式。虽然某天我偶然得知实际上凯库勒实际上很可能并不是凯库勒首先发现的，但这个蛇图也可以拿来帮助理解切片。
+>
+> python 可能也是这样的环，并且我由于可以使用负位置，我猜很可能是首尾相连的双向链表来实现序列这个数据结构，即每个节点都有两个指针，一个指向之前，一个指向之后。那么也就是说，按照切片的语法，整个序列的切片可能是 [0:0] 或者 [0:-0] 。根据编译原理，中括号内相当于参数列表，肯定是从左至右扫描的，[0：0] 会让编译器困惑。[0：-0] 也很容易让我们困惑。所以作者想出个巧妙地办法，索性将之缺省。
+>
+> 这些猜测需要深扒 python ，日后我们再行探究。
+
+你也可以为切片提供第三个参数，它是切片的**步长 (step)** ，类似 `range()`，这个步长默认也为 1 。
 
 ```python
 >>> shoplist = ['apple', 'mango', 'carrot', 'banana']
@@ -159,15 +169,15 @@ You can also provide a third argument for the slice, which is the _step_ for the
 ['banana', 'carrot', 'mango', 'apple']
 ```
 
-Notice that when the step is 2, we get the items with position 0, 2,... When the step size is 3, we get the items with position 0, 3, etc.
+请注意，当步长是 2 时，我们取得的项的位置是 0 ，2 等。当步长是 3 ，项的位置是 0 ，3 等。
 
-Try various combinations of such slice specifications using the Python interpreter interactively i.e. the prompt so that you can see the results immediately. The great thing about sequences is that you can access tuples, lists and strings all in the same way!
+在 python 解释器互动命令行中尝试这些不同的切片指定方法，你可以立刻看到结果。序列的最佳之处在于你可以用相同的方式访问列表，元组和字符串。
 
-## Set
+## 集合 set
 
-Sets are _unordered_ collections of simple objects. These are used when the existence of an object in a collection is more important than the order or how many times it occurs.
+集合 (set) 是简单对象的**无序**集合。当某对象在集合中存在与否重于它的顺序或者出现次数的时候，适合使用集合。
 
-Using sets, you can test for membership, whether it is a subset of another set, find the intersection between two sets, and so on.
+使用集合时，你可以有成员关系测试相关的操作，如它是否是其他集合的子集，查找两个集合的交集等等。
 
 ```python
 >>> bri = set(['brazil', 'russia', 'india'])
@@ -184,56 +194,61 @@ True
 {'brazil', 'india'}
 ```
 
-**How It Works**
+**它是怎样做的**
 
-If you remember basic set theory mathematics from school, then this example is fairly self-explanatory.  But if not, you can google "set theory" and "Venn diagram" to better understand our use of sets in Python.
+如果你想起校园时期学到的数学理论中集合的基本概念，那这个例子已经能自我说明了。如果没有，你还是百度一下“集合理论”以及“文氏图”来帮助理解 python 中的集合用法。
 
-## References
+## 引用 references
 
-When you create an object and assign it to a variable, the variable only _refers_ to the object and does not represent the object itself!  That is, the variable name points to that part of your computer's memory where the object is stored. This is called *binding* the name to the object.
+当你创建了一个对象并将之赋值给一个变量，这个变量仅仅是这个对象的**引用**，它表示的并不是这个对象本身！也就是说，这个变量名称指向你电脑中存储对象的那块内存。这被称为将名称**绑定 (binding)** 到对象。 
 
-Generally, you don't need to be worried about this, but there is a subtle effect due to references which you need to be aware of:
+你通常都不必太关心这一点，但有时你还是得意识到引用会引起会产生某些微妙的效果：
 
-Example (save as `ds_reference.py`):
+请看示例 `ds_reference.py` ：
 
 <pre><code class="lang-python">{% include "./programs/ds_reference.py" %}</code></pre>
 
-Output:
+输出为：
 
 <pre><code>{% include "./programs/ds_reference.txt" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-Most of the explanation is available in the comments.
+开始的时候将 `shoplist` 赋给 `mylist` ，`mylist` 同 `shoplist` 一样，仅仅是变量名称，它们实际指向同一个对象。所以打印结果是相同的，都没有了 `apple` 。
 
-Remember that if you want to make a copy of a list or such kinds of sequences or complex objects (not simple _objects_ such as integers), then you have to use the slicing operation to make a copy. If you just assign the variable name to another name, both of them will ''refer'' to the same object and this could be trouble if you are not careful.
+第二次我们先对 `shoplist` 引用的对象进行切片，再赋给 `mylist` 。这时，`mylist` 与 `shoplist` 已经不同了，它引用的是另一个对象。所以打印结果是不同的，`mylist` 中的 `mango` 没有了，`shoplist` 的还在。
 
-> **Note for Perl programmers**
-> 
-> Remember that an assignment statement for lists does **not** create a copy. You have to use slicing operation to make a copy of the sequence.
+请记住如果你想要复制某列表，或者其他种类的序列，或者是复杂对象（不是像整数那种**简单的对象**），你必须使用切片来制作这个副本。如果你仅仅将变量名称赋给另一个名称，那他们都会“引用”同一个对象。你如果不留心这点，就有可能造成麻烦。
 
-## More About Strings {#more-strings}
+> perl 程序员需要列表的赋值语句并**不创建**副本。
+>
+> 如果你熟悉其他的面向对象编程语言，那么浅复制和深复制你一定不陌生。实际上切片仅复制一层对象，并不是深复制。
+>
+> 当列表内的项由引用时，你就能发现这一点。    
 
-We have already discussed strings in detail earlier. What more can there be to know?  Well, did you know that strings are also objects and have methods which do everything from checking part of a string to stripping spaces?  In fact, you've already been using a string method... the `format` method!
+## 更多关于字符串的事 {#more-strings}
+
+早些时候，我们已经详细的讨论过字符串了。那么还有其他什么是我们在这要知道的？好吧，你知道字符串也是对象，那你知道它也有能完成从检测字符串的某一部分到去除空格等一系列操作的方法吗？实际上，你已经是用过一个字符串方法了，那就是 `format` 方法！
 
 The strings that you use in programs are all objects of the class `str`.  Some useful methods of this class are demonstrated in the next example. For a complete list of such methods, see `help(str)`.
+你在程序中所使用的字符串全部都是类 `str` 的对象。这个类一些很有用的方法在下面的示例中会做以说明。如果你想看这些方法的完整列表，`help(str)` 。
 
-Example (save as `ds_str_methods.py`):
+请看示例 `ds_str_methods.py` ：
 
 <pre><code class="lang-python">{% include "./programs/ds_str_methods.py" %}</code></pre>
 
-Output:
+输出为：
 
 <pre><code>{% include "./programs/ds_str_methods.txt" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-Here, we see a lot of the string methods in action. The `startswith` method is used to find out whether the string starts with the given string. The `in` operator is used to check if a given string is a part of the string.
+这里，我们看到一系列字符串方法。`startswith` 方法用来查找字符串是否以给定字符串开头。`in` 操作符用来检测给定字符串是否是某字符串的一部分。
 
-The `find` method is used to locate the position of the given substring within the string; `find` returns -1 if it is unsuccessful in finding the substring. The `str` class also has a neat method to `join` the items of a sequence with the string acting as a delimiter between each item of the sequence and returns a bigger string generated from this.
+`find` 方法能够在字符串内定位子字符串。如果不能 `find` 返回 -1 。`str` 还有个 `join` 方法，**连接 (join)** 能将字符串作为某序列的项之间的分隔符，并返回以此生成更大的字符串。
 
-## Summary
+## 总结
 
-We have explored the various built-in data structures of Python in detail. These data structures will be essential for writing programs of reasonable size.
+我们仔细探索了这些 python 内置的数据结构。它们在成规模的程序编写中是不可或缺的。
 
-Now that we have a lot of the basics of Python in place, we will next see how to design and write a real-world Python program.
+现在，我们的基础已经比较扎实了，接着我们就要试着设计和编写真正的 python 程序了。
