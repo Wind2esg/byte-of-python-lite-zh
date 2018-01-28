@@ -1,8 +1,8 @@
 {
     "variables": {
         "pythonVersion": "3.6.0",
-        "authorGithubUrl": "https://gith.com/Wind2esg/byte-of-python-lite-zh",
-
+        "authorGithubUrl": "https://github.com/Wind2esg/byte-of-python-lite-zh",
+        "authorGitbookUrl": "https://www.gitbook.com/book/wind2esg/python/details",
         "originalAuthorUrl": "https://www.swaroopch.com/about/",
         "originalDownloadUrl": "https://www.gitbook.com/book/swaroopch/byte-of-python/details",
         "originalOfficialUrl": "https://python.swaroopch.com/",

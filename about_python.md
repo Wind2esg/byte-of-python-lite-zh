@@ -1,4 +1,4 @@
-# 关于 python {#about_python}
+# 关于 {#about_python}
 
 python 官网用以下特点描述它：
 > 易学，强劲。  

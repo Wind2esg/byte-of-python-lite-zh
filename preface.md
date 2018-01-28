@@ -14,6 +14,8 @@
 
 ## 官方网址
 
-本书基于 markdown ，构建于 gitbook 。
+本书基于 markdown ，构建于 gitbook.com 。
+
+- 在线阅读 [{{book.authorGitbookUrl}}]({{book.authorGitbookUrl}})
 - 源代码 [{{book.authorGithubUrl}}]({{book.authorGithubUrl}})
-- 在线阅读
+
