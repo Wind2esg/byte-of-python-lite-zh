@@ -171,6 +171,8 @@ python 有四种数据结构——**列表 (list) ，元组 (tuple) ，字典 (d
 
 请注意，当步长是 2 时，我们取得的项的位置是 0 ，2 等。当步长是 3 ，项的位置是 0 ，3 等。
 
+> 请注意，步长也可以是负数。
+
 在 python 解释器互动命令行中尝试这些不同的切片指定方法，你可以立刻看到结果。序列的最佳之处在于你可以用相同的方式访问列表，元组和字符串。
 
 ## 集合 set
@@ -230,7 +232,6 @@ True
 
 早些时候，我们已经详细的讨论过字符串了。那么还有其他什么是我们在这要知道的？好吧，你知道字符串也是对象，那你知道它也有能完成从检测字符串的某一部分到去除空格等一系列操作的方法吗？实际上，你已经是用过一个字符串方法了，那就是 `format` 方法！
 
-The strings that you use in programs are all objects of the class `str`.  Some useful methods of this class are demonstrated in the next example. For a complete list of such methods, see `help(str)`.
 你在程序中所使用的字符串全部都是类 `str` 的对象。这个类一些很有用的方法在下面的示例中会做以说明。如果你想看这些方法的完整列表，`help(str)` 。
 
 请看示例 `ds_str_methods.py` ：

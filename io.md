@@ -1,82 +1,82 @@
-# Input and Output {#io}
+# 输入和输出 input and output {#io}
 
-There will be situations where your program has to interact with the user. For example, you would want to take input from the user and then print some results back. We can achieve this using the `input()` function and `print` function respectively.
+有时候你的程序需要和程序互动。例如，你想要获取用户的输入，然后将其打印。我们能通过 `input()` 函数和 `print` 函数来实现。
 
-For output, we can also use the various methods of the `str` (string) class. For example, you can use the `rjust` method to get a string which is right justified to a specified width. See `help(str)` for more details.
+对于输出来说，我们还能使用 `str` 类的各种方法。例如，你可以用 `rjust` 方法来获取右对齐于指定宽度的字符串。用 `help(str)` 能看到更多详细信息。
 
-Another common type of input/output is dealing with files. The ability to create, read and write files is essential to many programs and we will explore this aspect in this chapter.
+另一种常见的输入或输出类型是关于文件的。这种创建，和读写文件的能力对很多程序来说都是不可缺的。在本章，我们会在这方面做探索。
 
-## Input from user
+## 用户输入
 
-Save this program as `io_input.py`:
+请看示例 `io_input.py` ：
 
 <pre><code class="lang-python">{% include "./programs/io_input.py" %}</code></pre>
 
-Output:
+输出为：
 
 <pre><code>{% include "./programs/io_input.txt" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-We use the slicing feature to reverse the text. We've already seen how we can make [slices from sequences](./data_structures.md#sequence) using the `seq[a:b]` code starting from position `a` to position `b`. We can also provide a third argument that determines the _step_ by which the slicing is done. The default step is `1` because of which it returns a continuous part of the text. Giving a negative step, i.e., `-1` will return the text in reverse.
+我们使用切片特性来反转文本。我们在[之前的章节](./data_structures.md#sequence)已经知道如何从序列中制作切片，代码 `seq[a:b]` 能得到从 `a` 到 `b` 的切片。我们还可以提供第三个参数，决定切片的步长。默认步长是 `1` 因为它能返回一段连续的文本。给出负的步长，如 `-1` 会返回反转的文本。
 
-The `input()` function takes a string as argument and displays it to the user. Then it waits for the user to type something and press the return key. Once the user has entered and pressed the return key, the `input()` function will then return that text the user has entered.
+`input()` 函数可接受一个字符串作为参数，并将它显示给用户。然后它会等待用户输入和回车键。用户输入完毕并按下回车之后，`input()` 函数会返回用户输入的文本。
 
-We take that text and reverse it. If the original text and reversed text are equal, then the text is a [palindrome](http://en.wiktionary.org/wiki/palindrome).
+我们取得文本并反转它。如果原始文本和反转文本相同，那么这个文本就是[回文 (palindrome)](http://en.wiktionary.org/wiki/palindrome) 。
 
-### Homework exercise
+### 联系作业
 
-Checking whether a text is a palindrome should also ignore punctuation, spaces and case. For example, "Rise to vote, sir." is also a palindrome but our current program doesn't say it is. Can you improve the above program to recognize this palindrome?
+检测一个文本是否是回文应该忽略标点符号，空格和大小写。例如，"Rise to vote, sir." 是回文，但是我们当前程序并不这么判断。你能优化此程序来是它识别回文吗?
 
-If you need a hint, the idea is that...[^1]
+## 文件
 
-## Files
+你创建一个 `file` 类的对象来打开并使用文件，然后使用它的 `read` ，`readline` 或 `write` 方法来相应的进行读写操作。对文件的读写能力依赖于你指定的打开文件的模式。最终，当你用完文件，你要调用关闭即 `close` 方法来告诉 python 文件已经使用完毕。
 
-You can open and use files for reading or writing by creating an object of the `file` class and using its `read`, `readline` or `write` methods appropriately to read from or write to the file. The ability to read or write to the file depends on the mode you have specified for the file opening. Then finally, when you are finished with the file, you call the `close` method to tell Python that we are done using the file.
-
-Example (save as `io_using_file.py`):
+请看示例 `io_using_file.py` ：
 
 <pre><code class="lang-python">{% include "./programs/io_using_file.py" %}</code></pre>
 
-Output:
+输出为：
 
 <pre><code>{% include "./programs/io_using_file.txt" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-Note that we can create a new file object simply by using the `open` method.  We open (or create it if it doesn't already exist) this file by using the built-in `open` function and specifying the name of the file and the mode in which we want to open the file. The mode can be a read mode (`'r'`), write mode (`'w'`) or append mode (`'a'`). We can also specify whether we are reading, writing, or appending in text mode (`'t'`) or binary mode (`'b'`). There are actually many more modes available and `help(open)` will give you more details about them. By default, `open()` considers the file to be a 't'ext file and opens it in 'r'ead mode.
+请注意，我们能够使用 `open` 方法轻松创建一个新的文件对象。我们使用内置的 `open` 函数打开（如果它不存在就创建）这个文件，并且指定这个文件的名称和我们想要打开它的模式。这个模式可以是读模式 `'r'` ，写模式 `'w'` ，追加模式 `'a'` 。我们还能指定以文本模式 `'t'` 或是二进制模式 `'b'` 来进行这些读，写或者追加操作。实际上这样的模式还有很多，`help(open)` 能够给你更多详细信息。`open()` 默认使用 `t` 和 `r` 模式。
 
-In our example, we first open/create the file in write text mode and use the `write` method of the file object to write  our string variable `poem` to the file and then we finally `close` the file.
+在我们的例子中，我们先以写入文本模式打开或创建文件，接着使用文件对象的 `write` 方法将我们的字符串变量 `poem` 写入到这个文件中，最后我们关闭即 `close` 此文件。
 
-Next, we open the same file again for reading. We don't need to specify a mode because 'read text file' is the default mode. We read in each line of the file using the `readline` method in a loop. This method returns a complete line including the newline character at the end of the line. When an _empty_ string is returned, it means that we have reached the end of the file and we 'break' out of the loop.
+接下来，我们再次打开同样的文件来读取。我们不需要指定模式，因为“读取文本文件”是默认模式。我们在循环中使用 `readline` 方法来从文件中读取每一行。这个方法返回整个行，包括行末尾的换行符。当一个**空**字符串被返回时，这意味着我们已经读到了文件的末尾，我们打破即 `break` 了循环。
 
-In the end, we finally `close` the file.
+最终，我们关闭即 `close` 了文件。
 
-We can see from our `readline` output that this program has indeed written to and read from our new `poem.txt` file.
+我们能从 `readline` 的输出看到程序确实对我们的新文件 `poem.txt` 进行了读写操作。
 
-## Pickle
+## pickle
 
-Python provides a standard module called `pickle` which you can use to store _any_ plain Python object in a file and then get it back later. This is called storing the object *persistently*.
+python 提供一个标准模块，叫做 `pickle` ，你可以使用它来储存**任何**简单 python 对象到文件中，或者将它从文件中取出。这被称为**持久 (persistently)** 储存对象。
 
-Example (save as `io_pickle.py`):
+> pickle ，这个命名很有点意思。保留原文会更好的帮你理解和记忆它。
+
+请看示例 `io_pickle.py` ：
 
 <pre><code class="lang-python">{% include "./programs/io_pickle.py" %}</code></pre>
 
-Output:
+输出为：
 
 <pre><code>{% include "./programs/io_pickle.txt" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-To store an object in a file, we have to first `open` the file in __w__rite __b__inary mode and then call the `dump` function of the `pickle` module. This process is called _pickling_.
+为将某对象储存到文件中，我们必须先用写入二进制模式打开文件，然后调用 `pickle` 模块的 `dump` 函数。这个过程称为 **pickling**
 
-Next, we retrieve the object using the `load` function of the `pickle` module which returns the object. This process is called _unpickling_.
+接着，我们使用 `pickle` 模块的 `load` 函数来获取对象，它返回此对象。这个过程被称为 **unpickling** 。
 
 ## Unicode
 
-So far, when we have been writing and using strings, or reading and writing to a file, we have used simple English characters only.  Both English and non-English characters can be represented in Unicode (please see the articles at the end of this section for more info), and Python 3 by default stores string variables (think of all that text we wrote using single or double or triple quotes) in Unicode.  
+迄今为止，当我们编写或者使用字符串，读取或者写入文件的时候，我们仅使用了英文字符。英文和非英文字符都可以用 Unicode （本章末尾有更多关于它的信息）表示，并且 python 3 默认使用 Unicode 来存储字符（想想那些我们写在单引号，双引号或者三引号内的文本）。
 
-> NOTE: If you are using Python 2, and we want to be able to read and write other non-English languages, we need to use the `unicode` type, and it all starts with the character `u`, e.g. `u"hello world"`
+> 以后的日子少不了与 gbk 的纠缠。  
 
 ```python
 >>> "hello world"
@@ -89,28 +89,18 @@ So far, when we have been writing and using strings, or reading and writing to a
 <class 'str'>
 ```
 
-When data is sent over the Internet, we need to send it in bytes... something your computer easily understands.  The rules for translating Unicode (which is what Python uses when it stores a string) to bytes is called encoding.  A popular encoding to use is UTF-8.  We can read and write in UTF-8 by using a simple keyword argument in our `open function`.
+当数据通过互联网发送时，我们需要将它以你计算机容易理解的字节形式发送。将 Unicode 转换为字节的规则叫做编码 (encoding) 。一种流行的编码时 UTF-8 。我们可以在 `open` 函数中使用关键词参数来指定使用 UTF-8 读写。
 
 <pre><code class="lang-python">{% include "./programs/io_unicode.py" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-We use  io.open  and then use the `encoding` argument in the first open statement to encode the message, and then again in the second open statement when decoding the message.  Note that we should only use encoding in the open statement when in text mode.
+我们在第一个 open 语句中使用 `io.open` 以及 `encoding` 参数来编码消息。之后在第二个 open 语句当中解码 (decoding) 消息。请注意我们只能在文本模式的 open 语句中使用 encoding 。
 
-Whenever we write a program that uses Unicode literals (by putting a `u` before the string) like we have used above, we have to make sure that Python itself is told that our program uses UTF-8, and we have to put  `# encoding=utf-8`  comment at the top of our program.  
+像上面那样，当我们使用 Unicode 字符（在字符串前面加 `u` ）编写程序时，我们必须确保 python 得知我们的程序使用 UTF-8，并且我们必须在程序的顶端写下 `# encoding=utf-8` 注释。
 
-You should learn more about this topic by reading:
+## 总结
 
-- ["The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets"](http://www.joelonsoftware.com/articles/Unicode.html)
-- [Python Unicode Howto](http://docs.python.org/3/howto/unicode.html)
-- [Pragmatic Unicode talk by Nat Batchelder](http://nedbatchelder.com/text/unipain.html)
+我们已经讨论关于文件，pickle 模块和 Unicode 等多种输入输出类型。
 
-## Summary
-
-We have discussed various types of input/output, about file handling, about the pickle module and about Unicode.
-
-Next, we will explore the concept of exceptions.
-
----
-
-[^1]: Use a tuple (you can find a list of _all_ [punctuation marks here](http://grammar.ccc.commnet.edu/grammar/marks/marks.htm)) to hold all the forbidden characters, then use the membership test to determine whether a character should be removed or not, i.e. forbidden = (`!`, `?`, `.`, ...).
+接下来，我们要探索异常 (exception) 的相关概念。

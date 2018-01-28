@@ -106,9 +106,9 @@
 
 `how_many` 实际上是只属于类的方法。这意味着根据我们是否需要知道它们属于哪个类来将之定义为 `classmethod` 或者 `staticmethod` 。由于我们要引用了类变量，就用 `classmethod` 。
 
-我们已经使用 [修饰符 decorator](./more.md#decorator) 将 `how_many` 方法标记为类方法。
+我们已经使用 [装饰器 decorator](./more.md#decorator) 将 `how_many` 方法标记为类方法。
 
-修饰符可以想象成是调用封装 (wrap) 函数的快捷方式。封装函数即“封装”了其他函数以期它们能在内部函数前后发生作用的函数。所以 `@classmethod` 修饰符和下述调用相同：
+装饰器可以想象成是调用封装 (wrap) 函数的快捷方式。封装函数即“封装”了其他函数以期它们能在内部函数前后发生作用的函数。所以 `@classmethod` 装饰器和下述调用相同：
 
 ```python
 how_many = classmethod(how_many)

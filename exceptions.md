@@ -1,13 +1,14 @@
-# Exceptions
+# 异常 exception
 
-Exceptions occur when _exceptional_ situations occur in your program. For example, what if you are going to read a file and the file does not exist? Or what if you accidentally deleted it when the program was running? Such situations are handled using **exceptions**.
+当程序中发生**意料之外**的事时，异常 (exception) 就产生了。例如，你要读取一个文件，但这个文件并不存在时会怎样？或者在程序运行时，你不小心删掉了它的话会怎样？这种情况都交由**异常**处理。
 
-Similarly, what if your program had some invalid statements? This is handled by Python which **raises** its hands and tells you there is an **error**.
+类似的，你的程序有不合法语句时会怎样？python 会这样处理，抬起它的手，然后告诉你这有个**错误 (error)** 。
 
-## Errors
+## 错误 error
 
-Consider a simple `print` function call. What if we misspelt `print` as `Print`? Note the capitalization. In this case, Python _raises_ a syntax error.
+设想一个简单的 `print` 函数调用。你错将 `print` 写成 `Print` 的话会怎么样？请注意这个大写。本例中，python **抛出 (raise)** 一个语法错误。
 
+> raise 译作“抛出”，是因为通常我们都习惯说**抛出**异常或错误。
 ```python
 >>> Print("Hello World")
 Traceback (most recent call last):
@@ -17,11 +18,11 @@ NameError: name 'Print' is not defined
 Hello World
 ```
 
-Observe that a `NameError` is raised and also the location where the error was detected is printed. This is what an **error handler** for this error does.
+仔细看，一个 `NameError` 被抛出，它的位置也被侦测到并打印出来。这是此错误的**错误句柄 (error handler)** 的作用。
 
-## Exceptions
+## 异常
 
-We will **try** to read input from the user.  Enter the first line below and hit the `Enter` key.  When your computer prompts you for input, instead press `[ctrl-d]` on a Mac or `[ctrl-z]` with Windows and see what happens.  (If you're using Windows and neither option works, you can try `[ctrl-c]` in the Command Prompt to generate a KeyboardInterrupt error instead).
+我们将要**试着**读取用户输入。键入下例中的第一行，然后按下 `Enter` 键。当你机器的命令行提示符等待你输入的时候，按下相应的终止热键，看看会发生什么。
 
 ```python
 >>> s = input('Enter something --> ')
@@ -30,96 +31,105 @@ Enter something --> Traceback (most recent call last):
 EOFError
 ```
 
-Python raises an error called `EOFError` which basically means it found an *end of file* symbol (which is represented by `ctrl-d`) when it did not expect to see it.
+python 抛出了叫做 `EOFError` 的错误，最主要是说在它不期望看到**文件结尾**的地方，发现了**EOF**符号。
 
-## Handling Exceptions
+> EOF 不陌生吧？
 
-We can handle exceptions using the `try..except` statement.  We basically put our usual statements within the try-block and put all our error handlers in the except-block.
+## 异常处理
 
-Example (save as `exceptions_handle.py`):
+我们可以使用 `try..except` 语句来处理异常。我们主要是将我们普通语句放入 try-block 然后将所有的错误句柄放在 except-block 中。
+
+> try catch 更常见。
+
+请看示例 `exceptions_handle.py` ：
 
 <pre><code class="lang-python">{% include "./programs/exceptions_handle.py" %}</code></pre>
 
-Output:
+输出为：
 
 <pre><code>{% include "./programs/exceptions_handle.txt" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-We put all the statements that might raise exceptions/errors inside the `try` block and then put handlers for the appropriate errors/exceptions in the `except` clause/block. The `except` clause can handle a single specified error or exception, or a parenthesized list of errors/exceptions. If no names of errors or exceptions are supplied, it will handle _all_ errors and exceptions.
+我们将所有可能抛出异常或者错误的语句都放入 `try` 块中，然后将相应的句柄放在 `except` 语句或块里。`except` 语句会处理被特指某个错误或异常，或者一括号的错误或者异常列表。如果没有为这些错误和异常提供名称，它就会处理**所有**的错误和异常。
 
-Note that there has to be at least one `except` clause associated with every `try` clause. Otherwise, what's the point of having a try block?
+每个 `try` 语句都至少得有一个 `except` 语句与其相关联。否则 try 的意义何在？
 
-If any error or exception is not handled, then the default Python handler is called which just stops the execution of the program and prints an error message. We have already seen this in action above.
+如果有错误和异常是没有被处理的，python 默认的句柄就会被调用，它会停止程序运行并且打印错误消息。这些行为我们在上面已经见过了。
 
-You can also have an `else` clause associated with a `try..except` block. The `else` clause is executed if no exception occurs.
+你还可以在 `try..except` 这使用 `else` 语句。如果没有异常产生，`else` 语句会被执行。
 
-In the next example, we will also see how to get the exception object so that we can retrieve additional information.
+在下个例子中，你会看到怎样取得异常对象，通过它来获取更多信息。
 
-## Raising Exceptions
+## 抛出异常
 
-You can _raise_ exceptions using the `raise` statement by providing the name of the error/exception and the exception object that is to be _thrown_.
+你可以使用 `rasie` 语句，提供错误或者异常的名称以及异常对象来**抛出**异常。
 
-The error or exception that you can raise should be a class which directly or indirectly must be a derived class of the `Exception` class.
+你要抛出的错误或者异常必须直接和间接的继承自 `Exception` 类。
 
-Example (save as `exceptions_raise.py`):
+请看示例 `exceptions_raise.py` ：
 
 <pre><code class="lang-python">{% include "./programs/exceptions_raise.py" %}</code></pre>
 
-Output:
+输出为：
 
 <pre><code>{% include "./programs/exceptions_raise.txt" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-Here, we are creating our own exception type. This new exception type is called `ShortInputException`. It has two fields - `length` which is the length of the given input, and `atleast` which is the minimum length that the program was expecting.
+在这里，我们创建了我们自己的异常类型。这个新异常类型叫做 `ShortInputException`。它有两个字段，`length` 是给定输入的长度，`atleast` 是程序要求的最小长高度。
 
-In the `except` clause, we mention the class of error which will be stored `as` the variable name to hold the corresponding error/exception object. This is analogous to parameters and arguments in a function call. Within this particular `except` clause, we use the `length` and `atleast` fields of the exception object to print an appropriate message to the user.
+在 `except` 语句中，我们指明这个类，它的相应对象，储存在 `as` 后的变量名中。这就如同函数调用中的参数 (parameters 和 arguments) 。在特定的 `except` 语句中，我们使用异常对象的 `length` 和 `atleast` 字段来打印正确信息给用户。
+
+> 异常处理这块我们可以多谈谈。
+> 现在已经有一些禁用 try catch 的声音了。
+> 根据 try except 或 catch 的特性和继承的特性，我们得知异常处理时指定的类范围过大，这将会屏蔽应有的错误提示，这是编程不友好的。另外它们的消耗也不小，这是性能不友好。
+> 但是我并不推荐禁用。它的本意有两点，第一是用户友好，防止程序出现异常或者错误而崩溃。第二，提供自定义的抛出处理机制。不能把使用者的笨拙怪罪于刀，对吧。
 
 ## Try ... Finally {#try-finally}
 
-Suppose you are reading a file in your program. How do you ensure that the file object is closed properly whether or not an exception was raised? This can be done using the `finally` block.
+假设你打的程序读取一个文件。无论有无异常，你怎么来确保文件对象被正确关闭？你可以使用 `finally` 块。
 
-Save this program as `exceptions_finally.py`:
+请看示例 `exceptions_finally.py` ：
 
 <pre><code class="lang-python">{% include "./programs/exceptions_finally.py" %}</code></pre>
 
-Output:
+输出为：
 
 <pre><code>{% include "./programs/exceptions_finally.txt" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-We do the usual file-reading stuff, but we have arbitrarily introduced sleeping for 2 seconds after printing each line using the `time.sleep` function so that the program runs slowly (Python is very fast by nature). When the program is still running, press `ctrl + c` to interrupt/cancel the program.
+我们像平常那样做文件读取，但我们使用 `time.sleep` 函数来使程序每打印一行后睡眠 2 秒，这样程序的运行就慢下来了。当程序运行的时候，按 `ctrl + c` 能打断或者取消程序。
 
-Observe that the `KeyboardInterrupt` exception is thrown and the program quits. However, before the program exits, the finally clause is executed and the file object is always closed.
+仔细观察 `KeyboardInterrupt` 异常被抛出，程序退出了。但是，在程序退出之前，finally 语句在执行了，文件对象总能关闭。
 
-Notice that a variable assigned a value of 0 or `None` or a variable which is an empty sequence or collection is considered `False` by Python.  This is why we can use `if: f` in the code above.
+请注意，一个变量被赋值 0 或者 `None` ，或者一个变量引用空的序列或者集合在 python 中被看做是 `False` 。这也是我们在上述代码中使用 `if: f` 的原因。
 
-Also note that we use `sys.stdout.flush()` after `print` so that it prints to the screen immediately.
+还请注意，在 `print`之后我们还使用了 `sys.stdout.flush()` ，来使其能立即打印到屏幕上。
 
-## The with statement {#with}
+## with {#with}
 
-Acquiring a resource in the `try` block and subsequently releasing the resource in the `finally` block is a common pattern. Hence, there is also a `with` statement that enables this to be done in a clean manner:
+在 `try` 块内获取一个资源接着在 `finally` 块中释放这个资源是一个很常见的模式。因此，这还有一个 `with` 语句能利索的完成这件事。
 
-Save as `exceptions_using_with.py`:
+请看示例 `exceptions_using_with.py` ：
 
 <pre><code class="lang-python">{% include "./programs/exceptions_using_with.py" %}</code></pre>
 
-**How It Works**
+**它是怎样做的**
 
-The output should be same as the previous example. The difference here is that we are using the `open` function with the `with` statement - we leave the closing of the file to be done automatically by `with open`.
+输出同前例一样。不同的是我们在 `open` 函数中使用 `with` 语句——我们可以将文件的关闭交由 `with open` 自动完成。
 
-What happens behind the scenes is that there is a protocol used by the `with` statement. It fetches the object returned by the `open` statement, let's call it "thefile" in this case.
+在表面之下是 `with` 语句使用了一个协议。它通过 `open` 语句的返回获取对象，在此例中让我们称之为“thefile”。
 
-It _always_ calls the `thefile.__enter__` function before starting the block of code under it and _always_ calls `thefile.__exit__` after finishing the block of code.
+`thefile.__enter__` 函数总在 `with` 之后的代码块开始前被调用。`thefile.__exit__` 函数总在这个代码块结束之后被调用。
 
-So the code that we would have written in a `finally` block should be taken care of automatically by the `__exit__` method. This is what helps us to avoid having to use explicit `try..finally` statements repeatedly.
+所以我们写在 `finally` 块中的代码会被 `__exit__` 方法自动处理。这能帮助我们避免在必须重复显式使用 `try..finally` 语句。
 
-More discussion on this topic is beyond scope of this book, so please refer [PEP 343](http://www.python.org/dev/peps/pep-0343/) for a comprehensive explanation.
+关于这个话题的更多讨论略微超出本书范围，[PEP 343](http://www.python.org/dev/peps/pep-0343/) 能够给出更全面的解释。
 
-## Summary
+## 总结
 
-We have discussed the usage of the `try..except` and `try..finally` statements. We have seen how to create our own exception types and how to raise exceptions as well.
+我们已经讨论了 `try..except` 和 `try..finally` 语句的使用。我们了解到了怎样创建我们自己的异常类型，以及怎样抛出异常。
 
-Next, we will explore the Python Standard Library.
+接着，我们会探索标准库 (Python Standard Library) 。

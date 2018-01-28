@@ -1,18 +1,18 @@
-# Standard Library {#stdlib}
+# 标准库 standard library {#stdlib}
 
-The Python Standard Library contains a huge number of useful modules and is part of every standard Python installation. It is important to become familiar with the Python Standard Library since many problems can be solved quickly if you are familiar with the range of things that these libraries can do.
+python 标准库包含了海量的实用模块，并且它已继承在 python 的安装中。熟悉标准库是至关重要的，因为如果你熟悉这些库的范围的话，问题能够很快得到解。
 
-We will explore some of the commonly used modules in this library. You can find complete details for all of the modules in the Python Standard Library in the ['Library Reference' section](http://docs.python.org/3/library/) of the documentation that comes with your Python installation.
+我们会探索更多库中常用的模块。['Library Reference' section](http://docs.python.org/3/library/) 能够找到 python 标准库中的所有模块的全部详细信息。
 
-Let us explore a few useful modules.
+让我们探索一些实用模块。
 
-> CAUTION: If you find the topics in this chapter too advanced, you may skip this chapter. However, I highly recommend coming back to this chapter when you are more comfortable with programming using Python.
+> 请注意：如果你感觉本章的话题有些超前，你可以略过本章。但是，我强烈推荐当你熟悉 python 编程后回顾本章。
 
-## `sys` module {#sys}
+## `sys` 模块 {#sys}
 
-The `sys` module contains system-specific functionality. We have already seen that the `sys.argv` list contains the command-line arguments.
+`sys` 模块包含了系统性的功能。我们已经看到了 `sys.argv` 列表包含了命令行参数。
 
-Suppose we want to check the version of the Python software being used, the `sys` module gives us that information.
+假设我们想要检测当前使用的 python 软件版本，`sys` 模块能够给我们信息。
 
 <!-- The output should match pythonVersion variable in book.json -->
 ```python
@@ -23,45 +23,44 @@ sys.version_info(major=3, minor=6, micro=0, releaselevel='final', serial=0)
 True
 ```
 
-**How It Works**
+**它是怎样做的**
 
-The `sys` module has a `version_info` tuple that gives us the version information. The first entry is the major version. We can pull out this information to use it.
+`sys` 模块有个 `version_info` 元组可以给出版本信息。第一个入口是主要版本。我们可以拉出这些信息来使用它。
 
-## `logging` module {#logging}
+## `logging` 模块 {#logging}
 
-What if you wanted to have some debugging messages or important messages to be stored somewhere so that you can check whether your program has been running as you would expect it? How do you "store somewhere" these messages? This can be achieved using the `logging` module.
+如果你想将一些调试消息或者重要信息储存起来，再根据它们来看看程序是否如你所想的那样运行的时候该怎么办？你该如何将这些消息**储存起来**？`logging` 模块可以实现这点。
 
-Save as `stdlib_logging.py`:
+请看示例 `stdlib_logging.py` ：
 
 <pre><code class="lang-python">{% include "./programs/stdlib_logging.py" %}</code></pre>
 
-Output:
+输出为：
 
 <pre><code>{% include "./programs/stdlib_logging.txt" %}</code></pre>
 
-The `cat` command is used in the command line to read the 'test.log' file.  If the `cat` command is not available, you can open the `test.log` file in a text editor instead.
+命令行中使用的 `cat` 命令来读取 `test.log` 文件。如果 `cat` 命令不可用，你可以使用文本编辑器来打开 `test.log` 文件。
 
-**How It Works**
+**它是怎样做的**
 
-We use three modules from the standard library - the `os` module for interacting with the operating system, the `platform` module for information about the platform i.e. the operating system and the `logging` module to *log* information.
+我们使用了三个标准库模块。`os` 模块与系统互动，`platform` 模块是有关于平台即操作系统信息的，`logging` 模块是操作**日志**信息的。
 
-First, we check which operating system we are using by checking the string returned by `platform.platform()` (for more information, see `import platform; help(platform)`). If it is Windows, we figure out the home drive, the home folder and the filename where we want to store the information. Putting these three parts together, we get the full location of the file. For other platforms, we need to know just the home folder of the user and we get the full location of the file.
+首先，我们使用 `platform.platform()` 返回的字符串来检测当前操作系统。如果是 Windows，我们要找出 home 驱动器，home 文件夹以及我们想要储存信息的文件的名称。将这三个部分放在一起，我们能得到文件的完整路径。对于其他系统，我们只要知道用户的 home 文件夹就能得到文件的完整路径。
 
-We use the `os.path.join()` function to put these three parts of the location together. The reason to use a special function rather than just adding the strings together is because this function will ensure the full location matches the format expected by the operating system.  Note: the `join()' method we use here that's part of the `os` module is different from the string method `join()` that we've used elsewhere in this book.
+我们使用 `os.path.join()` 函数来将三个位置放在一起。使用一个特定的函数而不是仅仅将字符串加在一起是因为这个函数会确保完整的路径能匹配操作系统要求的格式。
 
-We configure the `logging` module to write all the messages in a particular format to the file we have specified.
+我们配置了 `logging` 模块来将所有信息写入到我们指定的文件中。
 
-Finally, we can put messages that are either meant for debugging, information, warning or even critical messages. Once the program has run, we can check this file and we will know what happened in the program, even though no information was displayed to the user running the program.
+最后，我们能把这些信息用作调试，信息，警告或者某些关键消息。一旦程序运行了，我们就检查这个文件，就算在程序运行途中没有任何信息显示给用户，我们也会知道程序中发生了什么。
 
-## Module of the Week Series {#motw}
+## Module of the Week 系列 {#motw}
 
-There is much more to be explored in the standard library such as [debugging](http://docs.python.org/3/library/pdb.html),
-[handling command line options](http://docs.python.org/3/library/argparse.html), [regular expressions](http://docs.python.org/3/library/re.html) and so on.
+标准库有更多内容可以探索，如[调试 debugging](http://docs.python.org/3/library/pdb.html) ，[处理命令行选项 handling command line options](http://docs.python.org/3/library/argparse.html) ，[正则表达式regular expressions](http://docs.python.org/3/library/re.html) 等等。
 
-The best way to further explore the standard library is to read Doug Hellmann's excellent [Python Module of the Week](http://pymotw.com/2/contents.html) series (also available as a [book](http://amzn.com/0321767349)) and reading the [Python documentation](http://docs.python.org/3/).
+学习标准库的最佳方法是拜读 Doug Hellmann 的著作 [Python Module of the Week](http://pymotw.com/2/contents.html) 系列，以及阅读 [Python documentation](http://docs.python.org/3/) 。
 
-## Summary
+## 总结
 
-We have explored some of the functionality of many modules in the Python Standard Library. It is highly recommended to browse through the [Python Standard Library documentation](http://docs.python.org/3/library/) to get an idea of all the modules that are available.
+我们探索了标准库中某些模块的功能。强烈推荐好好浏览 [Python Standard Library documentation](http://docs.python.org/3/library/) 对所有可用模块有个了解。
 
-Next, we will cover various aspects of Python that will make our tour of Python more _complete_.
+接着，我们会涉及到其他多个能帮助我们**完善** python 之旅的方面。

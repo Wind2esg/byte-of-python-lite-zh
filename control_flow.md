@@ -121,15 +121,6 @@ python 执行完 `if` 语句以及它相关联的 `elif` 和 `else` 语句之后
 
 是的，`break` 语句也能在 `for` 循环中使用。
 
-**Swaroop 的 python 诗**
-
-```
-Programming is fun
-When the work is done
-if you wanna make your work also fun:
-    use Python!
-```
-
 ## continue {#continue-statement}
 
 `continue` 语句用来告诉 python 跳过当前循环中的余下语句并且**继续**下一次循环的迭代。
