@@ -15,7 +15,7 @@
 
 ### E-Book 下载
 
-本书提供 PDF ，Mobi ，ePub 格式的电子书下载 [https://www.gitbook.com/book/wind2esg/python/details](https://www.gitbook.com/book/wind2esg/python/details) 。
+本书提供 PDF ，Mobi ，ePub 格式的电子书下载 [https://www.gitbook.com/book/wind2esg/python/details](https://www.gitbook.com/book/wind2esg/python/details)
 
 ### 源代码
 
@@ -24,20 +24,20 @@
 
 #### 如何构建本书
 
-- 使用 gitbook.com 服务自动构建，如上面提到的连接所述。
-- 在本地使用 gitbook 构建。  
+- 由 gitbook.com 提供的服务自动构建 [https://www.gitbook.com/book/wind2esg/python/details](https://www.gitbook.com/book/wind2esg/python/details)
 
+- 在本地使用 gitbook 构建。
     ```
     $ git clone https://github.com/Wind2esg/byte-of-python-lite-zh
     $ cd byte-of-python-lite-zh
     $ gitbook serve
     ```
     gitbook 会告知服务所在的端口，使用浏览器浏览即可。
-    如果你没有 gitbook ，[https://toolchain.gitbook.com/setup.html](https://toolchain.gitbook.com/setup.html) 。
+    如果你没有安装 gitbook ，[https://toolchain.gitbook.com/setup.html](https://toolchain.gitbook.com/setup.html) 
 
 ## 版本
 
-python 3
+python 3.6
 
 ## 许可
 
@@ -54,6 +54,6 @@ python 3
 
 请注意
 - 请不要出售本书的电子或印刷拷贝，除非你明确的声明这些来源非原作者
-- 必须在介绍描述与首页中提供原著的官方网站链接 [https://python.swaroopch.com/](https://python.swaroopch.com/) ,与本书的链接 [https://github.com/Wind2esg/byte-of-python-lite-zh](https://github.com/Wind2esg/byte-of-python-lite-zh) ，并明确指出原著与本书的内容都可在以上连接处获取。
+- 必须在介绍描述与首页中提供原著的官方网站链接 [https://python.swaroopch.com/](https://python.swaroopch.com/) ,与本书的链接 [https://www.gitbook.com/book/wind2esg/python/details](https://www.gitbook.com/book/wind2esg/python/details) ，并明确指出原著与本书的内容都可在以上连接处获取。
 - 原著提供的代码或者脚本默认采用 [BSD 3-clause License](http://www.opensource.org/licenses/bsd-license.php) 许可，除非另有说明。
 - 我添加的代码或脚本采用 [MIT License](http://www.opensource.org/licenses/mit-license.php)

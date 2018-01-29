@@ -20,7 +20,7 @@
 
 > **对 Windows 用户**
 > 
-> 原著这里指导使用 [zip](http://gnuwin32.sourceforge.net/downlinks/zip.php) 。
+> 原著这里使用的是 [zip](http://gnuwin32.sourceforge.net/downlinks/zip.php) 。
 > 如果安装了 winrar ，那我们已经可以使用 `rar` 命令了。也许你需要先把它的目录加入到环境变量中。
 
 ## 解决方案
@@ -47,7 +47,7 @@
 
 请看好 `os.sep` 变量的用法——这根据你操作系统给出正确的目录分隔符，也就是说，在 GNU/Linux ，Unix ，macOS 中它是 `'/'` ，而在 Windows 中，会是 `'\\'`。使用 `os.sep` 而不是直接用字符能使我们程序具有便携性 (portable) 能够跨平台运行。
 
-`time.strftime()` 函数接受一种特殊的格式，如我们上面程序中所使用的那样。`%Y` 格式会被带有世纪数的完整年份替换，`%m` 会被月份替换，这些月份的形式是 `01` 到 `12` 之间的十进制数。这种格式的完整列表可以在 [python 引用手册 (Python Reference Manual)](http://docs.python.org/3/library/time.html#time.strftime) 中找到。
+`time.strftime()` 函数接受一种特殊的格式，如我们上面程序中所使用的那样。`%Y` 格式会被带有世纪数的完整年份替换，`%m` 会被月份替换，这些月份的形式是 `01` 到 `12` 之间的十进制数。这种格式的完整列表可以在 [Python Reference Manual](http://docs.python.org/3/library/time.html#time.strftime) 中找到。
 
 我们创建目标 zip 文件名时使用了加运算符，它能**连接**字符串，也就是说它能将两个字符串连接起来并返回一个新字符串。然后，我们新建一个字符串 `zip_command` ，内中是我们将要执行的命令。你可以在 shell 中运行它来看看命令是否正确。
 

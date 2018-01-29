@@ -4,7 +4,7 @@
 
 写模块有很多方式，最简单的就是创建一个包含函数与变量的扩展名为 `.py` 的文件。
 
-另一个写模块的方法是使用编写 python 解释器的语言来编写。例如，你可以用 [c 语言 C programming language](http://docs.python.org/3/extending/) 。它们在编译过后可以在 python 代码中使用。
+另一个写模块的方法是使用编写 python 解释器的语言来编写。例如，你可以用 [c 语言](http://docs.python.org/3/extending/) 。它们在编译过后可以在 python 代码中使用。
 
 模块能被**导入 (importe)** 到其他程序以复用它的功能。我们使用 python 标准库 (standard library) 也是同样道理。首先，让我们来看看如何使用标准库模块。
 
@@ -43,6 +43,8 @@
 
 注意：这些 `.pyc` 文件通常创建在其相应的 `.py` 文件所在的目录中。如果 python 对那些目录和文件没有相应权限，那么 `.pyc` 文件就**不会**被创建。
 
+> 不知你有没有想到之前谈到 python 特点是，在解释型那一块我们的一些探讨。
+
 ## from...import {#from-import-statement}
 
 如果你将 `argv` 直接导入你的程序（而不是每次都输入 `sys.` ），你可以用 `from sys import argv` 语句。
@@ -56,7 +58,7 @@ from math import sqrt
 print("Square root of 16 is", sqrt(16))
 ```
 
-## __name__ {#module-name}
+## \_\_name\_\_ {#module-name}
 
 每个模块都有它的名称，并且也有相应语句能找出这个名字。当你想区分这个模块是独立运行还是被导入到其他程序中之时是非常便利的。正如之前提到的那样，当一个模块首次导入时，内中代码已然执行。我们可利用这一点，根据模块是独立还是被导入来使其表现不同的行为。使用模块的 `__name__` 属性就可以。 
 

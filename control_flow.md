@@ -2,7 +2,7 @@
 
 迄今，我们所看到的程序中，基本都是一系列的语句，由 python 准确的按照从上至下的顺序执行。如果你想改变这个执行顺序，该怎么做？例如，你想要程序能够做出选择，根据不同的情况采取不同的行为，例如，根据当前时间打印“早上好”或“晚上好”？
 
-也行正如你猜想的那样，这可正是控制流语句的用武之地。python 中有三种控制流语句——if` ，`for` 和 `while` 。
+也行正如你猜想的那样，这可正是控制流语句的用武之地。python 中有三种控制流语句——`if` ，`for` 和 `while` 。
 
 ## if else
 
@@ -66,12 +66,12 @@ python 执行完 `if` 语句以及它相关联的 `elif` 和 `else` 语句之后
 
 `True` 与 `False` 被称为布尔 (Boolean) 类型，你可以把它们想象成值 `1` 与 `0`。
 
-> 请记住，你的 `while` 循环也有 `else`
-> Guido van Rossum 有点意思，他偏爱 `else`
+> 请记住，你的 `while` 循环也有 `else` ，到后面你会发现，`try..except` 也有 `else` 。
+> Guido van Rossum 有点意思，看来他偏爱 `else` 。
 
 ## for
 
-`for..in` 语句是另一种循环语句，它能在对象序列中进行*迭代 (iterate)*，即遍历序列中的每个项 (item) 。我们会从后面的章节 [序列 sequences](./data_structures.md#sequence) 做更多的了解。你现在仅需要知道序列是一些项的有序集合。
+`for..in` 语句是另一种循环语句，它能在对象序列中进行**迭代 (iterate)** ，即遍历序列中的每个项 (item) 。我们会从后面的章节 [序列 sequences](./data_structures.md#sequence) 做更多的了解。你现在仅需要知道序列是一些项的有序集合。
 
 请看示例 `for.py`：
 

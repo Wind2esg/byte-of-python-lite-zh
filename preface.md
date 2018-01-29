@@ -1,4 +1,11 @@
-# OMG ，编者 bla
+# 前言
+
+## 特别感谢
+
+感谢一直支持着我的家人和朋友。
+感谢携我一路并肩前行的朋友们。
+
+## OMG ，编者 bla
 
 人工智能的火热，使得人们对 python 的热情更加高涨。
 
@@ -13,8 +20,6 @@
 衷心希望本书能够给奋斗着的你一段美妙的陪伴。
 
 ## 官方网址
-
-本书基于 markdown ，构建于 gitbook.com 。
 
 - 在线阅读 [{{book.authorGitbookUrl}}]({{book.authorGitbookUrl}})
 - 源代码 [{{book.authorGithubUrl}}]({{book.authorGithubUrl}})

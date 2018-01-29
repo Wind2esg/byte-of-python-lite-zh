@@ -1,8 +1,7 @@
 # 总览
 * [介绍](README.md)
-* [献给](dedication.md)
 * [前言](preface.md)
-* [关于](about_python.md)
+* [关于 python](about_python.md)
 * [安装](installation.md)
 * [工欲善其事](first_steps.md)
 * [基础](basics.md)
